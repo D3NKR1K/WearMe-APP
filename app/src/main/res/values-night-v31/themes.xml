@@ -1,0 +1,9 @@
+<resources>
+  <!-- Splash Screen для темной темы -->
+  <style name="Theme.WearMe.Starting" parent="Theme.SplashScreen">
+    <item name="android:forceDarkAllowed">false</item>
+    <item name="windowSplashScreenBackground">@color/logo</item>
+    <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+    <item name="postSplashScreenTheme">@style/Theme.WearMe</item>
+  </style>
+</resources>

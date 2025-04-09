@@ -1,0 +1,10 @@
+<resources>
+  <!-- Base application theme. -->
+  <style name="Base.Theme.WearMe.Light" parent="Theme.Material3.Light.NoActionBar">
+    <!-- Customize your light theme here. -->
+    <item name="colorPrimary">@color/color_background</item>
+  </style>
+
+  <style name="Theme.WearMe" parent="Base.Theme.WearMe.Light" />
+
+</resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fillViewport="true"
+  android:background="@color/light_grey"
+
+  tools:context=".ui.bio.ProfileActivity">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Шапка профиля -->
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:gravity="center"
+      android:paddingVertical="24dp">
+
+      <com.google.android.material.card.MaterialCardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="60dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:elevation="4dp">
+
+        <ImageView
+          android:id="@+id/avatar"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scaleType="centerCrop"
+          android:src="@drawable/ic_profile_placeholder" />
+
+      </com.google.android.material.card.MaterialCardView>
+
+      <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Иван Иванов"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+      <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="ivan@example.com"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey"
+        android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Секция настроек -->
+    <com.google.android.material.card.MaterialCardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardElevation="2dp"
+      app:cardCornerRadius="8dp"
+      android:layout_marginBottom="16dp">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+          android:id="@+id/edit_profile"
+          style="@style/SettingsItem"
+          android:text="Редактировать профиль" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/light_grey" />
+
+        <TextView
+          android:id="@+id/notifications"
+          style="@style/SettingsItem"
+          android:text="Настройки уведомлений" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/light_grey" />
+
+        <TextView
+          android:id="@+id/history"
+          style="@style/SettingsItem"
+          android:text="История действий" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/light_grey" />
+
+        <TextView
+          android:id="@+id/support"
+          style="@style/SettingsItem"
+          android:text="Помощь и поддержка" />
+      </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Кнопка выхода -->
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/logout_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Выйти из аккаунта"
+      android:textColor="@color/white"
+      app:backgroundTint="@color/button_main_color"
+      app:cornerRadius="8dp"
+      app:elevation="2dp" />
+
+  </LinearLayout>
+</ScrollView>

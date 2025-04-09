@@ -1,0 +1,7 @@
+<resources>
+  <!-- Base application theme. -->
+  <style name="Base.Theme.WearMe.Dark" parent="Theme.Material3.Dark.NoActionBar">
+    <item name="colorPrimary">@color/white</item>
+  </style>
+
+</resources>

@@ -1,0 +1,45 @@
+<resources>
+  <string name="app_name" translatable="false">WearMe</string>
+  <string name="app_slogan" translatable="false">Dress to Impress, Effortlessly</string>
+
+  <string name="header_signUpPage">Sign Up</string>
+  <string name="button_signUpPage">Sign Up</string>
+
+  <string name="hint_user_name">Full Name</string>
+  <string name="hint_user_email" translatable="false">Email</string>
+  <string name="hint_user_password">Password</string>
+
+  <string name="header_signInPage">Sign In</string>
+  <string name="button_signInPage">Sign In</string>
+
+  <string name="link_to_SignUpPage_description">Don\'t have an account?</string>
+  <string name="link_to_SignInPage_description">You have an account?</string>
+
+  <string name="sign_up">Sign Up</string>
+  <string name="error_empty_name">Please enter your name</string>
+  <string name="error_short_name">Name must be at least 3 characters</string>
+  <string name="error_empty_email">Please enter email</string>
+  <string name="error_invalid_email">Invalid email format</string>
+  <string name="error_empty_password">Please enter password</string>
+  <string name="error_short_password">Password must be at least 8 characters</string>
+  <string name="error_no_uppercase">Password must contain at least one uppercase letter</string>
+  <string name="registration_failed">Registration failed. Please try again</string>
+  <string name="retry">Retry</string>
+
+  <string name="icon_email_description">Email icon</string>
+  <string name="icon_password_description">Password icon</string>
+  <string name="icon_password_visibility">Switch password visibility</string>
+  <string name="measurements_header">Enter your measurements</string>
+  <string name="measurements_hint_height">Height</string>
+  <string name="measurements_hint_chest">Chest</string>
+  <string name="measurements_hint_waist">Waist</string>
+  <string name="measurements_hint_hips">Hips</string>
+  <string name="measurements_button_text">Enter</string>
+
+  <string-array name="categories">
+    <item>All</item>
+    <item>Upper</item>
+    <item>Lower</item>
+  </string-array>
+
+</resources>
