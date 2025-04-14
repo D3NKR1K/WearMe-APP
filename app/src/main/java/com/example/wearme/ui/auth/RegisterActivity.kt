@@ -23,7 +23,7 @@ class SignUpActivity: AppCompatActivity() {
     setContentView(binding.root)
 
     binding.linkToSignIn.setOnClickListener {
-      startActivity(Intent(this, SignInActivity::class.java))
+      startActivity(Intent(this, LoginActivity::class.java))
       finish()
     }
 
@@ -40,7 +40,7 @@ class SignUpActivity: AppCompatActivity() {
 
         showLoading(true)
 
-        RetrofitInstance.authApi.register(user).enqueue(RegisterCallback(this))
+        RetrofitInstance.authorizationAPI.register(user).enqueue(RegisterCallback(this))
 
       } else {
         Toast.makeText(this, "Incorrect input data", Toast.LENGTH_SHORT).show()
