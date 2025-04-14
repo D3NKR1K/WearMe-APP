@@ -24,96 +24,96 @@
 17-->[androidx.core:core:1.15.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\3f6845586fe75507970c873f43235f18\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
 18
 19    <application
-19-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:6:3-56:17
+19-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:6:3-55:17
 20        android:allowBackup="true"
 20-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:7:5-31
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 21-->[androidx.core:core:1.15.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\3f6845586fe75507970c873f43235f18\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
 22        android:dataExtractionRules="@xml/data_extraction_rules"
-22-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:9:5-61
+22-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:8:5-61
 23        android:debuggable="true"
 24        android:extractNativeLibs="false"
 25        android:fullBackupContent="@xml/backup_rules"
-25-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:10:5-50
+25-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:9:5-50
 26        android:icon="@mipmap/ic_launcher"
-26-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:11:5-39
+26-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:10:5-39
 27        android:label="@string/app_name"
-27-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:12:5-37
+27-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:11:5-37
 28        android:roundIcon="@mipmap/ic_launcher_round"
-28-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:13:5-50
+28-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:12:5-50
 29        android:supportsRtl="true"
-29-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:14:5-31
+29-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:13:5-31
 30        android:testOnly="true"
 31        android:theme="@style/Theme.WearMe"
-31-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:15:5-40
+31-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:14:5-40
 32        android:usesCleartextTraffic="true" >
-32-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:16:5-40
+32-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:15:5-40
 33        <activity
-33-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:18:5-21:34
+33-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:17:5-20:34
 34            android:name="com.example.wearme.ui.bio.MeasurementsActivity"
-34-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:19:7-50
+34-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:18:7-50
 35            android:exported="false"
-35-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:21:7-31
+35-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:20:7-31
 36            android:theme="@style/Theme.WearMe" />
-36-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:20:7-42
+36-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:19:7-42
 37        <activity
-37-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:23:5-26:34
+37-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:22:5-25:34
 38            android:name="com.example.wearme.ui.home.ProductsActivity"
-38-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:24:7-47
+38-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:23:7-47
 39            android:exported="false"
-39-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:26:7-31
+39-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:25:7-31
 40            android:theme="@style/Theme.WearMe" />
-40-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:25:7-42
+40-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:24:7-42
 41        <activity
-41-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:28:5-31:34
+41-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:27:5-30:34
 42            android:name="com.example.wearme.ui.auth.SignInActivity"
-42-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:29:7-45
+42-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:28:7-45
 43            android:exported="false"
-43-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:31:7-31
+43-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:30:7-31
 44            android:theme="@style/Theme.WearMe" />
-44-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:30:7-42
+44-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:29:7-42
 45        <activity
-45-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:33:5-36:34
+45-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:32:5-35:34
 46            android:name="com.example.wearme.ui.auth.SignUpActivity"
-46-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:34:7-45
+46-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:33:7-45
 47            android:exported="false"
-47-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:36:7-31
+47-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:35:7-31
 48            android:theme="@style/Theme.WearMe" />
-48-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:35:7-42
+48-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:34:7-42
 49        <activity
-49-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:38:5-41:34
+49-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:37:5-40:34
 50            android:name="com.example.wearme.ui.bio.ProfileActivity"
-50-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:39:7-45
+50-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:38:7-45
 51            android:exported="false"
-51-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:41:7-31
+51-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:40:7-31
 52            android:theme="@style/Theme.WearMe" />
-52-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:40:7-42
+52-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:39:7-42
 53        <activity
-53-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:43:5-51:16
+53-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:42:5-50:16
 54            android:name="com.example.wearme.ui.home.MainActivity"
-54-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:44:7-43
+54-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:43:7-43
 55            android:exported="true"
-55-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:46:7-30
+55-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:45:7-30
 56            android:theme="@style/Theme.WearMe.Starting" >
-56-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:45:7-51
+56-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:44:7-51
 57            <intent-filter>
-57-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:47:7-50:23
+57-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:46:7-49:23
 58                <action android:name="android.intent.action.MAIN" />
-58-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:9-61
-58-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:17-58
+58-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:47:9-61
+58-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:47:17-58
 59
 60                <category android:name="android.intent.category.LAUNCHER" />
-60-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:49:9-69
-60-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:49:19-66
+60-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:9-69
+60-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:19-66
 61            </intent-filter>
 62        </activity>
 63
 64        <meta-data
-64-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:53:5-55:51
+64-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:52:5-54:51
 65            android:name="preloaded_fonts"
-65-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:54:7-37
+65-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:53:7-37
 66            android:resource="@array/preloaded_fonts" />
-66-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:55:7-48
+66-->C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:54:7-48
 67
 68        <provider
 68-->[androidx.emoji2:emoji2:1.3.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\54f652923ca7a05e06ff089ce4a6d470\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20

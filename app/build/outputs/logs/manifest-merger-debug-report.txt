@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-58:12
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:2:1-57:12
 MERGED from [androidx.databinding:viewbinding:8.9.1] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\197d9889c0c9132dcc70520c02225573\transformed\viewbinding-8.9.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\389ea5d419f99e3d3e53b2acea7fac57\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\1a6814be66cd60470e153d0228a37202\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
@@ -64,8 +64,8 @@ ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:4:20-62
 application
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:6:3-56:17
-INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:6:3-56:17
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:6:3-55:17
+INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:6:3-55:17
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\1a6814be66cd60470e153d0228a37202\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\1a6814be66cd60470e153d0228a37202\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\1ec78151758320844d15ef78896c80c6\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
@@ -87,87 +87,87 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ku
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.15.0] C:\Users\kuzmd\.gradle\caches\8.11.1\transforms\3f6845586fe75507970c873f43235f18\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:14:5-31
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:13:5-31
 	android:label
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:12:5-37
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:11:5-37
 	android:fullBackupContent
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:10:5-50
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:9:5-50
 	android:roundIcon
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:13:5-50
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:12:5-50
 	android:icon
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:11:5-39
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:10:5-39
 	android:allowBackup
 		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:7:5-31
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:15:5-40
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:14:5-40
 	android:dataExtractionRules
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:9:5-61
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:8:5-61
 	android:usesCleartextTraffic
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:16:5-40
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:15:5-40
 activity#com.example.wearme.ui.bio.MeasurementsActivity
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:18:5-21:34
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:17:5-20:34
 	android:exported
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:21:7-31
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:20:7-31
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:20:7-42
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:19:7-42
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:19:7-50
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:18:7-50
 activity#com.example.wearme.ui.home.ProductsActivity
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:23:5-26:34
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:22:5-25:34
 	android:exported
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:26:7-31
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:25:7-31
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:25:7-42
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:24:7-42
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:24:7-47
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:23:7-47
 activity#com.example.wearme.ui.auth.SignInActivity
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:28:5-31:34
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:27:5-30:34
 	android:exported
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:31:7-31
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:30:7-31
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:30:7-42
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:29:7-42
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:29:7-45
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:28:7-45
 activity#com.example.wearme.ui.auth.SignUpActivity
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:33:5-36:34
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:32:5-35:34
 	android:exported
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:36:7-31
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:35:7-31
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:35:7-42
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:34:7-42
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:34:7-45
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:33:7-45
 activity#com.example.wearme.ui.bio.ProfileActivity
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:38:5-41:34
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:37:5-40:34
 	android:exported
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:41:7-31
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:40:7-31
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:40:7-42
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:39:7-42
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:39:7-45
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:38:7-45
 activity#com.example.wearme.ui.home.MainActivity
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:43:5-51:16
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:42:5-50:16
 	android:exported
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:46:7-30
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:45:7-30
 	android:theme
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:45:7-51
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:44:7-51
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:44:7-43
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:43:7-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:47:7-50:23
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:46:7-49:23
 action#android.intent.action.MAIN
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:9-61
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:47:9-61
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:17-58
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:47:17-58
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:49:9-69
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:9-69
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:49:19-66
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:48:19-66
 meta-data#preloaded_fonts
-ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:53:5-55:51
+ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:52:5-54:51
 	android:resource
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:55:7-48
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:54:7-48
 	android:name
-		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:54:7-37
+		ADDED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml:53:7-37
 uses-sdk
 INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\kuzmd\Documents\WearMe-APP\app\src\main\AndroidManifest.xml
