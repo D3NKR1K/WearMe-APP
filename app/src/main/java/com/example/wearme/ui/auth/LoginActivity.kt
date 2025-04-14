@@ -107,7 +107,7 @@ class SignInActivity: AppCompatActivity() {
         email = binding.inputUserEmail.getTrimmedText(),
         password = binding.inputUserPassword.getTrimmedText()
       )
-      apiCall = RetrofitInstance.authApi.login(user).apply {
+      apiCall = RetrofitInstance.authorizationAPI.login(user).apply {
         enqueue(LoginCallback(this@SignInActivity))
       }
     }
