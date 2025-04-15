@@ -1,4 +1,5 @@
 package com.example.wearme.domain.model
 
-class Bio {
-}
+data class Bio(
+  val name: String, val age: Int, val gender: String
+)

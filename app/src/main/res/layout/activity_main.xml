@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/white"
-  tools:context=".ui.home.ProductsActivity">
+  tools:context=".ui.home.MainActivity">
 
   <!-- Заголовок -->
   <TextView
@@ -25,7 +25,7 @@
 
   <!-- Лента товаров -->
   <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/productsRecyclerView"
+    android:id="@+id/itemsRecyclerView"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_marginTop="16dp"
@@ -33,7 +33,7 @@
     android:paddingHorizontal="8dp"
     android:scrollbars="vertical"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    app:layout_constraintBottom_toTopOf="@id/productsBottomPanel"
+    app:layout_constraintBottom_toTopOf="@id/itemsBottomPanel"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/toolbarTitle"
@@ -50,14 +50,14 @@
     app:layout_constraintTop_toBottomOf="@id/toolbarTitle"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/productsBottomPanel"
+    app:layout_constraintBottom_toTopOf="@id/itemsBottomPanel"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/item_category"
     tools:orientation="vertical" />
 
   <!-- Нижняя панель -->
   <LinearLayout
-    android:id="@+id/productsBottomPanel"
+    android:id="@+id/itemsBottomPanel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -90,7 +90,7 @@
       android:layout_width="wrap_content"
       android:layout_height="48dp"
       android:layout_marginHorizontal="2dp"
-      android:text="♥" />
+      android:text="♥️" />
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/productsProfileButton"

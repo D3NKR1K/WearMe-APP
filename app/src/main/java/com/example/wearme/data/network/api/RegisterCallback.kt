@@ -3,19 +3,19 @@ package com.example.wearme.data.network.api
 import android.content.Intent
 import android.util.Log
 import com.example.wearme.data.model.RegisterResponse
-import com.example.wearme.ui.auth.SignInActivity
-import com.example.wearme.ui.auth.SignUpActivity
+import com.example.wearme.ui.auth.LoginActivity
+import com.example.wearme.ui.auth.RegisterActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RegisterCallback(private val activity: SignUpActivity): Callback<RegisterResponse> {
+class RegisterCallback(private val activity: RegisterActivity): Callback<RegisterResponse> {
   override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
     activity.showLoading(false)
 
     when (response.code()) {
       201 -> {
-        activity.startActivity(Intent(activity, SignInActivity::class.java))
+        activity.startActivity(Intent(activity, LoginActivity::class.java))
         activity.finish()
       }
 

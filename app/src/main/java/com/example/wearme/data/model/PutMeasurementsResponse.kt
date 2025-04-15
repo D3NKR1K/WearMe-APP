@@ -1,5 +1,5 @@
 package com.example.wearme.data.model
 
-data class MeasurementsResponse(
+data class PutMeasurementsResponse(
   val msg: String
 )

@@ -26,7 +26,10 @@ public final class ActivityMainBinding implements ViewBinding {
   public final RecyclerView categoriesRecyclerView;
 
   @NonNull
-  public final LinearLayout productsBottomPanel;
+  public final LinearLayout itemsBottomPanel;
+
+  @NonNull
+  public final RecyclerView itemsRecyclerView;
 
   @NonNull
   public final MaterialButton productsCatalogButton;
@@ -38,26 +41,23 @@ public final class ActivityMainBinding implements ViewBinding {
   public final MaterialButton productsProfileButton;
 
   @NonNull
-  public final RecyclerView productsRecyclerView;
-
-  @NonNull
   public final MaterialButton productsShowcaseButton;
 
   @NonNull
   public final TextView toolbarTitle;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView categoriesRecyclerView, @NonNull LinearLayout productsBottomPanel,
-      @NonNull MaterialButton productsCatalogButton, @NonNull MaterialButton productsFeautersButton,
-      @NonNull MaterialButton productsProfileButton, @NonNull RecyclerView productsRecyclerView,
+      @NonNull RecyclerView categoriesRecyclerView, @NonNull LinearLayout itemsBottomPanel,
+      @NonNull RecyclerView itemsRecyclerView, @NonNull MaterialButton productsCatalogButton,
+      @NonNull MaterialButton productsFeautersButton, @NonNull MaterialButton productsProfileButton,
       @NonNull MaterialButton productsShowcaseButton, @NonNull TextView toolbarTitle) {
     this.rootView = rootView;
     this.categoriesRecyclerView = categoriesRecyclerView;
-    this.productsBottomPanel = productsBottomPanel;
+    this.itemsBottomPanel = itemsBottomPanel;
+    this.itemsRecyclerView = itemsRecyclerView;
     this.productsCatalogButton = productsCatalogButton;
     this.productsFeautersButton = productsFeautersButton;
     this.productsProfileButton = productsProfileButton;
-    this.productsRecyclerView = productsRecyclerView;
     this.productsShowcaseButton = productsShowcaseButton;
     this.toolbarTitle = toolbarTitle;
   }
@@ -95,9 +95,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.productsBottomPanel;
-      LinearLayout productsBottomPanel = ViewBindings.findChildViewById(rootView, id);
-      if (productsBottomPanel == null) {
+      id = R.id.itemsBottomPanel;
+      LinearLayout itemsBottomPanel = ViewBindings.findChildViewById(rootView, id);
+      if (itemsBottomPanel == null) {
+        break missingId;
+      }
+
+      id = R.id.itemsRecyclerView;
+      RecyclerView itemsRecyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (itemsRecyclerView == null) {
         break missingId;
       }
 
@@ -119,12 +125,6 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.productsRecyclerView;
-      RecyclerView productsRecyclerView = ViewBindings.findChildViewById(rootView, id);
-      if (productsRecyclerView == null) {
-        break missingId;
-      }
-
       id = R.id.productsShowcaseButton;
       MaterialButton productsShowcaseButton = ViewBindings.findChildViewById(rootView, id);
       if (productsShowcaseButton == null) {
@@ -138,8 +138,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, categoriesRecyclerView,
-          productsBottomPanel, productsCatalogButton, productsFeautersButton, productsProfileButton,
-          productsRecyclerView, productsShowcaseButton, toolbarTitle);
+          itemsBottomPanel, itemsRecyclerView, productsCatalogButton, productsFeautersButton,
+          productsProfileButton, productsShowcaseButton, toolbarTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

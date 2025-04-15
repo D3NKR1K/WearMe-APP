@@ -9,8 +9,8 @@ import coil.load
 import com.example.wearme.R
 import com.example.wearme.databinding.ItemProductBinding
 
-class ProductsAdapter(private var items: List<String>):
-  RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+class ItemsAdapter(private var items: List<String>):
+  RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
   class ViewHolder(val binding: ItemProductBinding): RecyclerView.ViewHolder(binding.root)
 

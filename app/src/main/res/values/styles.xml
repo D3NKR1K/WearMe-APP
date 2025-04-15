@@ -37,4 +37,13 @@
     <item name="android:drawablePadding">16dp</item>
   </style>
 
+  <style name="CustomAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <item name="buttonBarPositiveButtonStyle">@style/AlertDialogButton</item>
+    <item name="buttonBarNegativeButtonStyle">@style/AlertDialogButton</item>
+  </style>
+
+  <style name="AlertDialogButton" parent="Widget.Material3.Button.TextButton">
+    <item name="android:textColor">@color/button_main_color</item>
+  </style>
+
 </resources>

@@ -8,7 +8,7 @@
   android:background="@color/color_background"
   android:padding="24dp"
 
-  tools:context=".ui.auth.SignUpActivity">
+  tools:context=".ui.auth.RegisterActivity">
 
   <!-- Top Horizontal Guideline -->
   <androidx.constraintlayout.widget.Guideline
@@ -85,43 +85,10 @@
     android:textSize="34sp"
     android:textStyle="bold"
 
-    app:layout_constraintBottom_toTopOf="@id/layout_SignUp_name"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/header_SignUp_logo" />
-
-  <!-- TextInputLayout Name -->
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_SignUp_name"
-
-    style="@style/InputLayout"
-
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-
-    app:errorEnabled="true"
-    app:startIconDrawable="@drawable/ic_user_field"
-
     app:layout_constraintBottom_toTopOf="@id/layout_SignUp_email"
     app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
     app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/header_SignUp_title">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_user_name"
-
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/hint_user_name"
-
-      android:inputType="text"
-
-      android:textColor="@color/black"
-
-      android:textSize="16sp"
-      tools:text="Daniel Kuzmin" />
-  </com.google.android.material.textfield.TextInputLayout>
+    app:layout_constraintTop_toBottomOf="@id/header_SignUp_logo" />
 
   <!-- TextInputLayout Email -->
   <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +107,7 @@
     app:layout_constraintBottom_toTopOf="@id/layout_SignUp_password"
     app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
     app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_SignUp_name">
+    app:layout_constraintTop_toBottomOf="@id/layout_SignUp_email">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/input_user_email"
@@ -169,7 +136,7 @@
     app:startIconDrawable="@drawable/ic_password_field"
     app:startIconContentDescription="@string/icon_password_description"
 
-    app:layout_constraintBottom_toTopOf="@id/layout_SignUp_button"
+    app:layout_constraintBottom_toTopOf="@id/layout_SignUp_password_rep"
     app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
     app:layout_constraintStart_toEndOf="@id/button_left_guideline"
     app:layout_constraintTop_toBottomOf="@id/layout_SignUp_email">
@@ -187,6 +154,38 @@
 
       tools:text="password" />
   </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/layout_SignUp_password_rep"
+
+    style="@style/InputLayout"
+
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+
+    app:errorEnabled="true"
+    app:startIconDrawable="@drawable/ic_password_field"
+    app:startIconContentDescription="@string/icon_password_description"
+
+    app:layout_constraintBottom_toTopOf="@id/layout_SignUp_button"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/layout_SignUp_password">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/input_user_password_rep"
+
+      android:layout_width="match_parent"
+      android:layout_height="56dp"
+
+      android:hint="@string/hint_user_password"
+      android:inputType="textPassword"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+
+      tools:text="password" />
+  </com.google.android.material.textfield.TextInputLayout>
+
 
   <!-- Button Sign Up -->
   <com.google.android.material.button.MaterialButton
@@ -207,7 +206,7 @@
 
     app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
     app:layout_constraintStart_toStartOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_SignUp_password"
+    app:layout_constraintTop_toBottomOf="@id/layout_SignUp_password_rep"
     app:layout_constraintBottom_toTopOf="@id/linkTo_SignIn_description" />
 
   <!-- LAYOUT SIGN IN LINK DESCRIPTION -->

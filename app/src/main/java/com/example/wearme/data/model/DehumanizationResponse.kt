@@ -1,4 +1,5 @@
 package com.example.wearme.data.model
 
-class DehumanizationResponse {
-}
+data class DehumanizationResponse(
+  val msg: String
+)

@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wearme.databinding.ActivityProfileBinding
 import com.example.wearme.domain.model.TokenManager
-import com.example.wearme.ui.auth.SignInActivity
+import com.example.wearme.ui.auth.LoginActivity
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity: AppCompatActivity() {
 
   private lateinit var binding: ActivityProfileBinding
 
@@ -34,7 +34,7 @@ class ProfileActivity : AppCompatActivity() {
 
   // Navigates to the sign-in activity
   private fun navigateToSignIn() {
-    startActivity(Intent(this, SignInActivity::class.java))
+    startActivity(Intent(this, LoginActivity::class.java))
     finish() // Close the profile activity
   }
 

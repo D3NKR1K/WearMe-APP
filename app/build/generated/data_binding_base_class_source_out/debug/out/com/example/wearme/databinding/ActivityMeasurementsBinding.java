@@ -52,25 +52,31 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
   public final TextInputEditText inputBioChest;
 
   @NonNull
-  public final TextInputEditText inputBioHeight;
+  public final TextInputEditText inputBioHips;
 
   @NonNull
-  public final TextInputEditText inputBioHips;
+  public final TextInputEditText inputBioHipsl;
 
   @NonNull
   public final TextInputEditText inputBioWaist;
 
   @NonNull
-  public final TextInputLayout layoutBioChest;
+  public final TextInputEditText inputBioWaistl;
 
   @NonNull
-  public final TextInputLayout layoutBioHeight;
+  public final TextInputLayout layoutBioChest;
 
   @NonNull
   public final TextInputLayout layoutBioHips;
 
   @NonNull
+  public final TextInputLayout layoutBioHipsl;
+
+  @NonNull
   public final TextInputLayout layoutBioWaist;
+
+  @NonNull
+  public final TextInputLayout layoutBioWaistl;
 
   @NonNull
   public final MaterialButton layoutEnterButton;
@@ -80,10 +86,11 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
       @NonNull Guideline buttonLeftGuideline, @NonNull Guideline buttonRightGuideline,
       @NonNull MaterialButtonToggleGroup categoryToggle, @NonNull Guideline guidelineBottom,
       @NonNull Guideline guidelineTop, @NonNull MaterialTextView headerMeasure,
-      @NonNull TextInputEditText inputBioChest, @NonNull TextInputEditText inputBioHeight,
-      @NonNull TextInputEditText inputBioHips, @NonNull TextInputEditText inputBioWaist,
-      @NonNull TextInputLayout layoutBioChest, @NonNull TextInputLayout layoutBioHeight,
-      @NonNull TextInputLayout layoutBioHips, @NonNull TextInputLayout layoutBioWaist,
+      @NonNull TextInputEditText inputBioChest, @NonNull TextInputEditText inputBioHips,
+      @NonNull TextInputEditText inputBioHipsl, @NonNull TextInputEditText inputBioWaist,
+      @NonNull TextInputEditText inputBioWaistl, @NonNull TextInputLayout layoutBioChest,
+      @NonNull TextInputLayout layoutBioHips, @NonNull TextInputLayout layoutBioHipsl,
+      @NonNull TextInputLayout layoutBioWaist, @NonNull TextInputLayout layoutBioWaistl,
       @NonNull MaterialButton layoutEnterButton) {
     this.rootView = rootView;
     this.btnLower = btnLower;
@@ -95,13 +102,15 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
     this.guidelineTop = guidelineTop;
     this.headerMeasure = headerMeasure;
     this.inputBioChest = inputBioChest;
-    this.inputBioHeight = inputBioHeight;
     this.inputBioHips = inputBioHips;
+    this.inputBioHipsl = inputBioHipsl;
     this.inputBioWaist = inputBioWaist;
+    this.inputBioWaistl = inputBioWaistl;
     this.layoutBioChest = layoutBioChest;
-    this.layoutBioHeight = layoutBioHeight;
     this.layoutBioHips = layoutBioHips;
+    this.layoutBioHipsl = layoutBioHipsl;
     this.layoutBioWaist = layoutBioWaist;
+    this.layoutBioWaistl = layoutBioWaistl;
     this.layoutEnterButton = layoutEnterButton;
   }
 
@@ -186,15 +195,15 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.input_bio_height;
-      TextInputEditText inputBioHeight = ViewBindings.findChildViewById(rootView, id);
-      if (inputBioHeight == null) {
-        break missingId;
-      }
-
       id = R.id.input_bio_hips;
       TextInputEditText inputBioHips = ViewBindings.findChildViewById(rootView, id);
       if (inputBioHips == null) {
+        break missingId;
+      }
+
+      id = R.id.input_bio_hipsl;
+      TextInputEditText inputBioHipsl = ViewBindings.findChildViewById(rootView, id);
+      if (inputBioHipsl == null) {
         break missingId;
       }
 
@@ -204,15 +213,15 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.layout_bio_chest;
-      TextInputLayout layoutBioChest = ViewBindings.findChildViewById(rootView, id);
-      if (layoutBioChest == null) {
+      id = R.id.input_bio_waistl;
+      TextInputEditText inputBioWaistl = ViewBindings.findChildViewById(rootView, id);
+      if (inputBioWaistl == null) {
         break missingId;
       }
 
-      id = R.id.layout_bio_height;
-      TextInputLayout layoutBioHeight = ViewBindings.findChildViewById(rootView, id);
-      if (layoutBioHeight == null) {
+      id = R.id.layout_bio_chest;
+      TextInputLayout layoutBioChest = ViewBindings.findChildViewById(rootView, id);
+      if (layoutBioChest == null) {
         break missingId;
       }
 
@@ -222,9 +231,21 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.layout_bio_hipsl;
+      TextInputLayout layoutBioHipsl = ViewBindings.findChildViewById(rootView, id);
+      if (layoutBioHipsl == null) {
+        break missingId;
+      }
+
       id = R.id.layout_bio_waist;
       TextInputLayout layoutBioWaist = ViewBindings.findChildViewById(rootView, id);
       if (layoutBioWaist == null) {
+        break missingId;
+      }
+
+      id = R.id.layout_bio_waistl;
+      TextInputLayout layoutBioWaistl = ViewBindings.findChildViewById(rootView, id);
+      if (layoutBioWaistl == null) {
         break missingId;
       }
 
@@ -236,8 +257,9 @@ public final class ActivityMeasurementsBinding implements ViewBinding {
 
       return new ActivityMeasurementsBinding((ConstraintLayout) rootView, btnLower, btnUpper,
           buttonLeftGuideline, buttonRightGuideline, categoryToggle, guidelineBottom, guidelineTop,
-          headerMeasure, inputBioChest, inputBioHeight, inputBioHips, inputBioWaist, layoutBioChest,
-          layoutBioHeight, layoutBioHips, layoutBioWaist, layoutEnterButton);
+          headerMeasure, inputBioChest, inputBioHips, inputBioHipsl, inputBioWaist, inputBioWaistl,
+          layoutBioChest, layoutBioHips, layoutBioHipsl, layoutBioWaist, layoutBioWaistl,
+          layoutEnterButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

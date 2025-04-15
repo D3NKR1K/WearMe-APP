@@ -1,6 +1,6 @@
 package com.example.wearme.domain.model
 
-data class Product(
+data class Item(
   val id: Int,
   val brand: String,
   val category: String,

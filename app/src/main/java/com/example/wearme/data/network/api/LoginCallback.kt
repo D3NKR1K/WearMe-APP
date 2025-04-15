@@ -4,13 +4,13 @@ import android.content.Intent
 import android.util.Log
 import com.example.wearme.data.model.LoginResponse
 import com.example.wearme.domain.model.TokenManager
-import com.example.wearme.ui.auth.SignInActivity
-import com.example.wearme.ui.home.ProductsActivity
+import com.example.wearme.ui.auth.LoginActivity
+import com.example.wearme.ui.home.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginCallback(private val activity: SignInActivity): Callback<LoginResponse> {
+class LoginCallback(private val activity: LoginActivity): Callback<LoginResponse> {
 
   override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
     activity.showLoading(false)
@@ -24,7 +24,7 @@ class LoginCallback(private val activity: SignInActivity): Callback<LoginRespons
         if (token != null) {
           TokenManager(activity).saveToken(token)
           Log.i("[TOKEN SAVE]", "Token was saved")
-          activity.startActivity(Intent(activity, ProductsActivity::class.java))
+          activity.startActivity(Intent(activity, MainActivity::class.java))
           activity.finish()
         } else {
           Log.e("[TOKEN SAVE]", "Token saved error")

@@ -8,7 +8,7 @@
   android:background="@color/color_background"
   android:padding="24dp"
 
-  tools:context=".ui.auth.SignInActivity">
+  tools:context=".ui.auth.LoginActivity">
 
   <!-- Top Horizontal Guideline -->
   <androidx.constraintlayout.widget.Guideline

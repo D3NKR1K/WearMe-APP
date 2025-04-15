@@ -20,17 +20,17 @@
       android:exported="false" />
 
     <activity
-      android:name=".ui.home.ProductsActivity"
+      android:name=".ui.home.MainActivity"
       android:theme="@style/Theme.WearMe"
       android:exported="false" />
 
     <activity
-      android:name=".ui.auth.SignInActivity"
+      android:name=".ui.auth.LoginActivity"
       android:theme="@style/Theme.WearMe"
       android:exported="false" />
 
     <activity
-      android:name=".ui.auth.SignUpActivity"
+      android:name=".ui.auth.RegisterActivity"
       android:theme="@style/Theme.WearMe"
       android:exported="false" />
 
@@ -40,7 +40,7 @@
       android:exported="false" />
 
     <activity
-      android:name=".ui.home.MainActivity"
+      android:name=".ui.auth.RedirectActivity"
       android:theme="@style/Theme.WearMe.Starting"
       android:exported="true">
       <intent-filter>

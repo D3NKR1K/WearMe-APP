@@ -17,7 +17,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 
-class SignInActivity: AppCompatActivity() {
+class LoginActivity: AppCompatActivity() {
 
   private lateinit var binding: ActivityLoginBinding
   private var apiCall: Call<*>? = null
@@ -45,7 +45,7 @@ class SignInActivity: AppCompatActivity() {
 
   private fun setupNavigation() {
     binding.linkToSignUp.setOnClickListener {
-      startActivity(Intent(this, SignUpActivity::class.java))
+      startActivity(Intent(this, RegisterActivity::class.java))
       finish()
     }
   }
@@ -107,8 +107,8 @@ class SignInActivity: AppCompatActivity() {
         email = binding.inputUserEmail.getTrimmedText(),
         password = binding.inputUserPassword.getTrimmedText()
       )
-      apiCall = RetrofitInstance.authorizationAPI.login(user).apply {
-        enqueue(LoginCallback(this@SignInActivity))
+      apiCall = RetrofitInstance.userApi.login(user).apply {
+        enqueue(LoginCallback(this@LoginActivity))
       }
     }
   }

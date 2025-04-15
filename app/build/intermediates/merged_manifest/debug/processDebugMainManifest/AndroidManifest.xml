@@ -35,15 +35,15 @@
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
-            android:name="com.example.wearme.ui.home.ProductsActivity"
+            android:name="com.example.wearme.ui.home.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
-            android:name="com.example.wearme.ui.auth.SignInActivity"
+            android:name="com.example.wearme.ui.auth.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
-            android:name="com.example.wearme.ui.auth.SignUpActivity"
+            android:name="com.example.wearme.ui.auth.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
@@ -51,7 +51,7 @@
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
-            android:name="com.example.wearme.ui.home.MainActivity"
+            android:name="com.example.wearme.ui.auth.RedirectActivity"
             android:exported="true"
             android:theme="@style/Theme.WearMe.Starting" >
             <intent-filter>

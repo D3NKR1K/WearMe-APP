@@ -10,7 +10,9 @@ object RetrofitInstance {
   private val retrofit: Retrofit =
     Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
 
-  val authApi: AuthApi = retrofit.create(AuthApi::class.java)
-  val tokenApi: ServiceApi = retrofit.create(ServiceApi::class.java)
+  val userApi: UserApi = retrofit.create(UserApi::class.java)
+  val serviceApi: ServiceApi = retrofit.create(ServiceApi::class.java)
+  val bioApi: BioAPI = retrofit.create(BioAPI::class.java)
+  val measurementsApi: MeasurementsApi = retrofit.create(MeasurementsApi::class.java)
 }
 

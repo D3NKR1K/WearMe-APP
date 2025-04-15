@@ -33,6 +33,7 @@
     <color name="red">#FF0000</color>
     <color name="sign">#7A2196F3</color>
     <color name="white">#FFFFFFFF</color>
+    <item name="itemsBottomPanel" type="id"/>
     <string name="app_name" translatable="false">WearMe</string>
     <string name="app_slogan" translatable="false">Dress to Impress, Effortlessly</string>
     <string name="button_signInPage">Sign In</string>
@@ -41,6 +42,7 @@
     <string name="error_empty_name">Please enter your name</string>
     <string name="error_empty_password">Please enter password</string>
     <string name="error_invalid_email">Invalid email format</string>
+    <string name="error_match_password">The passwords don\'t match</string>
     <string name="error_no_uppercase">Password must contain at least one uppercase letter</string>
     <string name="error_short_name">Name must be at least 3 characters</string>
     <string name="error_short_password">Password must be at least 8 characters</string>
@@ -63,9 +65,16 @@
     <string name="registration_failed">Registration failed. Please try again</string>
     <string name="retry">Retry</string>
     <string name="sign_up">Sign Up</string>
+    <style name="AlertDialogButton" parent="Widget.Material3.Button.TextButton">
+    <item name="android:textColor">@color/button_main_color</item>
+  </style>
     <style name="Base.Theme.WearMe.Light" parent="Theme.Material3.Light.NoActionBar">
     
     <item name="colorPrimary">@color/color_background</item>
+  </style>
+    <style name="CustomAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <item name="buttonBarPositiveButtonStyle">@style/AlertDialogButton</item>
+    <item name="buttonBarNegativeButtonStyle">@style/AlertDialogButton</item>
   </style>
     <style name="InputLayout" parent="Theme.WearMe">
     <item name="boxStrokeColor">@android:color/darker_gray</item>

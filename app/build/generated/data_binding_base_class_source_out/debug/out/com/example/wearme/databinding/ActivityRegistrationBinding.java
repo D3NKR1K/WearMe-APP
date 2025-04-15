@@ -45,10 +45,10 @@ public final class ActivityRegistrationBinding implements ViewBinding {
   public final TextInputEditText inputUserEmail;
 
   @NonNull
-  public final TextInputEditText inputUserName;
+  public final TextInputEditText inputUserPassword;
 
   @NonNull
-  public final TextInputEditText inputUserPassword;
+  public final TextInputEditText inputUserPasswordRep;
 
   @NonNull
   public final MaterialButton layoutSignUpButton;
@@ -57,10 +57,10 @@ public final class ActivityRegistrationBinding implements ViewBinding {
   public final TextInputLayout layoutSignUpEmail;
 
   @NonNull
-  public final TextInputLayout layoutSignUpName;
+  public final TextInputLayout layoutSignUpPassword;
 
   @NonNull
-  public final TextInputLayout layoutSignUpPassword;
+  public final TextInputLayout layoutSignUpPasswordRep;
 
   @NonNull
   public final MaterialTextView linkToSignIn;
@@ -72,10 +72,10 @@ public final class ActivityRegistrationBinding implements ViewBinding {
       @NonNull Guideline buttonLeftGuideline, @NonNull Guideline buttonRightGuideline,
       @NonNull Guideline guidelineBottom, @NonNull Guideline guidelineTop,
       @NonNull MaterialTextView headerSignUpLogo, @NonNull MaterialTextView headerSignUpTitle,
-      @NonNull TextInputEditText inputUserEmail, @NonNull TextInputEditText inputUserName,
-      @NonNull TextInputEditText inputUserPassword, @NonNull MaterialButton layoutSignUpButton,
-      @NonNull TextInputLayout layoutSignUpEmail, @NonNull TextInputLayout layoutSignUpName,
-      @NonNull TextInputLayout layoutSignUpPassword, @NonNull MaterialTextView linkToSignIn,
+      @NonNull TextInputEditText inputUserEmail, @NonNull TextInputEditText inputUserPassword,
+      @NonNull TextInputEditText inputUserPasswordRep, @NonNull MaterialButton layoutSignUpButton,
+      @NonNull TextInputLayout layoutSignUpEmail, @NonNull TextInputLayout layoutSignUpPassword,
+      @NonNull TextInputLayout layoutSignUpPasswordRep, @NonNull MaterialTextView linkToSignIn,
       @NonNull MaterialTextView linkToSignInDescription) {
     this.rootView = rootView;
     this.buttonLeftGuideline = buttonLeftGuideline;
@@ -85,12 +85,12 @@ public final class ActivityRegistrationBinding implements ViewBinding {
     this.headerSignUpLogo = headerSignUpLogo;
     this.headerSignUpTitle = headerSignUpTitle;
     this.inputUserEmail = inputUserEmail;
-    this.inputUserName = inputUserName;
     this.inputUserPassword = inputUserPassword;
+    this.inputUserPasswordRep = inputUserPasswordRep;
     this.layoutSignUpButton = layoutSignUpButton;
     this.layoutSignUpEmail = layoutSignUpEmail;
-    this.layoutSignUpName = layoutSignUpName;
     this.layoutSignUpPassword = layoutSignUpPassword;
+    this.layoutSignUpPasswordRep = layoutSignUpPasswordRep;
     this.linkToSignIn = linkToSignIn;
     this.linkToSignInDescription = linkToSignInDescription;
   }
@@ -164,15 +164,15 @@ public final class ActivityRegistrationBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.input_user_name;
-      TextInputEditText inputUserName = ViewBindings.findChildViewById(rootView, id);
-      if (inputUserName == null) {
-        break missingId;
-      }
-
       id = R.id.input_user_password;
       TextInputEditText inputUserPassword = ViewBindings.findChildViewById(rootView, id);
       if (inputUserPassword == null) {
+        break missingId;
+      }
+
+      id = R.id.input_user_password_rep;
+      TextInputEditText inputUserPasswordRep = ViewBindings.findChildViewById(rootView, id);
+      if (inputUserPasswordRep == null) {
         break missingId;
       }
 
@@ -188,15 +188,15 @@ public final class ActivityRegistrationBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.layout_SignUp_name;
-      TextInputLayout layoutSignUpName = ViewBindings.findChildViewById(rootView, id);
-      if (layoutSignUpName == null) {
-        break missingId;
-      }
-
       id = R.id.layout_SignUp_password;
       TextInputLayout layoutSignUpPassword = ViewBindings.findChildViewById(rootView, id);
       if (layoutSignUpPassword == null) {
+        break missingId;
+      }
+
+      id = R.id.layout_SignUp_password_rep;
+      TextInputLayout layoutSignUpPasswordRep = ViewBindings.findChildViewById(rootView, id);
+      if (layoutSignUpPasswordRep == null) {
         break missingId;
       }
 
@@ -214,8 +214,9 @@ public final class ActivityRegistrationBinding implements ViewBinding {
 
       return new ActivityRegistrationBinding((ConstraintLayout) rootView, buttonLeftGuideline,
           buttonRightGuideline, guidelineBottom, guidelineTop, headerSignUpLogo, headerSignUpTitle,
-          inputUserEmail, inputUserName, inputUserPassword, layoutSignUpButton, layoutSignUpEmail,
-          layoutSignUpName, layoutSignUpPassword, linkToSignIn, linkToSignInDescription);
+          inputUserEmail, inputUserPassword, inputUserPasswordRep, layoutSignUpButton,
+          layoutSignUpEmail, layoutSignUpPassword, layoutSignUpPasswordRep, linkToSignIn,
+          linkToSignInDescription);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

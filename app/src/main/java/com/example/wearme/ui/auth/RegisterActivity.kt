@@ -14,7 +14,7 @@ import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.databinding.ActivityRegistrationBinding
 import com.example.wearme.domain.model.User
 
-class SignUpActivity: AppCompatActivity() {
+class RegisterActivity: AppCompatActivity() {
   private lateinit var binding: ActivityRegistrationBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,15 +32,15 @@ class SignUpActivity: AppCompatActivity() {
     binding.layoutSignUpButton.setOnClickListener {
       if (isValidInput()) {
 
-        val (email, password, name) = listOf(
-          binding.inputUserEmail, binding.inputUserPassword, binding.inputUserName
+        val (email, password) = listOf(
+          binding.inputUserEmail, binding.inputUserPassword
         ).map { it.text.toString().trim() }
 
-        val user = User(email, password, name)
+        val user = User(email, password)
 
         showLoading(true)
 
-        RetrofitInstance.authorizationAPI.register(user).enqueue(RegisterCallback(this))
+        RetrofitInstance.userApi.register(user).enqueue(RegisterCallback(this))
 
       } else {
         Toast.makeText(this, "Incorrect input data", Toast.LENGTH_SHORT).show()
@@ -50,14 +50,14 @@ class SignUpActivity: AppCompatActivity() {
   }
 
   private fun isValidInput(): Boolean {
-    return validateName() && validateEmail() && validatePassword()
+    return validateEmail() && validatePassword()
   }
 
   private fun setupValidation() {
     listOf(
-      binding.inputUserName to ::validateName,
       binding.inputUserEmail to ::validateEmail,
-      binding.inputUserPassword to ::validatePassword
+      binding.inputUserPassword to ::validatePassword,
+      binding.inputUserPasswordRep to ::validatePassword
     ).forEach { (field, validator) ->
       field.addTextChangedListener(object: TextWatcher {
         override fun afterTextChanged(s: Editable?) {
@@ -67,16 +67,6 @@ class SignUpActivity: AppCompatActivity() {
         override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
       })
-    }
-  }
-
-  // Валидация имени пользователя
-  private fun validateName(): Boolean {
-    val name = binding.inputUserName.text.toString().trim()
-    return when {
-      name.isEmpty() -> showError(binding.layoutSignUpName, getString(R.string.error_empty_name))
-      name.length < 3 -> showError(binding.layoutSignUpName, getString(R.string.error_short_name))
-      else -> clearError(binding.layoutSignUpName)
     }
   }
 
@@ -96,6 +86,7 @@ class SignUpActivity: AppCompatActivity() {
   // Валидация пароля пользователя
   private fun validatePassword(): Boolean {
     val password = binding.inputUserPassword.text.toString().trim()
+    val passwordRep = binding.inputUserPasswordRep.text.toString().trim()
     return when {
       password.isEmpty() -> showError(
         binding.layoutSignUpPassword, getString(R.string.error_empty_password)
@@ -107,6 +98,10 @@ class SignUpActivity: AppCompatActivity() {
 
       !password.contains(Regex("[A-Z]")) -> showError(
         binding.layoutSignUpPassword, getString(R.string.error_no_uppercase)
+      )
+
+      password != passwordRep -> showError(
+        binding.layoutSignUpPassword, getString(R.string.error_match_password)
       )
 
       else -> clearError(binding.layoutSignUpPassword)
