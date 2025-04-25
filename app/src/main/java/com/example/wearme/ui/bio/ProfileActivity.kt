@@ -2,25 +2,41 @@ package com.example.wearme.ui.bio
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
+import com.example.wearme.data.network.api.GetBioCallback
+import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.databinding.ActivityProfileBinding
 import com.example.wearme.domain.model.TokenManager
+import com.example.wearme.domain.model.api.Profile
 import com.example.wearme.ui.auth.LoginActivity
 
 class ProfileActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
+    private lateinit var tokenManager: TokenManager
+    val profileData = MutableLiveData<Profile>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userName = intent.getStringExtra("USER_NAME") ?: "Имя не указано"
-        val userEmail = intent.getStringExtra("USER_EMAIL") ?: "Email не указан"
+        tokenManager = TokenManager(this)
+        val token = tokenManager.getToken() ?: run {
+            Log.e("[AUTH]", "Token not found")
+            finish()
+            return
+        }
 
-        binding.name.text = userName
-        binding.email.text = userEmail
+        RetrofitInstance.bioApi.dehumanization("Bearer $token").enqueue(
+            GetBioCallback(profileData)
+        )
+
+        profileData.observe(this) { profileData ->
+            binding.name.text = profileData.name
+        }
 
         setupClickListeners() // Setup button click listeners
     }

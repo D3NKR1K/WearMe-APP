@@ -8,7 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.wearme.data.network.api.BioCallbackHandler
-import com.example.wearme.data.network.api.GetBioCallback
+import com.example.wearme.data.network.api.CheckBioCallback
 import com.example.wearme.data.network.api.TokenValidationCallback
 import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
@@ -52,7 +52,7 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
                 if (isValid) {
                     Log.i(TAG, "Token is valid")
                     RetrofitInstance.bioApi.dehumanization("Bearer $token")
-                        .enqueue(GetBioCallback(this@RedirectActivity))
+                        .enqueue(CheckBioCallback(this@RedirectActivity))
                 } else {
                     Log.i(TAG, "Token is invalid")
                     navigateTo(LoginActivity::class.java)

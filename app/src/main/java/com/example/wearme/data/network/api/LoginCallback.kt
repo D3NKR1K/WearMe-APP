@@ -26,7 +26,7 @@ class LoginCallback(private val activity: LoginActivity): Callback<LoginResponse
                 Log.i("[TOKEN SAVE]", "Token was saved")
 
                 RetrofitInstance.bioApi.dehumanization("Bearer $token")
-                    .enqueue(GetBioCallback(activity))
+                    .enqueue(CheckBioCallback(activity))
             }
 
             401 -> {
