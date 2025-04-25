@@ -1449,6 +1449,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gold
 color headers
 color highlighted_text_material_dark
 color highlighted_text_material_light
@@ -3035,6 +3036,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable circle_background
 drawable compat_splash_screen
 drawable compat_splash_screen_no_icon_background
 drawable design_fab_background
@@ -3247,6 +3249,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btnFeet
 id btnLower
 id btnUpper
 id buttonPanel
@@ -3359,6 +3362,7 @@ id forever
 id fragment_container_view_tag
 id frost
 id fullscreen_header
+id gender_radio_group
 id ghost_view
 id ghost_view_holder
 id gone
@@ -3379,7 +3383,6 @@ id header_measure
 id header_title
 id hide_ime_id
 id hideable
-id history
 id home
 id homeAsUp
 id honorRequest
@@ -3397,7 +3400,7 @@ id indeterminate
 id info
 id input_bio_age
 id input_bio_chest
-id input_bio_gender
+id input_bio_feet
 id input_bio_hips
 id input_bio_hipsl
 id input_bio_name
@@ -3429,6 +3432,7 @@ id layout_SignUp_email
 id layout_SignUp_password
 id layout_SignUp_password_rep
 id layout_bio_chest
+id layout_bio_feet
 id layout_bio_hips
 id layout_bio_hipsl
 id layout_bio_waist
@@ -3526,7 +3530,6 @@ id north
 id notification_background
 id notification_main_column
 id notification_main_column_container
-id notifications
 id off
 id on
 id onInterceptTouchReturnSwipe
@@ -3562,15 +3565,18 @@ id pin
 id position
 id postLayout
 id pressed
+id product_comments
 id product_image
 id product_name
+id product_rating
 id productsCatalogButton
-id productsFeautersButton
 id productsProfileButton
-id productsShowcaseButton
 id progress_circular
 id progress_horizontal
 id radio
+id radio_female
+id radio_male
+id rating_comments_container
 id ratio
 id rectangles
 id report_drawn
@@ -3642,7 +3648,6 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
-id support
 id supportScrollUp
 id tabMode
 id tag_accessibility_actions
@@ -4042,6 +4047,7 @@ string material_timepicker_text_input_mode_description
 string measurements_button_text
 string measurements_header
 string measurements_hint_chest
+string measurements_hint_feet
 string measurements_hint_height
 string measurements_hint_hips
 string measurements_hint_waist

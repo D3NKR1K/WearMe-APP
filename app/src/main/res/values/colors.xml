@@ -9,4 +9,6 @@
   <color name="sign">#7A2196F3</color>
   <color name="light_grey">#F5F5F5</color>
   <color name="dark_grey">#666666</color>
+
+  <color name="gold">#FFD700</color>
 </resources>

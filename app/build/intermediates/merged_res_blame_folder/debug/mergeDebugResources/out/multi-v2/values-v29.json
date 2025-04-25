@@ -4,7 +4,7 @@
             "outputFile": "com.example.wearme.app-mergeDebugResources-32:/values-v29/values-v29.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kuzmd\\.gradle\\caches\\8.11.1\\transforms\\389ea5d419f99e3d3e53b2acea7fac57\\transformed\\core-splashscreen-1.0.1\\res\\values-v29\\values-v29.xml",
+                    "source": "C:\\Users\\kuzmd\\.gradle\\caches\\8.11.1\\transforms\\9b047fbe0079f7e76752fd6e1275ac47\\transformed\\core-splashscreen-1.0.1\\res\\values-v29\\values-v29.xml",
                     "from": {
                         "startLines": "2,7",
                         "startColumns": "4,4",

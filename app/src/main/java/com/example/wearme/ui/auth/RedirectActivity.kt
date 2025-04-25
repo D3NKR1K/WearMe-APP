@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
+import com.example.wearme.data.network.api.TokenValidationCallback
 import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.ui.home.MainActivity
@@ -15,49 +17,52 @@ import kotlinx.coroutines.withContext
 
 class RedirectActivity: AppCompatActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    // Install splash screen to show while the app loads
-    val splashScreen = installSplashScreen()
-    super.onCreate(savedInstanceState)
+    private var isLoading = true
+    private val tokenValidationStatus = MutableLiveData<Boolean>()
 
-    // Keep the splash screen visible until token validation is complete
-    splashScreen.setKeepOnScreenCondition { true }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().setKeepOnScreenCondition { isLoading }
+        super.onCreate(savedInstanceState)
 
-    // Launch a coroutine to handle token retrieval and validation
-    lifecycleScope.launch {
-      // Retrieve the token from TokenManager in the background
-      val token = withContext(Dispatchers.IO) {
-        TokenManager(this@RedirectActivity).getToken()
-      }
-      Log.i("[TOKEN GET]", "Token was successfully gotten")
+        lifecycleScope.launch {
+            val token = withContext(Dispatchers.IO) {
+                TokenManager(this@RedirectActivity).getToken()
+            }
 
-      // Check if the token is valid by making a network call
-      val isValid = withContext(Dispatchers.IO) {
-        try {
-          val response = RetrofitInstance.serviceApi.checkToken("Bearer $token").execute()
-          response.isSuccessful
-        } catch (e: Exception) {
-          // Log any errors that occur during token validation
-          Log.e("[TOKEN CHECK]", "Error checking token: ${e.message}")
-          false
+            Log.i(TAG, "Token retrieved: ${token?.take(10)}...")
+
+            if (token.isNullOrEmpty()) {
+                Log.i(TAG, "No token found")
+                isLoading = false
+                navigateTo(LoginActivity::class.java)
+                return@launch
+            }
+
+            withContext(Dispatchers.IO) {
+                RetrofitInstance.serviceApi.checkToken("Bearer $token")
+                    .enqueue(TokenValidationCallback(tokenValidationStatus))
+            }
+
+            isLoading = false
+
+            tokenValidationStatus.observe(this@RedirectActivity) { isValid ->
+                if (isValid) {
+                    Log.i(TAG, "Token is valid")
+                    navigateTo(MainActivity::class.java)
+                } else {
+                    Log.i(TAG, "Token is invalid")
+                    navigateTo(LoginActivity::class.java)
+                }
+            }
         }
-      }
-
-      // Remove the splash screen
-      splashScreen.setKeepOnScreenCondition { false }
-
-      // If the token is valid, navigate to the ProductsActivity
-      if (isValid) {
-        Log.i("[TOKEN CHECK]", "Token is valid")
-        startActivity(Intent(this@RedirectActivity, MainActivity::class.java))
-        finish()
-      } else {
-        // If the token is invalid, navigate to the LoginActivity
-        Log.i("[TOKEN CHECK]", "Token is invalid")
-        startActivity(Intent(this@RedirectActivity, LoginActivity::class.java))
-        finish()
-      }
     }
-  }
 
+    private fun navigateTo(destination: Class<*>) {
+        startActivity(Intent(this, destination))
+        finish()
+    }
+
+    companion object {
+        private const val TAG = "RedirectActivity"
+    }
 }

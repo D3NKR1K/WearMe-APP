@@ -14,5 +14,6 @@ object RetrofitInstance {
   val serviceApi: ServiceApi = retrofit.create(ServiceApi::class.java)
   val bioApi: BioAPI = retrofit.create(BioAPI::class.java)
   val measurementsApi: MeasurementsApi = retrofit.create(MeasurementsApi::class.java)
+  val clothesApi: ClothesApi = retrofit.create(ClothesApi::class.java)
 }
 

@@ -7,7 +7,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TokenValidationCallback(private val liveData: MutableLiveData<Boolean>): Callback<Void> {
-
   override fun onResponse(call: Call<Void>, response: Response<Void>) {
     when (response.code()) {
       204 -> {
@@ -16,12 +15,7 @@ class TokenValidationCallback(private val liveData: MutableLiveData<Boolean>): C
       }
 
       401 -> {
-        Log.i("[TOKEN VALIDATION]", "Token is invalid")
-        liveData.postValue(false)
-      }
-
-      else -> {
-        Log.e("[TOKEN VALIDATION]", "Unexpected status code: ${response.code()}")
+        Log.i("[TOKEN VALIDATION]", "Invalid token")
         liveData.postValue(false)
       }
     }

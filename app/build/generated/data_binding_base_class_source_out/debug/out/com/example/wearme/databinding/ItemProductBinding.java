@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,17 +26,31 @@ public final class ItemProductBinding implements ViewBinding {
   public final MaterialButton layoutInfoButton;
 
   @NonNull
+  public final TextView productComments;
+
+  @NonNull
   public final ImageView productImage;
 
   @NonNull
   public final TextView productName;
 
+  @NonNull
+  public final TextView productRating;
+
+  @NonNull
+  public final LinearLayout ratingCommentsContainer;
+
   private ItemProductBinding(@NonNull CardView rootView, @NonNull MaterialButton layoutInfoButton,
-      @NonNull ImageView productImage, @NonNull TextView productName) {
+      @NonNull TextView productComments, @NonNull ImageView productImage,
+      @NonNull TextView productName, @NonNull TextView productRating,
+      @NonNull LinearLayout ratingCommentsContainer) {
     this.rootView = rootView;
     this.layoutInfoButton = layoutInfoButton;
+    this.productComments = productComments;
     this.productImage = productImage;
     this.productName = productName;
+    this.productRating = productRating;
+    this.ratingCommentsContainer = ratingCommentsContainer;
   }
 
   @Override
@@ -71,6 +86,12 @@ public final class ItemProductBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.product_comments;
+      TextView productComments = ViewBindings.findChildViewById(rootView, id);
+      if (productComments == null) {
+        break missingId;
+      }
+
       id = R.id.product_image;
       ImageView productImage = ViewBindings.findChildViewById(rootView, id);
       if (productImage == null) {
@@ -83,8 +104,20 @@ public final class ItemProductBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemProductBinding((CardView) rootView, layoutInfoButton, productImage,
-          productName);
+      id = R.id.product_rating;
+      TextView productRating = ViewBindings.findChildViewById(rootView, id);
+      if (productRating == null) {
+        break missingId;
+      }
+
+      id = R.id.rating_comments_container;
+      LinearLayout ratingCommentsContainer = ViewBindings.findChildViewById(rootView, id);
+      if (ratingCommentsContainer == null) {
+        break missingId;
+      }
+
+      return new ItemProductBinding((CardView) rootView, layoutInfoButton, productComments,
+          productImage, productName, productRating, ratingCommentsContainer);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -31,33 +31,20 @@ public final class ActivityProfileBinding implements ViewBinding {
   public final TextView email;
 
   @NonNull
-  public final TextView history;
-
-  @NonNull
   public final MaterialButton logoutButton;
 
   @NonNull
   public final TextView name;
 
-  @NonNull
-  public final TextView notifications;
-
-  @NonNull
-  public final TextView support;
-
   private ActivityProfileBinding(@NonNull ScrollView rootView, @NonNull ImageView avatar,
-      @NonNull TextView editProfile, @NonNull TextView email, @NonNull TextView history,
-      @NonNull MaterialButton logoutButton, @NonNull TextView name, @NonNull TextView notifications,
-      @NonNull TextView support) {
+      @NonNull TextView editProfile, @NonNull TextView email, @NonNull MaterialButton logoutButton,
+      @NonNull TextView name) {
     this.rootView = rootView;
     this.avatar = avatar;
     this.editProfile = editProfile;
     this.email = email;
-    this.history = history;
     this.logoutButton = logoutButton;
     this.name = name;
-    this.notifications = notifications;
-    this.support = support;
   }
 
   @Override
@@ -105,12 +92,6 @@ public final class ActivityProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.history;
-      TextView history = ViewBindings.findChildViewById(rootView, id);
-      if (history == null) {
-        break missingId;
-      }
-
       id = R.id.logout_button;
       MaterialButton logoutButton = ViewBindings.findChildViewById(rootView, id);
       if (logoutButton == null) {
@@ -123,20 +104,8 @@ public final class ActivityProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.notifications;
-      TextView notifications = ViewBindings.findChildViewById(rootView, id);
-      if (notifications == null) {
-        break missingId;
-      }
-
-      id = R.id.support;
-      TextView support = ViewBindings.findChildViewById(rootView, id);
-      if (support == null) {
-        break missingId;
-      }
-
-      return new ActivityProfileBinding((ScrollView) rootView, avatar, editProfile, email, history,
-          logoutButton, name, notifications, support);
+      return new ActivityProfileBinding((ScrollView) rootView, avatar, editProfile, email,
+          logoutButton, name);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

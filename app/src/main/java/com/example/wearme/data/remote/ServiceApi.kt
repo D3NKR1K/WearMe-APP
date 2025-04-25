@@ -5,6 +5,6 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ServiceApi {
-  @POST("/users/token/")
+  @POST("/system/validate-token/")
   fun checkToken(@Header("Authorization") token: String): Call<Void>
 }

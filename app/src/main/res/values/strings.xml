@@ -35,6 +35,8 @@
   <string name="measurements_hint_waist">Waist</string>
   <string name="measurements_hint_hips">Hips</string>
   <string name="measurements_button_text">Enter</string>
+  <string name="measurements_hint_feet">Foot</string>
+  <string name="error_match_password">Passwords do not matching</string>
 
   <string-array name="categories">
     <item>All</item>

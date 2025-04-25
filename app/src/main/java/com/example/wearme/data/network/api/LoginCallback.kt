@@ -12,41 +12,37 @@ import retrofit2.Response
 
 class LoginCallback(private val activity: LoginActivity): Callback<LoginResponse> {
 
-  override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-    activity.showLoading(false)
+    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        activity.showLoading(false)
 
-    val loginResponse = response.body()
+        val loginResponse = response.body()
 
-    when (response.code()) {
-      200 -> {
-        val token = loginResponse?.token
+        when (response.code()) {
+            200 -> {
+                val token = loginResponse?.token
 
-        if (token != null) {
-          TokenManager(activity).saveToken(token)
-          Log.i("[TOKEN SAVE]", "Token was saved")
-          activity.startActivity(Intent(activity, MainActivity::class.java))
-          activity.finish()
-        } else {
-          Log.e("[TOKEN SAVE]", "Token saved error")
+                TokenManager(activity).saveToken(token.toString())
+                Log.i("[TOKEN SAVE]", "Token was saved")
+                activity.startActivity(Intent(activity, MainActivity::class.java))
+                activity.finish()
+            }
+
+            401 -> {
+                Log.e("[LOGIN]", response.message())
+                activity.showPasswordError()
+            }
+
+            404 -> {
+                Log.i("[LOGIN]", response.message())
+                activity.showEmailError()
+            }
+
         }
-      }
-
-      401 -> {
-        Log.e("[LOGIN]", response.message())
-        activity.showPasswordError()
-      }
-
-      404 -> {
-        Log.i("[LOGIN]", "Invalid ")
-        activity.showEmailError()
-      }
-
     }
-  }
 
-  override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-    activity.showLoading(false)
-    Log.e("LoginCallbackFailure", t.message.toString())
-  }
+    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+        activity.showLoading(false)
+        Log.e("LoginCallbackFailure", t.message.toString())
+    }
 
 }

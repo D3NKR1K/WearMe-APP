@@ -15,7 +15,7 @@
     android:usesCleartextTraffic="true">
 
     <activity
-      android:name=".ui.bio.MeasurementsActivity"
+      android:name=".ui.bio.ProfileActivity"
       android:theme="@style/Theme.WearMe"
       android:exported="false" />
 
@@ -35,7 +35,7 @@
       android:exported="false" />
 
     <activity
-      android:name=".ui.bio.ProfileActivity"
+      android:name=".ui.bio.BioActivity"
       android:theme="@style/Theme.WearMe"
       android:exported="false" />
 

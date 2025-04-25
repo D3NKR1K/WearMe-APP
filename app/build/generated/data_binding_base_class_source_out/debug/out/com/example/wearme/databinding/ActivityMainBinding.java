@@ -35,13 +35,7 @@ public final class ActivityMainBinding implements ViewBinding {
   public final MaterialButton productsCatalogButton;
 
   @NonNull
-  public final MaterialButton productsFeautersButton;
-
-  @NonNull
   public final MaterialButton productsProfileButton;
-
-  @NonNull
-  public final MaterialButton productsShowcaseButton;
 
   @NonNull
   public final TextView toolbarTitle;
@@ -49,16 +43,13 @@ public final class ActivityMainBinding implements ViewBinding {
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull RecyclerView categoriesRecyclerView, @NonNull LinearLayout itemsBottomPanel,
       @NonNull RecyclerView itemsRecyclerView, @NonNull MaterialButton productsCatalogButton,
-      @NonNull MaterialButton productsFeautersButton, @NonNull MaterialButton productsProfileButton,
-      @NonNull MaterialButton productsShowcaseButton, @NonNull TextView toolbarTitle) {
+      @NonNull MaterialButton productsProfileButton, @NonNull TextView toolbarTitle) {
     this.rootView = rootView;
     this.categoriesRecyclerView = categoriesRecyclerView;
     this.itemsBottomPanel = itemsBottomPanel;
     this.itemsRecyclerView = itemsRecyclerView;
     this.productsCatalogButton = productsCatalogButton;
-    this.productsFeautersButton = productsFeautersButton;
     this.productsProfileButton = productsProfileButton;
-    this.productsShowcaseButton = productsShowcaseButton;
     this.toolbarTitle = toolbarTitle;
   }
 
@@ -113,21 +104,9 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.productsFeautersButton;
-      MaterialButton productsFeautersButton = ViewBindings.findChildViewById(rootView, id);
-      if (productsFeautersButton == null) {
-        break missingId;
-      }
-
       id = R.id.productsProfileButton;
       MaterialButton productsProfileButton = ViewBindings.findChildViewById(rootView, id);
       if (productsProfileButton == null) {
-        break missingId;
-      }
-
-      id = R.id.productsShowcaseButton;
-      MaterialButton productsShowcaseButton = ViewBindings.findChildViewById(rootView, id);
-      if (productsShowcaseButton == null) {
         break missingId;
       }
 
@@ -138,8 +117,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, categoriesRecyclerView,
-          itemsBottomPanel, itemsRecyclerView, productsCatalogButton, productsFeautersButton,
-          productsProfileButton, productsShowcaseButton, toolbarTitle);
+          itemsBottomPanel, itemsRecyclerView, productsCatalogButton, productsProfileButton,
+          toolbarTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

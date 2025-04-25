@@ -9,6 +9,7 @@ color black
 color button_main_color
 color color_background
 color dark_grey
+color gold
 color headers
 color ic_launcher_background
 color light_grey
@@ -16,6 +17,7 @@ color logo
 color red
 color sign
 color white
+drawable circle_background
 drawable ic_email_field
 drawable ic_password_field
 drawable ic_placeholer_image
@@ -24,6 +26,7 @@ drawable ic_user_field
 drawable placeholder_image
 font jua
 id avatar
+id btnFeet
 id btnLower
 id btnUpper
 id button_left_guideline
@@ -33,6 +36,7 @@ id categoryName
 id categoryToggle
 id edit_profile
 id email
+id gender_radio_group
 id guideline_bottom
 id guideline_top
 id header_Bio_logo
@@ -42,10 +46,9 @@ id header_SignIn_title
 id header_SignUp_logo
 id header_SignUp_title
 id header_measure
-id history
 id input_bio_age
 id input_bio_chest
-id input_bio_gender
+id input_bio_feet
 id input_bio_hips
 id input_bio_hipsl
 id input_bio_name
@@ -69,6 +72,7 @@ id layout_SignUp_email
 id layout_SignUp_password
 id layout_SignUp_password_rep
 id layout_bio_chest
+id layout_bio_feet
 id layout_bio_hips
 id layout_bio_hipsl
 id layout_bio_waist
@@ -80,14 +84,15 @@ id linkTo_SignUp
 id linkTo_SignUp_description
 id logout_button
 id name
-id notifications
+id product_comments
 id product_image
 id product_name
+id product_rating
 id productsCatalogButton
-id productsFeautersButton
 id productsProfileButton
-id productsShowcaseButton
-id support
+id radio_female
+id radio_male
+id rating_comments_container
 id toolbarTitle
 layout activity_bio
 layout activity_login
@@ -125,6 +130,7 @@ string link_to_SignUpPage_description
 string measurements_button_text
 string measurements_header
 string measurements_hint_chest
+string measurements_hint_feet
 string measurements_hint_height
 string measurements_hint_hips
 string measurements_hint_waist

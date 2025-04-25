@@ -2,7 +2,7 @@ package com.example.wearme.data.network.api
 
 import android.content.Intent
 import android.util.Log
-import com.example.wearme.data.model.PutMeasurementsResponse
+import com.example.wearme.data.model.MessageResponse
 import com.example.wearme.ui.bio.MeasurementsActivity
 import com.example.wearme.ui.home.MainActivity
 import retrofit2.Call
@@ -10,9 +10,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PutMeasurementsCallback(private val activity: MeasurementsActivity):
-  Callback<PutMeasurementsResponse> {
+  Callback<MessageResponse> {
   override fun onResponse(
-    call: Call<PutMeasurementsResponse>, response: Response<PutMeasurementsResponse>
+    call: Call<MessageResponse>, response: Response<MessageResponse>
   ) {
     when (response.code()) {
       204 -> {
@@ -31,7 +31,7 @@ class PutMeasurementsCallback(private val activity: MeasurementsActivity):
     }
   }
 
-  override fun onFailure(call: Call<PutMeasurementsResponse?>, t: Throwable) {
+  override fun onFailure(call: Call<MessageResponse?>, t: Throwable) {
     Log.e("[MEASUREMENTS UPDATE]", "onFailure")
   }
 }

@@ -1,6 +1,7 @@
-#Tue Apr 15 09:51:42 GMT+04:00 2025
+#Fri Apr 25 18:06:47 GMT+04:00 2025
 base.0=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.10=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 base.2=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
 base.3=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
 base.4=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
@@ -8,9 +9,10 @@ base.5=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\
 base.6=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
 base.7=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
 base.8=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.9=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.9=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
+path.10=classes2.dex
 path.2=11/classes.dex
 path.3=12/classes.dex
 path.4=14/classes.dex
@@ -18,9 +20,10 @@ path.5=15/classes.dex
 path.6=1/classes.dex
 path.7=3/classes.dex
 path.8=4/classes.dex
-path.9=classes2.dex
+path.9=5/classes.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
+renamed.10=classes11.dex
 renamed.2=classes3.dex
 renamed.3=classes4.dex
 renamed.4=classes5.dex

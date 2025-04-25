@@ -26,6 +26,7 @@
     <color name="button_main_color">#812196F3</color>
     <color name="color_background">#FFFFFFFF</color>
     <color name="dark_grey">#666666</color>
+    <color name="gold">#FFD700</color>
     <color name="headers">#E91E63</color>
     <color name="ic_launcher_background">#FFFFFF</color>
     <color name="light_grey">#F5F5F5</color>
@@ -42,7 +43,7 @@
     <string name="error_empty_name">Please enter your name</string>
     <string name="error_empty_password">Please enter password</string>
     <string name="error_invalid_email">Invalid email format</string>
-    <string name="error_match_password">The passwords don\'t match</string>
+    <string name="error_match_password">Passwords do not matching</string>
     <string name="error_no_uppercase">Password must contain at least one uppercase letter</string>
     <string name="error_short_name">Name must be at least 3 characters</string>
     <string name="error_short_password">Password must be at least 8 characters</string>
@@ -59,6 +60,7 @@
     <string name="measurements_button_text">Enter</string>
     <string name="measurements_header">Enter your measurements</string>
     <string name="measurements_hint_chest">Chest</string>
+    <string name="measurements_hint_feet">Foot</string>
     <string name="measurements_hint_height">Height</string>
     <string name="measurements_hint_hips">Hips</string>
     <string name="measurements_hint_waist">Waist</string>

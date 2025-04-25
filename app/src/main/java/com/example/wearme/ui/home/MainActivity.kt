@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wearme.R
@@ -17,23 +18,13 @@ import com.example.wearme.domain.model.ItemsAdapter
 import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.ui.bio.MeasurementsActivity
 import com.example.wearme.ui.bio.ProfileActivity
+import kotlinx.coroutines.launch
 
 class MainActivity: AppCompatActivity() {
   private lateinit var binding: ActivityMainBinding
   private lateinit var itemsAdapter: ItemsAdapter
   private lateinit var tokenManager: TokenManager
   private lateinit var categoriesAdapter: CategoriesAdapter
-
-  private val categoryData = mapOf(
-    "All" to listOf(
-      "http://79.174.82.23:8000/static/images/1.webp",
-      "http://79.174.82.23:8000/static/images/2.webp",
-      "http://79.174.82.23:8000/static/images/3.webp"
-    ), "Upper" to listOf(
-      "http://79.174.82.23:8000/static/images/1.webp",
-      "http://79.174.82.23:8000/static/images/3.webp"
-    ), "Lower" to listOf("http://79.174.82.23:8000/static/images/2.webp")
-  )
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -43,6 +34,7 @@ class MainActivity: AppCompatActivity() {
 
     tokenManager.getToken() ?: run {
       Log.e("[AUTH]", "Token not found")
+      finish()
       return
     }
 
@@ -50,7 +42,6 @@ class MainActivity: AppCompatActivity() {
 
     setupAdapters()
     setupClickListeners()
-    showInitialData()
   }
 
   private fun setupAdapters() {
@@ -105,8 +96,38 @@ class MainActivity: AppCompatActivity() {
   private fun handleMeasurementsResult(category: String, hasMeasurements: Boolean) {
     runOnUiThread {
       if (hasMeasurements) {
-        itemsAdapter.updateData(categoryData[category] ?: emptyList())
-        showProducts()
+        val token = tokenManager.getToken() ?: return@runOnUiThread
+
+        lifecycleScope.launch {
+          try {
+            val russianCategory = when (category) {
+              "Upper" -> "Верх"
+              "Lower" -> "Низ"
+              "Shoes" -> "Обувь"
+              else -> throw IllegalArgumentException("Invalid category")
+            }
+
+            val response = RetrofitInstance.clothesApi.getClothes(
+              globalCategory = russianCategory,
+              category = null,
+              color = null,
+              token = "Bearer $token"
+            )
+
+            if (response.isSuccessful) {
+              response.body()?.let { clothes ->
+                itemsAdapter.updateList(clothes)
+                showProducts()
+              }
+            } else {
+              showNetworkErrorDialog()
+            }
+
+          } catch (e: Exception) {
+            Log.e("Network", "Error fetching clothes", e)
+            showNetworkErrorDialog()
+          }
+        }
       } else {
         showMeasurementsDialog(category)
       }
@@ -132,13 +153,8 @@ class MainActivity: AppCompatActivity() {
   }
 
   private fun setupClickListeners() {
-    binding.productsShowcaseButton.setOnClickListener {
-      itemsAdapter.updateData(categoryData["All"] ?: emptyList())
-      showProducts()
-    }
-
     binding.productsCatalogButton.setOnClickListener {
-      categoriesAdapter.submitList(listOf("Upper", "Lower", "Shoes"))
+      categoriesAdapter.submitList(listOf("Upper", "Lower", "Foot"))
       binding.categoriesRecyclerView.visibility = View.VISIBLE
       binding.itemsRecyclerView.visibility = View.GONE
     }
@@ -146,12 +162,6 @@ class MainActivity: AppCompatActivity() {
     binding.productsProfileButton.setOnClickListener {
       startActivity(Intent(this, ProfileActivity::class.java))
     }
-  }
-
-  private fun showInitialData() {
-    itemsAdapter.updateData(categoryData["All"] ?: emptyList())
-    binding.itemsRecyclerView.visibility = View.VISIBLE
-    binding.categoriesRecyclerView.visibility = View.GONE
   }
 
   private fun showProducts() {

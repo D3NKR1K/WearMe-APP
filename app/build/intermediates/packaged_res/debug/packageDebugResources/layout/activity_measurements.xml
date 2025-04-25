@@ -6,9 +6,9 @@
   android:layout_height="match_parent"
   android:background="@color/color_background"
   android:padding="24dp"
-  tools:context=".ui.bio.MeasurementsActivity">
+  tools:context=".ui.profile.MeasurementsActivity">
 
-  <!-- Guidelines (оставлены без изменений) -->
+  <!-- Guidelines -->
   <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guideline_top"
     android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
     android:orientation="vertical"
     app:layout_constraintGuide_percent="0.9" />
 
-  <!-- Header (оставлен без изменений) -->
+  <!-- Заголовок -->
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/header_measure"
     android:layout_width="0dp"
@@ -53,12 +53,11 @@
     app:layout_constraintStart_toEndOf="@id/button_left_guideline"
     app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
-  <!-- Category Toggle (оставлен без изменений) -->
+  <!-- Переключатель категорий -->
   <com.google.android.material.button.MaterialButtonToggleGroup
     android:id="@+id/categoryToggle"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
     app:checkedButton="@+id/btnUpper"
     app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
     app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
@@ -74,7 +73,7 @@
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:checked="true"
-      android:text="Верхняя" />
+      android:text="Верх" />
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/btnLower"
@@ -82,10 +81,18 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
-      android:text="Нижняя" />
+      android:text="Низ" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnFeet"
+      style="@style/Widget.Material3.Button.OutlinedButton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Стопа" />
   </com.google.android.material.button.MaterialButtonToggleGroup>
 
-  <!-- Upper Measurements -->
+  <!-- Верхние мерки -->
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/layout_bio_hips"
     style="@style/InputLayout"
@@ -152,7 +159,7 @@
       tools:text="75" />
   </com.google.android.material.textfield.TextInputLayout>
 
-  <!-- Lower Measurements -->
+  <!-- Нижние мерки -->
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/layout_bio_hipsl"
     style="@style/InputLayout"
@@ -197,7 +204,30 @@
       tools:text="75" />
   </com.google.android.material.textfield.TextInputLayout>
 
-  <!-- Save Button -->
+  <!-- Мерки стопы -->
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/layout_bio_feet"
+    style="@style/InputLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/categoryToggle">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/input_bio_feet"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/measurements_hint_feet"
+      android:inputType="numberDecimal"
+      android:textColor="@color/black"
+      android:textSize="15sp"
+      tools:text="26.5" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <!-- Кнопка сохранения -->
   <com.google.android.material.button.MaterialButton
     android:id="@+id/layout_enter_button"
     android:layout_width="0dp"

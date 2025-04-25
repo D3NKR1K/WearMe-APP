@@ -31,7 +31,7 @@
         android:theme="@style/Theme.WearMe"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.wearme.ui.bio.MeasurementsActivity"
+            android:name="com.example.wearme.ui.bio.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
@@ -47,7 +47,7 @@
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
-            android:name="com.example.wearme.ui.bio.ProfileActivity"
+            android:name="com.example.wearme.ui.bio.BioActivity"
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity

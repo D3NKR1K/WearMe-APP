@@ -23,7 +23,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <!-- Лента товаров -->
+  <!-- Основная лента товаров -->
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/itemsRecyclerView"
     android:layout_width="0dp"
@@ -41,21 +41,21 @@
     tools:itemCount="6"
     tools:listitem="@layout/item_product" />
 
+  <!-- Лента категорий (скрыта по умолчанию) -->
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/categoriesRecyclerView"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_marginTop="16dp"
     android:visibility="gone"
-    app:layout_constraintTop_toBottomOf="@id/toolbarTitle"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/itemsBottomPanel"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:listitem="@layout/item_category"
-    tools:orientation="vertical" />
+    app:layout_constraintBottom_toTopOf="@id/itemsBottomPanel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolbarTitle"
+    tools:listitem="@layout/item_category" />
 
-  <!-- Нижняя панель -->
+  <!-- Нижняя панель навигации -->
   <LinearLayout
     android:id="@+id/itemsBottomPanel"
     android:layout_width="match_parent"
@@ -69,35 +69,19 @@
     app:layout_constraintStart_toStartOf="parent">
 
     <com.google.android.material.button.MaterialButton
-      android:id="@+id/productsShowcaseButton"
-      style="@style/NavButton"
-      android:layout_width="wrap_content"
-      android:layout_height="48dp"
-      android:layout_marginHorizontal="2dp"
-      android:text="Showcase" />
-
-    <com.google.android.material.button.MaterialButton
       android:id="@+id/productsCatalogButton"
       style="@style/NavButton"
       android:layout_width="wrap_content"
       android:layout_height="48dp"
-      android:layout_marginHorizontal="2dp"
+      android:layout_marginHorizontal="8dp"
       android:text="Catalog" />
-
-    <com.google.android.material.button.MaterialButton
-      android:id="@+id/productsFeautersButton"
-      style="@style/NavButton"
-      android:layout_width="wrap_content"
-      android:layout_height="48dp"
-      android:layout_marginHorizontal="2dp"
-      android:text="♥️" />
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/productsProfileButton"
       style="@style/NavButton"
       android:layout_width="wrap_content"
       android:layout_height="48dp"
-      android:layout_marginHorizontal="2dp"
+      android:layout_marginHorizontal="8dp"
       android:text="Profile" />
   </LinearLayout>
 
