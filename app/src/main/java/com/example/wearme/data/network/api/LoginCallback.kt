@@ -1,11 +1,10 @@
 package com.example.wearme.data.network.api
 
-import android.content.Intent
 import android.util.Log
 import com.example.wearme.data.model.LoginResponse
+import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.ui.auth.LoginActivity
-import com.example.wearme.ui.home.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,16 +14,19 @@ class LoginCallback(private val activity: LoginActivity): Callback<LoginResponse
     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
         activity.showLoading(false)
 
-        val loginResponse = response.body()
-
         when (response.code()) {
             200 -> {
-                val token = loginResponse?.token
+                val loginResponse = response.body()
+                val token = loginResponse?.token ?: run {
+                    Log.e("[LOGIN]", "Response body is null")
+                    return  // Прерываем выполнение, если тело ответа null
+                }
 
-                TokenManager(activity).saveToken(token.toString())
+                TokenManager(activity).saveToken(token)
                 Log.i("[TOKEN SAVE]", "Token was saved")
-                activity.startActivity(Intent(activity, MainActivity::class.java))
-                activity.finish()
+
+                RetrofitInstance.bioApi.dehumanization("Bearer $token")
+                    .enqueue(GetBioCallback(activity))
             }
 
             401 -> {

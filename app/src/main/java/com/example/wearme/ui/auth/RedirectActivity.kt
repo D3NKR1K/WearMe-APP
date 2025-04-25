@@ -7,15 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
+import com.example.wearme.data.network.api.BioCallbackHandler
+import com.example.wearme.data.network.api.GetBioCallback
 import com.example.wearme.data.network.api.TokenValidationCallback
 import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
+import com.example.wearme.ui.bio.BioActivity
 import com.example.wearme.ui.home.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RedirectActivity: AppCompatActivity() {
+class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
 
     private var isLoading = true
     private val tokenValidationStatus = MutableLiveData<Boolean>()
@@ -48,7 +51,8 @@ class RedirectActivity: AppCompatActivity() {
             tokenValidationStatus.observe(this@RedirectActivity) { isValid ->
                 if (isValid) {
                     Log.i(TAG, "Token is valid")
-                    navigateTo(MainActivity::class.java)
+                    RetrofitInstance.bioApi.dehumanization("Bearer $token")
+                        .enqueue(GetBioCallback(this@RedirectActivity))
                 } else {
                     Log.i(TAG, "Token is invalid")
                     navigateTo(LoginActivity::class.java)
@@ -59,6 +63,16 @@ class RedirectActivity: AppCompatActivity() {
 
     private fun navigateTo(destination: Class<*>) {
         startActivity(Intent(this, destination))
+        finish()
+    }
+
+    override fun navigateToMain() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    override fun navigateToBio() {
+        startActivity(Intent(this, BioActivity::class.java))
         finish()
     }
 

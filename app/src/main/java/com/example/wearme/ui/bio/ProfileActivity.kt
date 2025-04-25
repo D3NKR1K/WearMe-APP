@@ -9,37 +9,43 @@ import com.example.wearme.ui.auth.LoginActivity
 
 class ProfileActivity: AppCompatActivity() {
 
-  private lateinit var binding: ActivityProfileBinding
+    private lateinit var binding: ActivityProfileBinding
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    binding = ActivityProfileBinding.inflate(layoutInflater)
-    setContentView(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    setupClickListeners() // Setup button click listeners
-  }
+        val userName = intent.getStringExtra("USER_NAME") ?: "Имя не указано"
+        val userEmail = intent.getStringExtra("USER_EMAIL") ?: "Email не указан"
 
-  private fun setupClickListeners() {
-    // Logout button click listener
-    binding.logoutButton.setOnClickListener {
-      TokenManager(this).clearToken() // Clear the user's token
-      navigateToSignIn() // Navigate to the sign-in screen
+        binding.name.text = userName
+        binding.email.text = userEmail
+
+        setupClickListeners() // Setup button click listeners
     }
 
-    // Edit profile button click listener
-    binding.editProfile.setOnClickListener {
-      navigateToMeasurements() // Navigate to the measurements screen
+    private fun setupClickListeners() {
+        // Logout button click listener
+        binding.logoutButton.setOnClickListener {
+            TokenManager(this).clearToken() // Clear the user's token
+            navigateToSignIn() // Navigate to the sign-in screen
+        }
+
+        // Edit profile button click listener
+        binding.editProfile.setOnClickListener {
+            navigateToMeasurements() // Navigate to the measurements screen
+        }
     }
-  }
 
-  // Navigates to the sign-in activity
-  private fun navigateToSignIn() {
-    startActivity(Intent(this, LoginActivity::class.java))
-    finish() // Close the profile activity
-  }
+    // Navigates to the sign-in activity
+    private fun navigateToSignIn() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish() // Close the profile activity
+    }
 
-  // Navigates to the measurements activity
-  private fun navigateToMeasurements() {
-    startActivity(Intent(this, MeasurementsActivity::class.java))
-  }
+    // Navigates to the measurements activity
+    private fun navigateToMeasurements() {
+        startActivity(Intent(this, MeasurementsActivity::class.java))
+    }
 }

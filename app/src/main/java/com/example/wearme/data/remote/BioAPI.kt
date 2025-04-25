@@ -6,14 +6,14 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.PUT
+import retrofit2.http.POST
 
 interface BioAPI {
-  @PUT("/bios/enter/")
-  fun humanization(
-    @Body profile: Profile, @Header("Authorization") token: String
-  ): Call<MessageResponse>
+    @POST("/bios/enter/")
+    fun humanization(
+        @Body profile: Profile, @Header("Authorization") token: String
+    ): Call<MessageResponse>
 
-  @GET("/bios/get/")
-  fun dehumanization(@Header("Authorization") token: String): Call<MessageResponse>
+    @GET("/bios/get/")
+    fun dehumanization(@Header("Authorization") token: String): Call<Profile>
 }
