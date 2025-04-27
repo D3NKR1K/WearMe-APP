@@ -51,6 +51,10 @@
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
+            android:name="com.example.wearme.ui.bio.MeasurementsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WearMe" />
+        <activity
             android:name="com.example.wearme.ui.auth.RedirectActivity"
             android:exported="true"
             android:theme="@style/Theme.WearMe.Starting" >

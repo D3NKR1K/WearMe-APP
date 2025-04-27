@@ -26,7 +26,7 @@ drawable ic_user_field
 drawable placeholder_image
 font jua
 id avatar
-id btnFeet
+id btnFoot
 id btnLower
 id btnUpper
 id button_left_guideline
@@ -48,12 +48,10 @@ id header_SignUp_title
 id header_measure
 id input_bio_age
 id input_bio_chest
-id input_bio_feet
+id input_bio_foot
 id input_bio_hips
-id input_bio_hipsl
 id input_bio_name
 id input_bio_waist
-id input_bio_waistl
 id input_user_email
 id input_user_password
 id input_user_password_rep
@@ -72,11 +70,9 @@ id layout_SignUp_email
 id layout_SignUp_password
 id layout_SignUp_password_rep
 id layout_bio_chest
-id layout_bio_feet
+id layout_bio_foot
 id layout_bio_hips
-id layout_bio_hipsl
 id layout_bio_waist
-id layout_bio_waistl
 id layout_enter_button
 id linkTo_SignIn
 id linkTo_SignIn_description

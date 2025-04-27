@@ -1,244 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="@color/color_background"
-  android:padding="24dp"
-  tools:context=".ui.profile.MeasurementsActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:padding="24dp"
+    tools:context=".ui.bio.MeasurementsActivity">
 
-  <!-- Guidelines -->
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideline_top"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.2" />
+    <!-- Guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
 
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideline_bottom"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.8" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/button_left_guideline"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/button_right_guideline"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.9" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
-  <!-- Заголовок -->
-  <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/header_measure"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/jua"
-    android:text="@string/measurements_header"
-    android:textAlignment="center"
-    android:textColor="@color/black"
-    android:textSize="26sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toTopOf="@id/categoryToggle"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+    <!-- Заголовок -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/header_measure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jua"
+        android:text="@string/measurements_header"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/categoryToggle"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
-  <!-- Переключатель категорий -->
-  <com.google.android.material.button.MaterialButtonToggleGroup
-    android:id="@+id/categoryToggle"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:checkedButton="@+id/btnUpper"
-    app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
-    app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
-    app:layout_constraintStart_toStartOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/header_measure"
-    app:selectionRequired="true"
-    app:singleSelection="true">
+    <!-- Переключатель категорий -->
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/categoryToggle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:checkedButton="@+id/btnUpper"
+        app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
+        app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
+        app:layout_constraintStart_toStartOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/header_measure"
+        app:selectionRequired="true"
+        app:singleSelection="true">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpper"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Upper" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLower"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lower" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFoot"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Foot" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <!-- Верхние мерки -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_bio_hips"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/layout_bio_chest"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_hips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/measurements_hint_hips"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:text="183" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_bio_chest"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/layout_bio_waist"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_hips">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_chest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/measurements_hint_chest"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:text="75" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_bio_waist"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_chest">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_waist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/measurements_hint_waist"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:text="75" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--    &lt;!&ndash; Нижние мерки &ndash;&gt;-->
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/layout_bio_hips_lower"-->
+    <!--        style="@style/InputLayout"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/layout_bio_waist_lower"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/button_left_guideline"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/categoryToggle">-->
+
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/input_bio_hips_lower"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="@string/measurements_hint_hips"-->
+    <!--            android:inputType="number"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="15sp"-->
+    <!--            tools:text="75" />-->
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/layout_bio_waist_lower"-->
+    <!--        style="@style/InputLayout"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/layout_enter_button"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/button_left_guideline"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/layout_bio_hips_lower">-->
+
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/input_bio_waist_lower"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="@string/measurements_hint_waist"-->
+    <!--            android:inputType="number"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="15sp"-->
+    <!--            tools:text="75" />-->
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+    <!-- Мерки стопы -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_bio_foot"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_foot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/measurements_hint_feet"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:text="26.5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Кнопка сохранения -->
     <com.google.android.material.button.MaterialButton
-      android:id="@+id/btnUpper"
-      style="@style/Widget.Material3.Button.OutlinedButton"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:checked="true"
-      android:text="Верх" />
-
-    <com.google.android.material.button.MaterialButton
-      android:id="@+id/btnLower"
-      style="@style/Widget.Material3.Button.OutlinedButton"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="Низ" />
-
-    <com.google.android.material.button.MaterialButton
-      android:id="@+id/btnFeet"
-      style="@style/Widget.Material3.Button.OutlinedButton"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="Стопа" />
-  </com.google.android.material.button.MaterialButtonToggleGroup>
-
-  <!-- Верхние мерки -->
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_bio_hips"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:visibility="visible"
-    app:layout_constraintBottom_toTopOf="@id/layout_bio_chest"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/categoryToggle">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_hips"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/measurements_hint_hips"
-      android:inputType="number"
-      android:textColor="@color/black"
-      android:textSize="15sp"
-      tools:text="183" />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_bio_chest"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:visibility="visible"
-    app:layout_constraintBottom_toTopOf="@id/layout_bio_waist"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_bio_hips">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_chest"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/measurements_hint_chest"
-      android:inputType="number"
-      android:textColor="@color/black"
-      android:textSize="15sp"
-      tools:text="75" />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_bio_waist"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:visibility="visible"
-    app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_bio_chest">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_waist"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/measurements_hint_waist"
-      android:inputType="number"
-      android:textColor="@color/black"
-      android:textSize="15sp"
-      tools:text="75" />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <!-- Нижние мерки -->
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_bio_hipsl"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:layout_constraintBottom_toTopOf="@id/layout_bio_waistl"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/categoryToggle">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_hipsl"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/measurements_hint_hips"
-      android:inputType="number"
-      android:textColor="@color/black"
-      android:textSize="15sp"
-      tools:text="75" />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_bio_waistl"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_bio_hipsl">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_waistl"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/measurements_hint_waist"
-      android:inputType="number"
-      android:textColor="@color/black"
-      android:textSize="15sp"
-      tools:text="75" />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <!-- Мерки стопы -->
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_bio_feet"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/categoryToggle">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_feet"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/measurements_hint_feet"
-      android:inputType="numberDecimal"
-      android:textColor="@color/black"
-      android:textSize="15sp"
-      tools:text="26.5" />
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <!-- Кнопка сохранения -->
-  <com.google.android.material.button.MaterialButton
-    android:id="@+id/layout_enter_button"
-    android:layout_width="0dp"
-    android:layout_height="56dp"
-    android:backgroundTint="@color/button_main_color"
-    android:fontFamily="@font/jua"
-    android:text="@string/measurements_button_text"
-    app:cornerRadius="8dp"
-    app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
-    app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
-    app:layout_constraintStart_toStartOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_bio_waist" />
+        android:id="@+id/layout_enter_button"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/button_main_color"
+        android:fontFamily="@font/jua"
+        android:text="@string/measurements_button_text"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+        app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
+        app:layout_constraintStart_toStartOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

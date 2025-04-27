@@ -1,166 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="@color/color_background"
-  android:padding="24dp"
-  tools:context=".ui.profile.BioActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:padding="24dp"
+    tools:context=".ui.bio.BioActivity">
 
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideline_top"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.2" />
-
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideline_bottom"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.9" />
-
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/button_left_guideline"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.1" />
-
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/button_right_guideline"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.9" />
-
-  <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/header_Bio_logo"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/jua"
-    android:text="@string/app_name"
-    android:textAlignment="center"
-    android:textColor="@color/logo"
-    android:textSize="56sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toTopOf="@id/header_Bio_title"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/guideline_top" />
-
-  <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/header_Bio_title"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/jua"
-    android:text="BIO"
-    android:textAlignment="center"
-    android:textColor="@color/sign"
-    android:textSize="34sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toTopOf="@id/layout_Bio_gender"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/header_Bio_logo" />
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_Bio_gender"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:hint="Пол"
-    app:hintEnabled="true"
-    app:layout_constraintBottom_toTopOf="@id/layout_Bio_name"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/header_Bio_title">
-
-    <RadioGroup
-      android:id="@+id/gender_radio_group"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:paddingTop="8dp">
-
-      <com.google.android.material.radiobutton.MaterialRadioButton
-        android:id="@+id/radio_male"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Male"
-        android:textColor="@color/black" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
 
-      <com.google.android.material.radiobutton.MaterialRadioButton
-        android:id="@+id/radio_female"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Female"
-        android:textColor="@color/black" />
-    </RadioGroup>
-  </com.google.android.material.textfield.TextInputLayout>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_Bio_name"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:errorEnabled="true"
-    app:layout_constraintBottom_toTopOf="@id/layout_Bio_age"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_Bio_gender">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_name"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="Name"
-      android:inputType="text"
-      android:textColor="@color/black"
-      android:textSize="16sp"
-      tools:text="Daniel" />
-  </com.google.android.material.textfield.TextInputLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
-  <!-- Возраст -->
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/layout_Bio_age"
-    style="@style/InputLayout"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:errorEnabled="true"
-    app:layout_constraintBottom_toTopOf="@id/layout_Bio_button"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_Bio_name">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/header_Bio_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jua"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/logo"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/header_Bio_title"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/input_bio_age"
-      android:layout_width="match_parent"
-      android:layout_height="56dp"
-      android:hint="Age"
-      android:inputType="number"
-      android:textColor="@color/black"
-      android:textSize="16sp"
-      tools:text="19" />
-  </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/header_Bio_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jua"
+        android:text="BIO"
+        android:textAlignment="center"
+        android:textColor="@color/sign"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_gender"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/header_Bio_logo" />
 
-  <com.google.android.material.button.MaterialButton
-    android:id="@+id/layout_Bio_button"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:minHeight="48dp"
-    android:backgroundTint="@color/button_main_color"
-    android:fontFamily="@font/jua"
-    android:text="Confirm"
-    android:textColor="@color/white"
-    app:cornerRadius="8dp"
-    app:layout_constraintWidth_percent="0.7"
-    app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
-    app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
-    app:layout_constraintStart_toStartOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/layout_Bio_age" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_Bio_gender"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_name"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/header_Bio_title">
+
+        <RadioGroup
+            android:id="@+id/gender_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Male"
+                android:textColor="@color/black"
+                android:layout_weight="1" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:textColor="@color/black"
+                android:layout_weight="1" />
+        </RadioGroup>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_Bio_name"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_age"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_Bio_gender">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="Daniel" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Возраст -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_Bio_age"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_button"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_Bio_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_age"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Age"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="19" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/layout_Bio_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:backgroundTint="@color/button_main_color"
+        android:fontFamily="@font/jua"
+        android:text="Confirm"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+        app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
+        app:layout_constraintStart_toStartOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_Bio_age" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

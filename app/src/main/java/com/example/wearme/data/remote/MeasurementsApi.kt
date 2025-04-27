@@ -11,32 +11,32 @@ import retrofit2.http.Header
 import retrofit2.http.PUT
 
 interface MeasurementsApi {
-    @PUT("/body_measurements/upper/enter/")
+    @PUT("/body_measurements/upper/")
     fun updateUpper(
         @Body upperMeasurements: UpperMeasurements, @Header("Authorization") token: String
     ): Call<MessageResponse>
 
-    @PUT("/body_measurements/under/enter/")
+    @PUT("/body_measurements/under/")
     fun updateUnder(
         @Body underMeasurements: UnderMeasurements, @Header("Authorization") token: String
     ): Call<MessageResponse>
 
-    @PUT("/body_measurements/foot/enter/")
+    @PUT("/body_measurements/foot/")
     fun updateFoot(
         @Body footMeasurements: FootMeasurements, @Header("Authorization") token: String
     ): Call<MessageResponse>
 
-    @GET("/body_measurements/upper/get/")
+    @GET("/body_measurements/upper/")
     fun getUpper(
         @Header("Authorization") token: String
     ): Call<UpperMeasurements>
 
-    @GET("/body_measurements/under/get/")
+    @GET("/body_measurements/under/")
     fun getUnder(
         @Header("Authorization") token: String
     ): Call<UnderMeasurements>
 
-    @GET("/body_measurements/foot/get/")
+    @GET("/body_measurements/foot/")
     fun getFoot(
         @Header("Authorization") token: String
     ): Call<FootMeasurements>

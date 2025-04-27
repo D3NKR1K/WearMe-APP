@@ -68,16 +68,16 @@ class BioActivity: AppCompatActivity() {
     private fun getSelectedGender(): Gender {
         return when (binding.genderRadioGroup.checkedRadioButtonId) {
             R.id.radio_male -> {
-                Gender.М
+                Gender.M
             }
 
             R.id.radio_female -> {
-                Gender.Ж
+                Gender.F
             }
 
-            // TODO: Fix it
             else -> {
-                Gender.X
+                showError(binding.layoutBioGender, "Select gender")
+                Gender.U
             }
         }
     }
@@ -122,7 +122,7 @@ class BioActivity: AppCompatActivity() {
     }
 
     private fun validateGender(): Boolean {
-        return if (getSelectedGender() == Gender.X) {
+        return if (getSelectedGender() == Gender.U) {
             showError(binding.layoutBioGender, "Select gender")
             false
         } else {

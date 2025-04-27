@@ -3248,7 +3248,7 @@ int id bounce 0x7f0a0062
 int id bounceBoth 0x7f0a0063
 int id bounceEnd 0x7f0a0064
 int id bounceStart 0x7f0a0065
-int id btnFeet 0x7f0a0066
+int id btnFoot 0x7f0a0246
 int id btnLower 0x7f0a0067
 int id btnUpper 0x7f0a0068
 int id buttonPanel 0x7f0a0069
@@ -3399,12 +3399,10 @@ int id indeterminate 0x7f0a00f9
 int id info 0x7f0a00fa
 int id input_bio_age 0x7f0a00fb
 int id input_bio_chest 0x7f0a00fc
-int id input_bio_feet 0x7f0a00fd
+int id input_bio_foot 0x7f0a0240
 int id input_bio_hips 0x7f0a00fe
-int id input_bio_hipsl 0x7f0a00ff
 int id input_bio_name 0x7f0a0100
 int id input_bio_waist 0x7f0a0101
-int id input_bio_waistl 0x7f0a0102
 int id input_user_email 0x7f0a0103
 int id input_user_password 0x7f0a0104
 int id input_user_password_rep 0x7f0a0105
@@ -3431,11 +3429,9 @@ int id layout_SignUp_email 0x7f0a0119
 int id layout_SignUp_password 0x7f0a011a
 int id layout_SignUp_password_rep 0x7f0a011b
 int id layout_bio_chest 0x7f0a011c
-int id layout_bio_feet 0x7f0a011d
+int id layout_bio_foot 0x7f0a0243
 int id layout_bio_hips 0x7f0a011e
-int id layout_bio_hipsl 0x7f0a011f
 int id layout_bio_waist 0x7f0a0120
-int id layout_bio_waistl 0x7f0a0121
 int id layout_enter_button 0x7f0a0122
 int id left 0x7f0a0123
 int id leftToRight 0x7f0a0124

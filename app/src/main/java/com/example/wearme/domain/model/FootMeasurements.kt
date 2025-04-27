@@ -1,5 +1,5 @@
 package com.example.wearme.domain.model
 
 data class FootMeasurements(
-  val foot: Int
+    val foot: Double
 )
