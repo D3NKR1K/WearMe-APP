@@ -11,7 +11,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.wearme.R
 import com.example.wearme.data.network.api.PutMeasurementsCallback
 import com.example.wearme.data.network.api.TokenValidationCallback
-import com.example.wearme.data.remote.RetrofitInstance
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityMeasurementsBinding
 import com.example.wearme.domain.model.FootMeasurements
 import com.example.wearme.domain.model.UnderMeasurements
@@ -27,7 +27,7 @@ class MeasurementsActivity: AppCompatActivity() {
         binding = ActivityMeasurementsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        RetrofitInstance.serviceApi.checkToken()
+        RetrofitInstance.systemApiService.checkToken()
             .enqueue(TokenValidationCallback(tokenValidationStatus))
 
         tokenValidationStatus.observe(this) { isValid ->
@@ -153,7 +153,7 @@ class MeasurementsActivity: AppCompatActivity() {
                     waist = binding.inputBioWaist.text.toString().toInt(),
                     hips = binding.inputBioHips.text.toString().toInt()
                 )
-                RetrofitInstance.measurementsApi.updateUpper(measurements)
+                RetrofitInstance.measurementsApiService.updateUpper(measurements)
                     .enqueue(PutMeasurementsCallback(this))
             }
 
@@ -162,14 +162,14 @@ class MeasurementsActivity: AppCompatActivity() {
                     waist = binding.inputBioWaist.text.toString().toInt(),
                     hips = binding.inputBioHips.text.toString().toInt()
                 )
-                RetrofitInstance.measurementsApi.updateUnder(measurements)
+                RetrofitInstance.measurementsApiService.updateUnder(measurements)
                     .enqueue(PutMeasurementsCallback(this))
             }
 
             binding.btnFoot.isChecked -> {
                 val footSize =
                     FootMeasurements(foot = binding.inputBioFoot.text.toString().toDouble())
-                RetrofitInstance.measurementsApi.updateFoot(footSize)
+                RetrofitInstance.measurementsApiService.updateFoot(footSize)
                     .enqueue(PutMeasurementsCallback(this))
             }
         }

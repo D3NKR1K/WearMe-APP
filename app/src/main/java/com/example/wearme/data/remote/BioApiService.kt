@@ -6,7 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface BioAPI {
+interface BioApiService {
     @POST("/bios/enter/")
     fun humanization(@Body profile: Profile): Call<Void>
 

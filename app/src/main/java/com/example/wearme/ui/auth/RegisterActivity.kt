@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.example.wearme.data.network.api.RegisterCallback
-import com.example.wearme.data.remote.RetrofitInstance
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityRegistrationBinding
 import com.example.wearme.domain.model.api.User
 import com.google.android.material.textfield.TextInputEditText
@@ -40,7 +40,7 @@ class RegisterActivity: AppCompatActivity() {
 
                     showLoading(true)
 
-                    RetrofitInstance.userApi.register(user)
+                    RetrofitInstance.userApiService.register(user)
                         .enqueue(RegisterCallback(this@RegisterActivity))
 
                 } else {

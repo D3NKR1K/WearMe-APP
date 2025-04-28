@@ -9,7 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PUT
 
-interface MeasurementsApi {
+interface MeasurementsApiService {
     @PUT("/body_measurements/upper/")
     fun updateUpper(@Body upperMeasurements: UpperMeasurements): Call<MessageResponse>
 

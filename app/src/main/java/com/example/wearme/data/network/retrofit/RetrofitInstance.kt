@@ -1,5 +1,6 @@
-package com.example.wearme.data.remote
+package com.example.wearme.data.network.retrofit
 
+import com.example.wearme.data.remote.*
 import com.example.wearme.domain.model.AuthInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -23,10 +24,14 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
-    val userApi: UserApi by lazy { noAuthRetrofit.create(UserApi::class.java) }
+    val userApiService: UserApiService by lazy { noAuthRetrofit.create(UserApiService::class.java) }
 
-    val serviceApi: ServiceApi by lazy { authRetrofit.create(ServiceApi::class.java) }
-    val bioApi: BioAPI by lazy { authRetrofit.create(BioAPI::class.java) }
-    val measurementsApi: MeasurementsApi by lazy { authRetrofit.create(MeasurementsApi::class.java) }
-    val clothesApi: ClothesApi by lazy { authRetrofit.create(ClothesApi::class.java) }
+    val systemApiService: SystemApiService by lazy { authRetrofit.create(SystemApiService::class.java) }
+    val bioApiService: BioApiService by lazy { authRetrofit.create(BioApiService::class.java) }
+    val measurementsApiService: MeasurementsApiService by lazy {
+        authRetrofit.create(
+            MeasurementsApiService::class.java
+        )
+    }
+    val clothesApiService: ClothesApiService by lazy { authRetrofit.create(clothesApiService::class.java) }
 }

@@ -7,10 +7,10 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface UserApi {
-  @POST("/users/register/")
-  fun register(@Body user: User): Call<MessageResponse>
+interface UserApiService {
+    @POST("/users/register/")
+    fun register(@Body user: User): Call<MessageResponse>
 
-  @POST("/users/login/")
-  fun login(@Body user: User): Call<LoginResponse>
+    @POST("/users/login/")
+    fun login(@Body user: User): Call<LoginResponse>
 }

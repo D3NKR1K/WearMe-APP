@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wearme.R
 import com.example.wearme.data.network.api.GetMeasurementsCallback
-import com.example.wearme.data.remote.RetrofitInstance
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityMainBinding
 import com.example.wearme.domain.model.CategoriesAdapter
 import com.example.wearme.domain.model.ItemsAdapter
@@ -48,7 +48,7 @@ class MainActivity: AppCompatActivity() {
         categoriesAdapter = CategoriesAdapter { category ->
             when (category) {
                 "Upper" -> {
-                    RetrofitInstance.measurementsApi.getUpper().enqueue(
+                    RetrofitInstance.measurementsApiService.getUpper().enqueue(
                         GetMeasurementsCallback(
                             activity = this,
                             onSuccess = { response ->
@@ -62,7 +62,7 @@ class MainActivity: AppCompatActivity() {
                 }
 
                 "Lower" -> {
-                    RetrofitInstance.measurementsApi.getUnder().enqueue(
+                    RetrofitInstance.measurementsApiService.getUnder().enqueue(
                         GetMeasurementsCallback(
                             activity = this,
                             onSuccess = { response ->
@@ -76,7 +76,7 @@ class MainActivity: AppCompatActivity() {
                 }
 
                 "Footwear" -> {
-                    RetrofitInstance.measurementsApi.getFoot().enqueue(
+                    RetrofitInstance.measurementsApiService.getFoot().enqueue(
                         GetMeasurementsCallback(
                             activity = this,
                             onSuccess = { response ->
@@ -107,7 +107,7 @@ class MainActivity: AppCompatActivity() {
             if (hasMeasurements) {
                 lifecycleScope.launch {
                     try {
-                        val response = RetrofitInstance.clothesApi.getClothes(
+                        val response = RetrofitInstance.clothesApiService.getClothes(
                             globalCategoryId = when (category.lowercase()) {
                                 "upper" -> 3
                                 "lower" -> 1

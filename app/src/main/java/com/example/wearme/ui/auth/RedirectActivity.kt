@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.wearme.data.network.api.BioCallbackHandler
 import com.example.wearme.data.network.api.CheckBioCallback
 import com.example.wearme.data.network.api.TokenValidationCallback
-import com.example.wearme.data.remote.RetrofitInstance
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.ui.bio.BioActivity
 import com.example.wearme.ui.home.MainActivity
@@ -46,7 +46,7 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
             RetrofitInstance.initWithToken(token)
 
             withContext(Dispatchers.IO) {
-                RetrofitInstance.serviceApi.checkToken()
+                RetrofitInstance.systemApiService.checkToken()
                     .enqueue(TokenValidationCallback(tokenValidationStatus))
             }
 
@@ -55,7 +55,7 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
             tokenValidationStatus.observe(this@RedirectActivity) { isValid ->
                 if (isValid) {
                     Log.i(TAG, "Token is valid")
-                    RetrofitInstance.bioApi.dehumanization()
+                    RetrofitInstance.bioApiService.dehumanization()
                         .enqueue(CheckBioCallback(this@RedirectActivity))
                 } else {
                     Log.i(TAG, "Token is invalid")

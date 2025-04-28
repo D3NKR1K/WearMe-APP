@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ClothesApi {
+interface ClothesApiService {
     @GET("/clothes/")
     suspend fun getClothes(
         @Query("global_category_id") globalCategoryId: Int,

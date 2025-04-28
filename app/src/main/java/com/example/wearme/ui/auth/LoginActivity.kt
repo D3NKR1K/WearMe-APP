@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.example.wearme.data.network.api.BioCallbackHandler
 import com.example.wearme.data.network.api.LoginCallback
-import com.example.wearme.data.remote.RetrofitInstance
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityLoginBinding
 import com.example.wearme.domain.model.api.User
 import com.example.wearme.ui.bio.BioActivity
@@ -132,7 +132,8 @@ class LoginActivity: AppCompatActivity(), BioCallbackHandler {
                 password = binding.inputUserPassword.getTrimmedText()
             )
 
-            RetrofitInstance.userApi.login(user).enqueue(LoginCallback(this@LoginActivity, user))
+            RetrofitInstance.userApiService.login(user)
+                .enqueue(LoginCallback(this@LoginActivity, user))
         } else {
             Log.w(TAG, "attemptSignIn: Input validation failed")
         }

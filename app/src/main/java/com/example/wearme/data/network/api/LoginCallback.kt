@@ -3,7 +3,7 @@ package com.example.wearme.data.network.api
 import android.util.Log
 import androidx.core.content.edit
 import com.example.wearme.data.model.LoginResponse
-import com.example.wearme.data.remote.RetrofitInstance
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.domain.model.api.User
 import com.example.wearme.ui.auth.LoginActivity
@@ -36,7 +36,7 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
                 sharedPreferences.edit { putString("email", user.email) }
                 Log.i("[EMAIL SAVE]", "Email was saved: ${user.email}")
 
-                RetrofitInstance.bioApi.dehumanization().enqueue(CheckBioCallback(activity))
+                RetrofitInstance.bioApiService.dehumanization().enqueue(CheckBioCallback(activity))
             }
 
             401 -> {
