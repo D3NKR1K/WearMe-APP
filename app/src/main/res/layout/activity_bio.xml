@@ -61,7 +61,7 @@
         android:textColor="@color/sign"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/layout_Bio_gender"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_name"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/header_Bio_logo" />
@@ -72,34 +72,55 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:hintEnabled="true"
-        app:layout_constraintBottom_toTopOf="@id/layout_Bio_name"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_age"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/header_Bio_title">
+        app:layout_constraintTop_toBottomOf="@id/layout_Bio_name">
 
         <RadioGroup
             android:id="@+id/gender_radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="8dp">
+            android:paddingTop="8dp"
+            android:gravity="center">
 
+            <!-- Male Button -->
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radio_male"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Male"
-                android:textColor="@color/black"
-                android:layout_weight="1" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/radio_background"
+                android:button="@null"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:iconSize="48dp"
+                app:iconTint="@color/icon_color"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                android:scaleType="centerInside" />
 
+            <!-- Female Button -->
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radio_female"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                android:textColor="@color/black"
-                android:layout_weight="1" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/radio_background"
+                android:button="@null"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:iconSize="48dp"
+                app:iconTint="@color/icon_color"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                android:scaleType="centerInside" />
+
         </RadioGroup>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -110,10 +131,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-        app:layout_constraintBottom_toTopOf="@id/layout_Bio_age"
+        app:layout_constraintBottom_toTopOf="@id/layout_Bio_gender"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_Bio_gender">
+        app:layout_constraintTop_toBottomOf="@id/header_Bio_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_name"
@@ -136,7 +157,7 @@
         app:layout_constraintBottom_toTopOf="@id/layout_Bio_button"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_Bio_name">
+        app:layout_constraintTop_toBottomOf="@id/layout_Bio_gender">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_age"

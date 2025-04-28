@@ -159,51 +159,6 @@
             tools:text="75" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--    &lt;!&ndash; Нижние мерки &ndash;&gt;-->
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/layout_bio_hips_lower"-->
-    <!--        style="@style/InputLayout"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/layout_bio_waist_lower"-->
-    <!--        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"-->
-    <!--        app:layout_constraintStart_toEndOf="@id/button_left_guideline"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/categoryToggle">-->
-
-    <!--        <com.google.android.material.textfield.TextInputEditText-->
-    <!--            android:id="@+id/input_bio_hips_lower"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:hint="@string/measurements_hint_hips"-->
-    <!--            android:inputType="number"-->
-    <!--            android:textColor="@color/black"-->
-    <!--            android:textSize="15sp"-->
-    <!--            tools:text="75" />-->
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/layout_bio_waist_lower"-->
-    <!--        style="@style/InputLayout"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/layout_enter_button"-->
-    <!--        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"-->
-    <!--        app:layout_constraintStart_toEndOf="@id/button_left_guideline"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/layout_bio_hips_lower">-->
-
-    <!--        <com.google.android.material.textfield.TextInputEditText-->
-    <!--            android:id="@+id/input_bio_waist_lower"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:hint="@string/measurements_hint_waist"-->
-    <!--            android:inputType="number"-->
-    <!--            android:textColor="@color/black"-->
-    <!--            android:textSize="15sp"-->
-    <!--            tools:text="75" />-->
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
     <!-- Мерки стопы -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_bio_foot"

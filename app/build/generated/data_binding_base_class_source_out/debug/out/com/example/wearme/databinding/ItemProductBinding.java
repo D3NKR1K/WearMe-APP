@@ -9,24 +9,28 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.wearme.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ItemProductBinding implements ViewBinding {
   @NonNull
-  private final CardView rootView;
+  private final MaterialCardView rootView;
 
   @NonNull
-  public final MaterialButton layoutInfoButton;
+  public final MaterialButton btnInfo;
 
   @NonNull
-  public final TextView productComments;
+  public final Guideline guidelineVert;
+
+  @NonNull
+  public final ImageView iconStar;
 
   @NonNull
   public final ImageView productImage;
@@ -35,27 +39,33 @@ public final class ItemProductBinding implements ViewBinding {
   public final TextView productName;
 
   @NonNull
-  public final TextView productRating;
+  public final LinearLayout ratingReviewsContainer;
 
   @NonNull
-  public final LinearLayout ratingCommentsContainer;
+  public final TextView ratingText;
 
-  private ItemProductBinding(@NonNull CardView rootView, @NonNull MaterialButton layoutInfoButton,
-      @NonNull TextView productComments, @NonNull ImageView productImage,
-      @NonNull TextView productName, @NonNull TextView productRating,
-      @NonNull LinearLayout ratingCommentsContainer) {
+  @NonNull
+  public final TextView reviewsText;
+
+  private ItemProductBinding(@NonNull MaterialCardView rootView, @NonNull MaterialButton btnInfo,
+      @NonNull Guideline guidelineVert, @NonNull ImageView iconStar,
+      @NonNull ImageView productImage, @NonNull TextView productName,
+      @NonNull LinearLayout ratingReviewsContainer, @NonNull TextView ratingText,
+      @NonNull TextView reviewsText) {
     this.rootView = rootView;
-    this.layoutInfoButton = layoutInfoButton;
-    this.productComments = productComments;
+    this.btnInfo = btnInfo;
+    this.guidelineVert = guidelineVert;
+    this.iconStar = iconStar;
     this.productImage = productImage;
     this.productName = productName;
-    this.productRating = productRating;
-    this.ratingCommentsContainer = ratingCommentsContainer;
+    this.ratingReviewsContainer = ratingReviewsContainer;
+    this.ratingText = ratingText;
+    this.reviewsText = reviewsText;
   }
 
   @Override
   @NonNull
-  public CardView getRoot() {
+  public MaterialCardView getRoot() {
     return rootView;
   }
 
@@ -80,15 +90,21 @@ public final class ItemProductBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.layout_Info_button;
-      MaterialButton layoutInfoButton = ViewBindings.findChildViewById(rootView, id);
-      if (layoutInfoButton == null) {
+      id = R.id.btn_info;
+      MaterialButton btnInfo = ViewBindings.findChildViewById(rootView, id);
+      if (btnInfo == null) {
         break missingId;
       }
 
-      id = R.id.product_comments;
-      TextView productComments = ViewBindings.findChildViewById(rootView, id);
-      if (productComments == null) {
+      id = R.id.guidelineVert;
+      Guideline guidelineVert = ViewBindings.findChildViewById(rootView, id);
+      if (guidelineVert == null) {
+        break missingId;
+      }
+
+      id = R.id.icon_star;
+      ImageView iconStar = ViewBindings.findChildViewById(rootView, id);
+      if (iconStar == null) {
         break missingId;
       }
 
@@ -104,20 +120,26 @@ public final class ItemProductBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.product_rating;
-      TextView productRating = ViewBindings.findChildViewById(rootView, id);
-      if (productRating == null) {
+      id = R.id.rating_reviews_container;
+      LinearLayout ratingReviewsContainer = ViewBindings.findChildViewById(rootView, id);
+      if (ratingReviewsContainer == null) {
         break missingId;
       }
 
-      id = R.id.rating_comments_container;
-      LinearLayout ratingCommentsContainer = ViewBindings.findChildViewById(rootView, id);
-      if (ratingCommentsContainer == null) {
+      id = R.id.rating_text;
+      TextView ratingText = ViewBindings.findChildViewById(rootView, id);
+      if (ratingText == null) {
         break missingId;
       }
 
-      return new ItemProductBinding((CardView) rootView, layoutInfoButton, productComments,
-          productImage, productName, productRating, ratingCommentsContainer);
+      id = R.id.reviews_text;
+      TextView reviewsText = ViewBindings.findChildViewById(rootView, id);
+      if (reviewsText == null) {
+        break missingId;
+      }
+
+      return new ItemProductBinding((MaterialCardView) rootView, btnInfo, guidelineVert, iconStar,
+          productImage, productName, ratingReviewsContainer, ratingText, reviewsText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

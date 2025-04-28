@@ -132,7 +132,7 @@ class LoginActivity: AppCompatActivity(), BioCallbackHandler {
                 password = binding.inputUserPassword.getTrimmedText()
             )
 
-            RetrofitInstance.userApi.login(user).enqueue(LoginCallback(this@LoginActivity))
+            RetrofitInstance.userApi.login(user).enqueue(LoginCallback(this@LoginActivity, user))
         } else {
             Log.w(TAG, "attemptSignIn: Input validation failed")
         }

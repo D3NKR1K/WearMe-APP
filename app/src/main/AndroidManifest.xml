@@ -20,6 +20,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.home.ClothDetailActivity"
+            android:theme="@style/Theme.WearMe"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.home.MainActivity"
             android:theme="@style/Theme.WearMe"
             android:exported="false" />

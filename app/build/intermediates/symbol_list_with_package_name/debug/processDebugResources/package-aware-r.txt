@@ -1454,6 +1454,7 @@ color headers
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color ic_launcher_background
+color icon_color
 color light_grey
 color logo
 color m3_appbar_overlay_color
@@ -2136,6 +2137,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
+color unselected_stroke
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -3067,6 +3069,7 @@ drawable ic_password_field
 drawable ic_placeholer_image
 drawable ic_profile_placeholder
 drawable ic_search_black_24
+drawable ic_star
 drawable ic_user_field
 drawable icon_background
 drawable indeterminate_static
@@ -3143,6 +3146,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable placeholder_image
+drawable radio_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3252,6 +3256,7 @@ id bounceStart
 id btnFoot
 id btnLower
 id btnUpper
+id btn_info
 id buttonPanel
 id button_left_guideline
 id button_right_guideline
@@ -3260,6 +3265,8 @@ id callMeasure
 id cancel_button
 id carryVelocity
 id categoriesRecyclerView
+id categoryCard
+id categoryIcon
 id categoryName
 id categoryToggle
 id center
@@ -3279,6 +3286,11 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id clothComments
+id clothImage
+id clothMatchScore
+id clothName
+id clothRating
 id coil_request_manager
 id collapseActionView
 id compress
@@ -3371,6 +3383,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id guidelineVert
 id guideline_bottom
 id guideline_top
 id header_Bio_logo
@@ -3390,6 +3403,7 @@ id horizontal
 id horizontal_only
 id icon
 id icon_group
+id icon_star
 id ifRoom
 id ignore
 id ignoreRequest
@@ -3421,7 +3435,6 @@ id layout_Bio_age
 id layout_Bio_button
 id layout_Bio_gender
 id layout_Bio_name
-id layout_Info_button
 id layout_SignIn_button
 id layout_SignIn_email
 id layout_SignIn_password
@@ -3473,6 +3486,10 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id measurementsChest
+id measurementsFoot
+id measurementsHips
+id measurementsWaist
 id message
 id middle
 id mini
@@ -3561,10 +3578,8 @@ id pin
 id position
 id postLayout
 id pressed
-id product_comments
 id product_image
 id product_name
-id product_rating
 id productsCatalogButton
 id productsProfileButton
 id progress_circular
@@ -3572,11 +3587,13 @@ id progress_horizontal
 id radio
 id radio_female
 id radio_male
-id rating_comments_container
+id rating_reviews_container
+id rating_text
 id ratio
 id rectangles
 id report_drawn
 id reverseSawtooth
+id reviews_text
 id right
 id rightToLeft
 id right_icon
@@ -3835,6 +3852,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_bio
+layout activity_cloth_details
 layout activity_login
 layout activity_main
 layout activity_measurements
@@ -3976,6 +3994,7 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string cloth_image
 string error_a11y_label
 string error_empty_email
 string error_empty_name
@@ -4047,6 +4066,7 @@ string measurements_hint_feet
 string measurements_hint_height
 string measurements_hint_hips
 string measurements_hint_waist
+string measurements_title
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name

@@ -15,7 +15,7 @@ import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.databinding.ActivityMainBinding
 import com.example.wearme.domain.model.CategoriesAdapter
 import com.example.wearme.domain.model.ItemsAdapter
-import com.example.wearme.domain.model.TokenManager
+import com.example.wearme.domain.model.api.Cloth
 import com.example.wearme.ui.bio.MeasurementsActivity
 import com.example.wearme.ui.bio.ProfileActivity
 import kotlinx.coroutines.launch
@@ -23,20 +23,11 @@ import kotlinx.coroutines.launch
 class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var itemsAdapter: ItemsAdapter
-    private lateinit var tokenManager: TokenManager
     private lateinit var categoriesAdapter: CategoriesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
-        tokenManager = TokenManager(this)
-
-        tokenManager.getToken() ?: run {
-            Log.e("[AUTH]", "Token not found")
-            finish()
-            return
-        }
 
         setContentView(binding.root)
 
@@ -45,19 +36,19 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun setupAdapters() {
-        itemsAdapter = ItemsAdapter(emptyList())
+        itemsAdapter = ItemsAdapter(emptyList()) { cloth ->
+            openClothDetails(cloth)
+        }
         binding.itemsRecyclerView.apply {
             adapter = itemsAdapter
-            layoutManager = GridLayoutManager(this@MainActivity, 2)
+            layoutManager = GridLayoutManager(this@MainActivity, 1)
         }
 
         // Categories Adapter
         categoriesAdapter = CategoriesAdapter { category ->
-            val token = tokenManager.getToken() ?: return@CategoriesAdapter
-
             when (category) {
                 "Upper" -> {
-                    RetrofitInstance.measurementsApi.getUpper("Bearer $token").enqueue(
+                    RetrofitInstance.measurementsApi.getUpper().enqueue(
                         GetMeasurementsCallback(
                             activity = this,
                             onSuccess = { response ->
@@ -71,7 +62,7 @@ class MainActivity: AppCompatActivity() {
                 }
 
                 "Lower" -> {
-                    RetrofitInstance.measurementsApi.getUnder("Bearer $token").enqueue(
+                    RetrofitInstance.measurementsApi.getUnder().enqueue(
                         GetMeasurementsCallback(
                             activity = this,
                             onSuccess = { response ->
@@ -85,7 +76,7 @@ class MainActivity: AppCompatActivity() {
                 }
 
                 "Footwear" -> {
-                    RetrofitInstance.measurementsApi.getFoot("Bearer $token").enqueue(
+                    RetrofitInstance.measurementsApi.getFoot().enqueue(
                         GetMeasurementsCallback(
                             activity = this,
                             onSuccess = { response ->
@@ -104,13 +95,16 @@ class MainActivity: AppCompatActivity() {
             adapter = categoriesAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
+
+        categoriesAdapter.submitList(listOf("Upper", "Lower", "Footwear"))
+        binding.categoriesRecyclerView.visibility = View.VISIBLE
+        binding.itemsRecyclerView.visibility = View.GONE
     }
+
 
     private fun handleMeasurementsResult(category: String, hasMeasurements: Boolean) {
         runOnUiThread {
             if (hasMeasurements) {
-                val token = tokenManager.getToken() ?: return@runOnUiThread
-
                 lifecycleScope.launch {
                     try {
                         val response = RetrofitInstance.clothesApi.getClothes(
@@ -119,7 +113,7 @@ class MainActivity: AppCompatActivity() {
                                 "lower" -> 1
                                 "footwear" -> 2
                                 else -> throw IllegalArgumentException("Invalid category")
-                            }, subCategoryId = null, color = null, token = "Bearer $token"
+                            }, subCategoryId = null, color = null
                         )
 
                         if (response.isSuccessful) {
@@ -142,11 +136,17 @@ class MainActivity: AppCompatActivity() {
         }
     }
 
+    private fun openClothDetails(cloth: Cloth) {
+        val intent = Intent(this, ClothDetailActivity::class.java).apply {
+            putExtra("CLOTH_DATA", cloth)
+        }
+        startActivity(intent)
+    }
+
     fun showMeasurementsDialog(category: String) {
         AlertDialog.Builder(this, R.style.CustomAlertDialog).setTitle("No Measurements")
             .setMessage("To view $category items, you need to provide your measurements.")
             .setPositiveButton("Enter Measurements") { dialog, _ ->
-                // Переход на экран ввода мерок
                 startActivity(Intent(this, MeasurementsActivity::class.java))
                 dialog.dismiss()
             }.setNegativeButton("Cancel") { dialog, _ ->
@@ -161,12 +161,6 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        binding.productsCatalogButton.setOnClickListener {
-            categoriesAdapter.submitList(listOf("Upper", "Lower", "Footwear"))
-            binding.categoriesRecyclerView.visibility = View.VISIBLE
-            binding.itemsRecyclerView.visibility = View.GONE
-        }
-
         binding.productsProfileButton.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }

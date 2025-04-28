@@ -14,14 +14,12 @@ import com.example.wearme.data.network.api.TokenValidationCallback
 import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.databinding.ActivityMeasurementsBinding
 import com.example.wearme.domain.model.FootMeasurements
-import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.domain.model.UnderMeasurements
 import com.example.wearme.domain.model.UpperMeasurements
 
 class MeasurementsActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMeasurementsBinding
-    private lateinit var tokenManager: TokenManager
     private val tokenValidationStatus = MutableLiveData<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +27,7 @@ class MeasurementsActivity: AppCompatActivity() {
         binding = ActivityMeasurementsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        tokenManager = TokenManager(this)
-        val token = tokenManager.getToken() ?: run {
-            Log.e("[AUTH]", "Token not found")
-            finish()
-            return
-        }
-
-        RetrofitInstance.serviceApi.checkToken("Bearer $token")
+        RetrofitInstance.serviceApi.checkToken()
             .enqueue(TokenValidationCallback(tokenValidationStatus))
 
         tokenValidationStatus.observe(this) { isValid ->
@@ -104,7 +95,6 @@ class MeasurementsActivity: AppCompatActivity() {
         return when {
             binding.btnUpper.isChecked -> validateChest() && validateWaist() && validateHips()
             binding.btnLower.isChecked -> validateWaist() && validateHips()
-//            binding.btnLower.isChecked -> validateWaistLower() && validateHipsLower()
             binding.btnFoot.isChecked -> validateFoot()
             else -> false
         }
@@ -125,14 +115,6 @@ class MeasurementsActivity: AppCompatActivity() {
     private fun validateHips(): Boolean {
         return validateMeasurement(binding.layoutBioHips, "бедер", 70, 200)
     }
-
-//    private fun validateWaistLower(): Boolean {
-//        return validateMeasurement(binding.layoutBioWaistLower, "талии", 50, 150)
-//    }
-//
-//    private fun validateHipsLower(): Boolean {
-//        return validateMeasurement(binding.layoutBioHipsLower, "бедер", 70, 200)
-//    }
 
     private fun validateMeasurement(
         layout: com.google.android.material.textfield.TextInputLayout,
@@ -164,8 +146,6 @@ class MeasurementsActivity: AppCompatActivity() {
     }
 
     private fun saveMeasurements() {
-        val token = tokenManager.getToken() ?: return
-
         when {
             binding.btnUpper.isChecked -> {
                 val measurements = UpperMeasurements(
@@ -173,7 +153,7 @@ class MeasurementsActivity: AppCompatActivity() {
                     waist = binding.inputBioWaist.text.toString().toInt(),
                     hips = binding.inputBioHips.text.toString().toInt()
                 )
-                RetrofitInstance.measurementsApi.updateUpper(measurements, "Bearer $token")
+                RetrofitInstance.measurementsApi.updateUpper(measurements)
                     .enqueue(PutMeasurementsCallback(this))
             }
 
@@ -182,14 +162,14 @@ class MeasurementsActivity: AppCompatActivity() {
                     waist = binding.inputBioWaist.text.toString().toInt(),
                     hips = binding.inputBioHips.text.toString().toInt()
                 )
-                RetrofitInstance.measurementsApi.updateUnder(measurements, "Bearer $token")
+                RetrofitInstance.measurementsApi.updateUnder(measurements)
                     .enqueue(PutMeasurementsCallback(this))
             }
 
             binding.btnFoot.isChecked -> {
                 val footSize =
                     FootMeasurements(foot = binding.inputBioFoot.text.toString().toDouble())
-                RetrofitInstance.measurementsApi.updateFoot(footSize, "Bearer $token")
+                RetrofitInstance.measurementsApi.updateFoot(footSize)
                     .enqueue(PutMeasurementsCallback(this))
             }
         }
@@ -200,8 +180,6 @@ class MeasurementsActivity: AppCompatActivity() {
             binding.inputBioChest to ::validateChest,
             binding.inputBioWaist to ::validateWaist,
             binding.inputBioHips to ::validateHips,
-//            binding.inputBioWaistLower to ::validateWaistLower,
-//            binding.inputBioHipsLower to ::validateHipsLower,
             binding.inputBioFoot to ::validateFoot
         ).forEach { (field, validator) ->
             field.addTextChangedListener(object: TextWatcher {

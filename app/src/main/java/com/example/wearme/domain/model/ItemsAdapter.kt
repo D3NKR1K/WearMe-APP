@@ -10,8 +10,9 @@ import com.example.wearme.R
 import com.example.wearme.databinding.ItemProductBinding
 import com.example.wearme.domain.model.api.Cloth
 
-class ItemsAdapter(private var cloths: List<Cloth>):
-    RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class ItemsAdapter(
+    private var cloths: List<Cloth>, private val onInfoClickListener: (Cloth) -> Unit
+): RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemProductBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -31,22 +32,33 @@ class ItemsAdapter(private var cloths: List<Cloth>):
             crossfade(300)
             placeholder(R.drawable.placeholder_image)
             error(R.drawable.placeholder_image)
-            listener(onSuccess = { _, _ -> }, onError = { _, throwable ->
+            listener(onSuccess = { _, _ -> }, onError = { _, _ ->
                 Log.e("ItemsAdapter", "Error loading image")
             })
         }
 
         // Заполнение текстовых полей
         holder.binding.productName.text = cloth.name
-        holder.binding.productRating.text = "★ ${cloth.stars}"
-        holder.binding.productComments.text = "${cloth.comments} reviews"
+        holder.binding.ratingText.text = "★ ${cloth.stars}"
+        holder.binding.btnInfo.text = "${cloth.matchScore}"
+        holder.binding.reviewsText.text = "${cloth.comments} reviews"
+
+        holder.binding.btnInfo.setOnClickListener {
+            onInfoClickListener.invoke(cloth)
+        }
     }
 
     override fun getItemCount() = cloths.size
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<Cloth>) {
-        cloths = newList
+        cloths = filterUniqueMaxScore(newList).sortedByDescending { it.matchScore }
         notifyDataSetChanged()
+    }
+
+    private fun filterUniqueMaxScore(items: List<Cloth>): List<Cloth> {
+        return items.groupBy { it.name }.values.mapNotNull { group ->
+            group.maxByOrNull { it.matchScore }
+        }
     }
 }

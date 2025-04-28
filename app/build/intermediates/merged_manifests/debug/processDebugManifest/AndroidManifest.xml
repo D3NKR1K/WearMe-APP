@@ -35,6 +35,10 @@
             android:exported="false"
             android:theme="@style/Theme.WearMe" />
         <activity
+            android:name="com.example.wearme.ui.home.ClothDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WearMe" />
+        <activity
             android:name="com.example.wearme.ui.home.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.WearMe" />

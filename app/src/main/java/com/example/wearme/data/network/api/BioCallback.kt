@@ -2,7 +2,6 @@ package com.example.wearme.data.network.api
 
 import android.content.Intent
 import android.util.Log
-import com.example.wearme.data.model.MessageResponse
 import com.example.wearme.ui.auth.LoginActivity
 import com.example.wearme.ui.bio.BioActivity
 import com.example.wearme.ui.home.MainActivity
@@ -10,16 +9,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BioCallback(private val activity: BioActivity): Callback<MessageResponse> {
+class BioCallback(private val activity: BioActivity): Callback<Void> {
 
     override fun onResponse(
-        call: Call<MessageResponse?>, response: Response<MessageResponse?>
+        call: Call<Void?>, response: Response<Void?>
     ) {
         activity.showLoading(false)
 
         when (response.code()) {
             // Успешное обновление данных
-            204 -> {
+            201 -> {
                 Log.i("[BIO]", "Данные успешно сохранены")
                 activity.startActivity(Intent(activity, MainActivity::class.java))
                 activity.finish()
@@ -43,7 +42,7 @@ class BioCallback(private val activity: BioActivity): Callback<MessageResponse> 
         }
     }
 
-    override fun onFailure(call: Call<MessageResponse?>, t: Throwable) {
+    override fun onFailure(call: Call<Void?>, t: Throwable) {
         activity.showLoading(false)
         Log.e("[BIO]", "Сетевая ошибка: ${t.message}")
     }

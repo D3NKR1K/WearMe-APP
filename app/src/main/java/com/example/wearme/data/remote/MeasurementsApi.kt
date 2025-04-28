@@ -7,37 +7,26 @@ import com.example.wearme.domain.model.UpperMeasurements
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.PUT
 
 interface MeasurementsApi {
     @PUT("/body_measurements/upper/")
-    fun updateUpper(
-        @Body upperMeasurements: UpperMeasurements, @Header("Authorization") token: String
-    ): Call<MessageResponse>
+    fun updateUpper(@Body upperMeasurements: UpperMeasurements): Call<MessageResponse>
 
     @PUT("/body_measurements/under/")
-    fun updateUnder(
-        @Body underMeasurements: UnderMeasurements, @Header("Authorization") token: String
-    ): Call<MessageResponse>
+    fun updateUnder(@Body underMeasurements: UnderMeasurements): Call<MessageResponse>
 
     @PUT("/body_measurements/foot/")
     fun updateFoot(
-        @Body footMeasurements: FootMeasurements, @Header("Authorization") token: String
+        @Body footMeasurements: FootMeasurements
     ): Call<MessageResponse>
 
     @GET("/body_measurements/upper/")
-    fun getUpper(
-        @Header("Authorization") token: String
-    ): Call<UpperMeasurements>
+    fun getUpper(): Call<UpperMeasurements>
 
     @GET("/body_measurements/under/")
-    fun getUnder(
-        @Header("Authorization") token: String
-    ): Call<UnderMeasurements>
+    fun getUnder(): Call<UnderMeasurements>
 
     @GET("/body_measurements/foot/")
-    fun getFoot(
-        @Header("Authorization") token: String
-    ): Call<FootMeasurements>
+    fun getFoot(): Call<FootMeasurements>
 }

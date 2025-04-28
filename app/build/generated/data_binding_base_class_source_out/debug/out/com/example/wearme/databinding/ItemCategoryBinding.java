@@ -4,6 +4,7 @@ package com.example.wearme.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,10 +21,20 @@ public final class ItemCategoryBinding implements ViewBinding {
   private final MaterialCardView rootView;
 
   @NonNull
+  public final MaterialCardView categoryCard;
+
+  @NonNull
+  public final ImageView categoryIcon;
+
+  @NonNull
   public final TextView categoryName;
 
-  private ItemCategoryBinding(@NonNull MaterialCardView rootView, @NonNull TextView categoryName) {
+  private ItemCategoryBinding(@NonNull MaterialCardView rootView,
+      @NonNull MaterialCardView categoryCard, @NonNull ImageView categoryIcon,
+      @NonNull TextView categoryName) {
     this.rootView = rootView;
+    this.categoryCard = categoryCard;
+    this.categoryIcon = categoryIcon;
     this.categoryName = categoryName;
   }
 
@@ -54,13 +65,22 @@ public final class ItemCategoryBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      MaterialCardView categoryCard = (MaterialCardView) rootView;
+
+      id = R.id.categoryIcon;
+      ImageView categoryIcon = ViewBindings.findChildViewById(rootView, id);
+      if (categoryIcon == null) {
+        break missingId;
+      }
+
       id = R.id.categoryName;
       TextView categoryName = ViewBindings.findChildViewById(rootView, id);
       if (categoryName == null) {
         break missingId;
       }
 
-      return new ItemCategoryBinding((MaterialCardView) rootView, categoryName);
+      return new ItemCategoryBinding((MaterialCardView) rootView, categoryCard, categoryIcon,
+          categoryName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

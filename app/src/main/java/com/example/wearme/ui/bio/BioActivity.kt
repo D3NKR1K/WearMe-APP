@@ -6,39 +6,28 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
+import androidx.core.content.edit
 import com.example.wearme.R
 import com.example.wearme.data.network.api.BioCallback
-import com.example.wearme.data.network.api.TokenValidationCallback
 import com.example.wearme.data.remote.RetrofitInstance
 import com.example.wearme.databinding.ActivityBioBinding
-import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.domain.model.api.Gender
 import com.example.wearme.domain.model.api.Profile
 import com.google.android.material.textfield.TextInputLayout
 
 class BioActivity: AppCompatActivity() {
     private lateinit var binding: ActivityBioBinding
-    private lateinit var tokenManager: TokenManager
-    private val tokenValidationStatus = MutableLiveData<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        tokenManager = TokenManager(this)
-        val token = tokenManager.getToken() ?: run {
-            Log.e("[AUTH]", "Token not found")
-            finish()
-            return
-        }
-
         setupValidation()
-        setupButton(token)
+        setupButton()
     }
 
-    private fun setupButton(token: String) {
+    private fun setupButton() {
         binding.layoutBioButton.setOnClickListener {
             if (isValidInput()) {
                 val name = binding.inputBioName.text.toString().trim()
@@ -46,20 +35,16 @@ class BioActivity: AppCompatActivity() {
                 val gender = getSelectedGender()
 
                 val profile = Profile(name, age.toInt(), gender)
+
+                val sharedPreferences = getSharedPreferences(
+                    "user_prefs", MODE_PRIVATE
+                )
+                sharedPreferences.edit { putString("name", profile.name) }
+                Log.i("[NAME SAVE]", "NAME was saved: ${profile.name}")
+
                 showLoading(true)
 
-                RetrofitInstance.serviceApi.checkToken("Bearer $token")
-                    .enqueue(TokenValidationCallback(tokenValidationStatus))
-
-                tokenValidationStatus.observe(this) { isValid ->
-                    if (isValid) {
-                        RetrofitInstance.bioApi.humanization(profile, "Bearer $token")
-                            .enqueue(BioCallback(this))
-                    } else {
-                        Log.e("[BIO]", "Invalid token")
-                        showLoading(false)
-                    }
-                }
+                RetrofitInstance.bioApi.humanization(profile).enqueue(BioCallback(this))
             }
         }
     }

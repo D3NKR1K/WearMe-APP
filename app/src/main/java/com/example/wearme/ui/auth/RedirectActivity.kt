@@ -41,8 +41,10 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
                 return@launch
             }
 
+            RetrofitInstance.init(token)
+
             withContext(Dispatchers.IO) {
-                RetrofitInstance.serviceApi.checkToken("Bearer $token")
+                RetrofitInstance.serviceApi.checkToken()
                     .enqueue(TokenValidationCallback(tokenValidationStatus))
             }
 
@@ -51,7 +53,7 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
             tokenValidationStatus.observe(this@RedirectActivity) { isValid ->
                 if (isValid) {
                     Log.i(TAG, "Token is valid")
-                    RetrofitInstance.bioApi.dehumanization("Bearer $token")
+                    RetrofitInstance.bioApi.dehumanization()
                         .enqueue(CheckBioCallback(this@RedirectActivity))
                 } else {
                     Log.i(TAG, "Token is invalid")
