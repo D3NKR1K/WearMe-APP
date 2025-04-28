@@ -12,12 +12,14 @@ object RetrofitInstance {
     private lateinit var authRetrofit: Retrofit
     private lateinit var noAuthRetrofit: Retrofit
 
-    fun init(token: String) {
+    fun initWithoutToken() {
+        noAuthRetrofit = Retrofit.Builder().baseUrl(BASE_URL).client(OkHttpClient.Builder().build())
+            .addConverterFactory(GsonConverterFactory.create()).build()
+    }
+
+    fun initWithToken(token: String) {
         authRetrofit = Retrofit.Builder().baseUrl(BASE_URL)
             .client(OkHttpClient.Builder().addInterceptor(AuthInterceptor(token)).build())
-            .addConverterFactory(GsonConverterFactory.create()).build()
-
-        noAuthRetrofit = Retrofit.Builder().baseUrl(BASE_URL).client(OkHttpClient.Builder().build())
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 

@@ -27,6 +27,8 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
         installSplashScreen().setKeepOnScreenCondition { isLoading }
         super.onCreate(savedInstanceState)
 
+        RetrofitInstance.initWithoutToken()
+
         lifecycleScope.launch {
             val token = withContext(Dispatchers.IO) {
                 TokenManager(this@RedirectActivity).getToken()
@@ -41,7 +43,7 @@ class RedirectActivity: AppCompatActivity(), BioCallbackHandler {
                 return@launch
             }
 
-            RetrofitInstance.init(token)
+            RetrofitInstance.initWithToken(token)
 
             withContext(Dispatchers.IO) {
                 RetrofitInstance.serviceApi.checkToken()

@@ -28,6 +28,8 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
                 TokenManager(activity).saveToken(token)
                 Log.i("[TOKEN SAVE]", "Token was saved")
 
+                RetrofitInstance.initWithToken(token)
+
                 val sharedPreferences = activity.getSharedPreferences(
                     "user_prefs", android.content.Context.MODE_PRIVATE
                 )
