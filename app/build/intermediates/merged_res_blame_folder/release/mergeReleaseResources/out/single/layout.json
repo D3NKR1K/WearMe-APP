@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_cloth_details.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_cloth_details.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_bio.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_bio.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_registration.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_registration.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/item_category.xml",
+        "source": "com.example.wearme.app-main-35:/layout/item_category.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_main.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_profile.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_profile.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/item_product.xml",
+        "source": "com.example.wearme.app-main-35:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_measurements.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_measurements.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-mergeReleaseResources-33:/layout/activity_login.xml",
+        "source": "com.example.wearme.app-main-35:/layout/activity_login.xml"
+    }
+]

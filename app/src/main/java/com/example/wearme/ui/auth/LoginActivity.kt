@@ -10,18 +10,15 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.wearme.R
-import com.example.wearme.data.network.api.BioCallbackHandler
 import com.example.wearme.data.network.api.LoginCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityLoginBinding
 import com.example.wearme.domain.model.api.User
-import com.example.wearme.ui.bio.BioActivity
-import com.example.wearme.ui.home.MainActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 
-class LoginActivity: AppCompatActivity(), BioCallbackHandler {
+class LoginActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private var apiCall: Call<*>? = null
@@ -190,16 +187,6 @@ class LoginActivity: AppCompatActivity(), BioCallbackHandler {
         layout.error = null
         layout.boxStrokeColor = ContextCompat.getColor(this, R.color.black)
         return true
-    }
-
-    override fun navigateToMain() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
-
-    override fun navigateToBio() {
-        startActivity(Intent(this, BioActivity::class.java))
-        finish()
     }
     // endregion
 

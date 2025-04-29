@@ -33,5 +33,5 @@ object RetrofitInstance {
             MeasurementsApiService::class.java
         )
     }
-    val clothesApiService: ClothesApiService by lazy { authRetrofit.create(clothesApiService::class.java) }
+    val clothesApiService: ClothesApiService by lazy { authRetrofit.create(ClothesApiService::class.java) }
 }

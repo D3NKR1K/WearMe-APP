@@ -1,12 +1,17 @@
 package com.example.wearme.data.network.api
 
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.util.Log
 import androidx.core.content.edit
 import com.example.wearme.data.model.LoginResponse
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
+import com.example.wearme.domain.model.api.Profile
 import com.example.wearme.domain.model.api.User
 import com.example.wearme.ui.auth.LoginActivity
+import com.example.wearme.ui.bio.BioActivity
+import com.example.wearme.ui.home.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,12 +36,45 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
                 RetrofitInstance.initWithToken(token)
 
                 val sharedPreferences = activity.getSharedPreferences(
-                    "user_prefs", android.content.Context.MODE_PRIVATE
+                    "user_prefs", MODE_PRIVATE
                 )
                 sharedPreferences.edit { putString("email", user.email) }
                 Log.i("[EMAIL SAVE]", "Email was saved: ${user.email}")
 
-                RetrofitInstance.bioApiService.dehumanization().enqueue(CheckBioCallback(activity))
+                RetrofitInstance.bioApiService.dehumanization().enqueue(object: Callback<Profile> {
+                    override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                        when (response.code()) {
+                            200 -> {
+                                Log.i("[BIO]", "BIO WAS FOUND")
+
+                                val name = response.body()?.name ?: "Unknown"
+
+                                val sharedPreferences = activity.getSharedPreferences(
+                                    "user_prefs", MODE_PRIVATE
+                                )
+                                sharedPreferences.edit { putString("name", name) }
+
+                                activity.startActivity(Intent(activity, MainActivity::class.java))
+                                activity.finish()
+                            }
+
+                            404 -> {
+                                Log.i("[BIO]", "BIO NOT FOUND")
+
+                                activity.startActivity(Intent(activity, BioActivity::class.java))
+                                activity.finish()
+                            }
+
+                            else -> {
+                                Log.i("[BIO]", "Unexpected response: ${response.code()}")
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Profile>, t: Throwable) {
+                        Log.e("[BIO]", "Error: ${t.message}")
+                    }
+                })
             }
 
             401 -> {

@@ -21,7 +21,7 @@ class ProfileActivity: AppCompatActivity() {
         binding.name.text = sharedPreferences.getString("name", "No name found")
         binding.email.text = sharedPreferences.getString("email", "No email found")
 
-        setupClickListeners() // Setup button click listeners
+        setupClickListeners()
     }
 
     private fun setupClickListeners() {

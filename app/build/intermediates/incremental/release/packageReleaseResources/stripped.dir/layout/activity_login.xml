@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/color_background"
+  android:padding="24dp"
+  tools:context=".ui.auth.LoginActivity">
+
+  <!-- Guidelines -->
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_top"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.2" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_bottom"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.8" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/button_left_guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.1" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/button_right_guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.9" />
+
+  <!-- Header Logo -->
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/header_SignIn_logo"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/jua"
+    android:text="@string/app_name"
+    android:textAlignment="center"
+    android:textColor="@color/logo"
+    android:textSize="56sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@id/header_SignIn_title"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+  <!-- Header SignIn -->
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/header_SignIn_title"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/jua"
+    android:text="@string/header_signInPage"
+    android:textAlignment="center"
+    android:textColor="@color/sign"
+    android:textSize="34sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@id/layout_SignIn_email"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/header_SignIn_logo" />
+
+  <!-- Email Input -->
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/layout_SignIn_email"
+    style="@style/InputLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:errorEnabled="true"
+    app:layout_constraintBottom_toTopOf="@id/layout_SignIn_password"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/header_SignIn_title"
+    app:startIconDrawable="@drawable/ic_email_field"
+    app:startIconContentDescription="@string/icon_email_description">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/input_user_email"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint_user_email"
+      android:inputType="textEmailAddress"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      tools:text="kuzmdaniel@gmail.com" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <!-- Password Input -->
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/layout_SignIn_password"
+    style="@style/InputLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:endIconMode="password_toggle"
+    app:errorEnabled="true"
+    app:layout_constraintBottom_toTopOf="@id/layout_SignIn_button"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/layout_SignIn_email"
+    app:startIconDrawable="@drawable/ic_password_field"
+    app:startIconContentDescription="@string/icon_password_description"
+    app:endIconContentDescription="@string/icon_password_visibility">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/input_user_password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint_user_password"
+      android:imeOptions="actionDone"
+      android:inputType="textPassword"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      tools:text="password" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <!-- Sign In Button -->
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/layout_SignIn_button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/button_main_color"
+    android:fontFamily="@font/jua"
+    android:minHeight="48dp"
+    android:text="@string/button_signInPage"
+    android:textColor="@color/white"
+    app:cornerRadius="8dp"
+    app:layout_constraintBottom_toTopOf="@id/linkTo_SignUp_description"
+    app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
+    app:layout_constraintStart_toStartOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/layout_SignIn_password"
+    app:layout_constraintWidth_percent="0.7" />
+
+  <!-- Sign Up Links -->
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/linkTo_SignUp_description"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/jua"
+    android:gravity="center"
+    android:text="@string/link_to_SignUpPage_description"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toTopOf="@id/linkTo_SignUp"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/layout_SignIn_button" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/linkTo_SignUp"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:fontFamily="@font/jua"
+    android:gravity="center"
+    android:text="@string/header_signUpPage"
+    android:textAlignment="center"
+    android:textColor="@color/sign"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+    app:layout_constraintTop_toBottomOf="@id/linkTo_SignUp_description"
+    app:layout_constraintWidth_percent="0.3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import com.example.wearme.R
-import com.example.wearme.data.network.api.BioCallback
+import com.example.wearme.data.network.api.PostBioCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityBioBinding
 import com.example.wearme.domain.model.api.Gender
@@ -44,7 +44,7 @@ class BioActivity: AppCompatActivity() {
 
                 showLoading(true)
 
-                RetrofitInstance.bioApiService.humanization(profile).enqueue(BioCallback(this))
+                RetrofitInstance.bioApiService.humanization(profile).enqueue(PostBioCallback(this))
             }
         }
     }

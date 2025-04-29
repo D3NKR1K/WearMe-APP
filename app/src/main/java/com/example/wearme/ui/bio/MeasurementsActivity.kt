@@ -3,14 +3,11 @@ package com.example.wearme.ui.bio
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
 import com.example.wearme.R
 import com.example.wearme.data.network.api.PutMeasurementsCallback
-import com.example.wearme.data.network.api.TokenValidationCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityMeasurementsBinding
 import com.example.wearme.domain.model.FootMeasurements
@@ -20,38 +17,26 @@ import com.example.wearme.domain.model.UpperMeasurements
 class MeasurementsActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMeasurementsBinding
-    private val tokenValidationStatus = MutableLiveData<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMeasurementsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        RetrofitInstance.systemApiService.checkToken()
-            .enqueue(TokenValidationCallback(tokenValidationStatus))
-
-        tokenValidationStatus.observe(this) { isValid ->
-            if (isValid) {
-                setupUI()
-                setupValidation()
-            } else {
-                Log.e("[AUTH]", "Invalid token")
-            }
-        }
+        setupUI()
+        setupValidation()
     }
 
     private fun setupUI() {
         binding.categoryToggle.check(R.id.btnUpper)
         updateMeasurementVisibility(R.id.btnUpper)
 
-        // Настройка переключателя категорий
         binding.categoryToggle.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 updateMeasurementVisibility(checkedId)
             }
         }
 
-        // Обработчик кнопки сохранения
         binding.layoutEnterButton.setOnClickListener {
             if (validateMeasurements()) {
                 saveMeasurements()

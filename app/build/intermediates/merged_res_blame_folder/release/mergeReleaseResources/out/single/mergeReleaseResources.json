@@ -1,0 +1,202 @@
+[
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_item_category.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/item_category.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xxhdpi_ic_password_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xxhdpi/ic_password_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_main.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_measurements.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_measurements.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_registration.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_registration.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xhdpi_ic_user_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xhdpi/ic_user_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-hdpi_ic_email_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-hdpi/ic_email_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xhdpi_ic_email_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xhdpi/ic_email_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_ic_placeholer_image.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/ic_placeholer_image.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xhdpi_ic_password_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xhdpi/ic_password_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_circle_background.xml.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/circle_background.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xxxhdpi_ic_user_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xxxhdpi/ic_user_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_ic_profile_placeholder.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/ic_profile_placeholder.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_item_product.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-mdpi_ic_user_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-mdpi/ic_user_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-mdpi_ic_password_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-mdpi/ic_password_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/font_jua.xml.flat",
+        "source": "com.example.wearme.app-main-35:/font/jua.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-mdpi_ic_email_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-mdpi/ic_email_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xxhdpi_ic_user_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xxhdpi/ic_user_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-hdpi_ic_user_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-hdpi/ic_user_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xxxhdpi_ic_password_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xxxhdpi/ic_password_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_placeholder_image.xml.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/placeholder_image.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xxhdpi_ic_email_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xxhdpi/ic_email_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_login.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-xxxhdpi_ic_email_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-xxxhdpi/ic_email_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_radio_background.xml.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/radio_background.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_cloth_details.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_cloth_details.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable-hdpi_ic_password_field.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable-hdpi/ic_password_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/xml_backup_rules.xml.flat",
+        "source": "com.example.wearme.app-main-35:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_bio.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_bio.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/layout_activity_profile.xml.flat",
+        "source": "com.example.wearme.app-main-35:/layout/activity_profile.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.wearme.app-main-35:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_ic_star.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/ic_star.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-mdpi/ic_launcher_round.webp"
+    }
+]
