@@ -1,96 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="center_horizontal"
+        android:paddingBottom="16dp">
 
-        <!-- Изображение товара -->
-        <ImageView
-            android:id="@+id/clothImage"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/cloth_image" />
-
-        <!-- Основные данные -->
-        <TextView
-            android:id="@+id/clothName"
+        <!-- Карточка с изображением и описанием -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp">
 
-        <TextView
-            android:id="@+id/clothRating"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/clothImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_image"
+                    android:contentDescription="@string/cloth_image"
+                    app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/clothName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/logo"
+                    app:fontFamily="@font/jua"
+                    tools:text="Skirt" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/icon_star"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="4dp"
+                        android:src="@drawable/ic_star"
+                        android:contentDescription="@string/star_icon" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/clothRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        app:fontFamily="@font/jua"
+                        tools:text="4.5" />
+                </LinearLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/clothMatchScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/jua"
+                    tools:text="Match: 85%" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/clothComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/jua"
+                    tools:text="Reviews count: " />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Карточка с измерениями -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp" />
+            app:cardCornerRadius="16dp">
 
-        <TextView
-            android:id="@+id/clothMatchScore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <TextView
-            android:id="@+id/clothComments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/measurements_title"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/sign"
+                    app:fontFamily="@font/jua" />
 
-        <!-- Разделитель -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white"
-            android:layout_marginVertical="16dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
 
-        <!-- Заголовок для мерок -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/measurements_title"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/measurementsChest"
+                        android:textSize="16sp"
+                        tools:text="100"
+                        android:layout_marginVertical="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/jua" />
 
-        <!-- Мерки -->
-        <TextView
-            android:id="@+id/measurementsChest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp" />
+                    <TextView
+                        android:id="@+id/measurementsWaist"
+                        android:textSize="16sp"
+                        tools:text="100"
+                        android:layout_marginVertical="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/jua" />
 
-        <TextView
-            android:id="@+id/measurementsWaist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginTop="4dp" />
+                    <TextView
+                        android:id="@+id/measurementsHips"
+                        android:textSize="16sp"
+                        tools:text="100"
+                        android:layout_marginVertical="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/jua" />
 
-        <TextView
-            android:id="@+id/measurementsHips"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginTop="4dp" />
+                    <TextView
+                        android:id="@+id/measurementsFoot"
+                        android:textSize="16sp"
+                        tools:text="100"
+                        android:layout_marginVertical="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/jua" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/measurementsFoot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </ScrollView>

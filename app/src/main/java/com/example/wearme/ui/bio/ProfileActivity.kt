@@ -32,7 +32,7 @@ class ProfileActivity: AppCompatActivity() {
         }
 
         // Edit profile button click listener
-        binding.editProfile.setOnClickListener {
+        binding.editMeasurements.setOnClickListener {
             navigateToMeasurements() // Navigate to the measurements screen
         }
     }

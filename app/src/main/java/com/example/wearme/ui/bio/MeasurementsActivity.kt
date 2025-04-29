@@ -86,7 +86,7 @@ class MeasurementsActivity: AppCompatActivity() {
     }
 
     private fun validateFoot(): Boolean {
-        return validateMeasurement(binding.layoutBioFoot, "стопы", 20, 35)
+        return validateMeasurementFoot(binding.layoutBioFoot, "стопы", 20.0, 35.0)
     }
 
     private fun validateChest(): Boolean {
@@ -99,6 +99,20 @@ class MeasurementsActivity: AppCompatActivity() {
 
     private fun validateHips(): Boolean {
         return validateMeasurement(binding.layoutBioHips, "бедер", 70, 200)
+    }
+
+    private fun validateMeasurementFoot(
+        layout: com.google.android.material.textfield.TextInputLayout,
+        fieldName: String,
+        min: Double,
+        max: Double
+    ): Boolean {
+        val value = layout.editText?.text.toString().trim()
+        return when {
+            value.isEmpty() -> showError(layout, "Поле $fieldName не может быть пустым")
+            value.toDouble() !in min .. max -> showError(layout, "Допустимый диапазон: $min-$max")
+            else -> clearError(layout)
+        }
     }
 
     private fun validateMeasurement(

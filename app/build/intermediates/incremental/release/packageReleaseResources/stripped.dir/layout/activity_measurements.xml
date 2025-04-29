@@ -94,28 +94,6 @@
 
     <!-- Верхние мерки -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_bio_hips"
-        style="@style/InputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/layout_bio_chest"
-        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_bio_hips"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/measurements_hint_hips"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            tools:text="183" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_bio_chest"
         style="@style/InputLayout"
         android:layout_width="0dp"
@@ -124,7 +102,7 @@
         app:layout_constraintBottom_toTopOf="@id/layout_bio_waist"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_hips">
+        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_chest"
@@ -143,7 +121,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
+        app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/layout_bio_chest">
@@ -157,6 +135,28 @@
             android:textColor="@color/black"
             android:textSize="15sp"
             tools:text="75" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_bio_hips"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
+        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_bio_hips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/measurements_hint_hips"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:text="183" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Мерки стопы -->

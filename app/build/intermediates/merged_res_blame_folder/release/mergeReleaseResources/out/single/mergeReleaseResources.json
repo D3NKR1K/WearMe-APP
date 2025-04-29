@@ -20,12 +20,12 @@
         "source": "com.example.wearme.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.wearme.app-release-34:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.wearme.app-main-35:/mipmap-mdpi/ic_launcher.webp"
-    },
-    {
         "merged": "com.example.wearme.app-release-34:/layout_activity_registration.xml.flat",
         "source": "com.example.wearme.app-main-35:/layout/activity_registration.xml"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.wearme.app-main-35:/mipmap-mdpi/ic_launcher.webp"
     },
     {
         "merged": "com.example.wearme.app-release-34:/drawable-xhdpi_ic_user_field.png.flat",
@@ -74,6 +74,10 @@
     {
         "merged": "com.example.wearme.app-release-34:/drawable-xxxhdpi_ic_user_field.png.flat",
         "source": "com.example.wearme.app-main-35:/drawable-xxxhdpi/ic_user_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_ic_lower.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/ic_lower.png"
     },
     {
         "merged": "com.example.wearme.app-release-34:/drawable_ic_profile_placeholder.png.flat",
@@ -130,6 +134,14 @@
     {
         "merged": "com.example.wearme.app-release-34:/drawable-xxxhdpi_ic_password_field.png.flat",
         "source": "com.example.wearme.app-main-35:/drawable-xxxhdpi/ic_password_field.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_ic_upper.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/ic_upper.png"
+    },
+    {
+        "merged": "com.example.wearme.app-release-34:/drawable_ic_footwear.png.flat",
+        "source": "com.example.wearme.app-main-35:/drawable/ic_footwear.png"
     },
     {
         "merged": "com.example.wearme.app-release-34:/drawable_placeholder_image.xml.flat",

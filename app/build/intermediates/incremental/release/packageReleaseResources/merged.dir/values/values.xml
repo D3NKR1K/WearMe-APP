@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="categories">
-    <item>All</item>
-    <item>Upper</item>
-    <item>Lower</item>
-  </string-array>
+        <item>All</item>
+        <item>Upper</item>
+        <item>Lower</item>
+    </string-array>
     <array name="com_google_android_gms_fonts_certs">
         <item>@array/com_google_android_gms_fonts_certs_dev</item>
         <item>@array/com_google_android_gms_fonts_certs_prod</item>
@@ -39,6 +39,10 @@
     <item name="itemsBottomPanel" type="id"/>
     <string name="app_name" translatable="false">WearMe</string>
     <string name="app_slogan" translatable="false">Dress to Impress, Effortlessly</string>
+    <string name="bio_button_text">Confirm</string>
+    <string name="bio_hint_age">Age</string>
+    <string name="bio_name_hint">Name</string>
+    <string name="bio_title">Create Profile</string>
     <string name="button_signInPage">Sign In</string>
     <string name="button_signUpPage">Sign Up</string>
     <string name="cloth_image">Cloth Image</string>
@@ -67,10 +71,12 @@
     <string name="measurements_hint_height">Height</string>
     <string name="measurements_hint_hips">Hips</string>
     <string name="measurements_hint_waist">Waist</string>
-    <string name="measurements_title">Body Measurements (cm)</string>
+    <string name="measurements_title">Cloth Measurements (cm)</string>
     <string name="registration_failed">Registration failed. Please try again</string>
     <string name="retry">Retry</string>
+    <string name="reviews_count">Reviews count:</string>
     <string name="sign_up">Sign Up</string>
+    <string name="star_icon">Raiting icon</string>
     <style name="AlertDialogButton" parent="Widget.Material3.Button.TextButton">
         <item name="android:textColor">@color/button_main_color</item>
     </style>
@@ -105,6 +111,10 @@
         <item name="fontFamily">@font/jua</item>
         <item name="cornerRadius">8dp</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> 
     </style>
     <style name="SettingsItem" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">match_parent</item>
