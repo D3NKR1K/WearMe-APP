@@ -24,40 +24,37 @@ class ClothDetailActivity: AppCompatActivity() {
         val cloth = intent.getParcelableExtra("CLOTH_DATA", Cloth::class.java)
 
         cloth?.let {
+            // Загрузка основной информации
             binding.clothImage.load(it.photoUrl)
             binding.clothName.text = it.name
             binding.clothRating.text = "${it.stars}"
             binding.clothMatchScore.text = "Match: ${it.matchScore}%"
             binding.clothComments.text = "Reviews count: ${it.comments}"
 
-            // Установка и скрытие мерок
-            setMeasurement(binding.measurementsChest, it.chest, "Chest")
-            setMeasurement(binding.measurementsWaist, it.waist, "Waist")
-            setMeasurement(binding.measurementsHips, it.hips, "Hips")
-            setMeasurement(binding.measurementsFoot, it.foot, "Foot")
-        }
+            // Получаем первую вариацию (или null)
+            val bestVariation = it.variations.maxByOrNull { variation -> variation.matchScore }
 
+            // Установка мерок из вариации
+            bestVariation?.let { variation ->
+                setMeasurement(binding.measurementsChest, variation.chest, "Chest")
+                setMeasurement(binding.measurementsWaist, variation.waist, "Waist")
+                setMeasurement(binding.measurementsHips, variation.hips, "Hips")
+                setMeasurement(binding.measurementsFoot, variation.foot, "Foot")
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n", "DefaultLocale")
     private fun setMeasurement(view: TextView, value: Number?, label: String) {
         if (value != null) {
             val formatted = when (value) {
-                is Int, is Long -> value.toString()
-                is Double -> {
-                    if (value % 1 == 0.0) value.toInt().toString()
-                    else String.format("%.1f", value)
-                }
-
+                is Float -> String.format("%.1f", value)
                 else -> value.toString()
             }
-
             view.text = "$label: $formatted cm"
             view.visibility = View.VISIBLE
         } else {
             view.visibility = View.GONE
         }
     }
-
-
 }

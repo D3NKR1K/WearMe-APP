@@ -58,15 +58,6 @@ class ItemsAdapter(
                 }
 
                 holder.itemView.context.startActivity(intent)
-
-//                // Проверяем возможность обработки ссылки
-//                if (intent.resolveActivity(holder.itemView.context.packageManager) != null) {
-//                    holder.itemView.context.startActivity(intent)
-//                } else {
-//                    Toast.makeText(
-//                        holder.itemView.context, "No app to handle this link", Toast.LENGTH_SHORT
-//                    ).show()
-//                }
             } catch (e: Exception) {
                 Log.e("ItemsAdapter", "Error opening link: ${e.message}")
                 Toast.makeText(
@@ -80,13 +71,24 @@ class ItemsAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<Cloth>) {
-        cloths = filterUniqueMaxScore(newList).sortedByDescending { it.matchScore }
+        // Сортируем по максимальному match_score вариаций
+        cloths = filterUniqueMaxScore(newList).sortedByDescending { cloth ->
+            cloth.variations.maxOfOrNull { it.matchScore } ?: 0
+        }
         notifyDataSetChanged()
     }
 
+
     private fun filterUniqueMaxScore(items: List<Cloth>): List<Cloth> {
         return items.groupBy { it.name }.values.mapNotNull { group ->
-            group.maxByOrNull { it.matchScore }
+            val bestCloth = group.maxByOrNull { cloth ->
+                cloth.variations.maxOfOrNull { it.matchScore } ?: 0
+            }
+            bestCloth?.apply {
+                matchScore = variations.maxOfOrNull { it.matchScore } ?: 0
+            }
         }
     }
+
+
 }

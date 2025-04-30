@@ -1,4 +1,4 @@
-#Tue Apr 29 12:57:43 GMT+04:00 2025
+#Wed Apr 30 00:27:47 GMT+04:00 2025
 base.0=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.10=C\:\\Users\\kuzmd\\Documents\\WearMe-APP\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex

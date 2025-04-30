@@ -14,13 +14,19 @@ data class Cloth(
     @SerializedName("name") val name: String,
     @SerializedName("color") val color: String?,
     @SerializedName("gender") val gender: ClothingGenderEnum?,
-    @SerializedName("chest") val chest: Int?,
-    @SerializedName("waist") val waist: Int?,
-    @SerializedName("hips") val hips: Int?,
-    @SerializedName("foot") val foot: Double?,
-    @SerializedName("match_score") val matchScore: Int,
     @SerializedName("stars") val stars: Float,
     @SerializedName("comments") val comments: Int,
     @SerializedName("url") val url: String,
-    @SerializedName("photo_url") val photoUrl: String
+    @SerializedName("photo_url") val photoUrl: String,
+    @SerializedName("variations") val variations: List<Variation>,
+    @SerializedName("match_score") var matchScore: Int
+): Parcelable
+
+@Parcelize
+data class Variation(
+    val chest: Int?,
+    val waist: Int?,
+    val hips: Int?,
+    val foot: Float?,
+    @SerializedName("match_score") val matchScore: Int
 ): Parcelable
