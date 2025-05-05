@@ -26,6 +26,7 @@
   <string name="iconEmailDescription">Иконка email</string>
   <string name="iconPasswordDescription">Иконка пароля</string>
   <string name="iconPasswordVisibility">Переключить видимость пароля</string>
+<!--  а нужно ли оно?-->
 
   <string name="measurementsHeader">Введите ваши мерки</string>
   <string name="measurementsHintHeight">Рост</string>
