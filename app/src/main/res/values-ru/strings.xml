@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="header_signUpPage">Регистрация</string>
-  <string name="button_signUpPage">Зарегистрироваться</string>
-  <string name="hint_user_name">Полное имя</string>
-  <string name="hint_user_password">Пароль</string>
-  <string name="header_signInPage">Вход</string>
-  <string name="button_signInPage">Войти</string>
-  <string name="link_to_SignUpPage_description">У вас нет аккаунта?</string>
-  <string name="link_to_SignInPage_description">У вас есть аккаунт?</string>
-  <string name="sign_up">Регистрация</string>
-  <string name="error_empty_name">Введите свое имя</string>
-  <string name="error_short_name">Имя должно состоять не менее чем из 3 символов</string>
-  <string name="error_empty_email">Ввведите email</string>
-  <string name="error_invalid_email">Неверный формат email</string>
-  <string name="error_empty_password">Введите пароль</string>
-  <string name="error_short_password">Пароль должен состоять не менее чем из 8 символов</string>
-  <string name="error_no_uppercase">Пароль должен содержать хотя бы одну заглавную букву</string>
-  <string name="registration_failed">Регистрация не удалась. Пожалуйста, попробуйте еще раз</string>
+  <string name="headerSignUpPage">Регистрация</string>
+  <string name="headerSignInPage">Вход</string>
+  <string name="buttonSignUpPage">Зарегистрироваться</string>
+  <string name="buttonSignInPage">Войти</string>
+
+  <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
+  <string name="linkToSignInPageDescription">У вас есть аккаунт?</string>
+
+  <string name="hintUserName">Полное имя</string>
+  <string name="hintUserPassword">Пароль</string>
+  <string name="signUp">Регистрация</string>
+
+  <string name="errorEmptyName">Введите свое имя</string>
+  <string name="errorShortName">Имя должно состоять не менее чем из 3 символов</string>
+  <string name="errorEmptyEmail">Ввведите email</string>
+  <string name="errorInvalidEmail">Неверный формат email</string>
+  <string name="errorEmptyPassword">Введите пароль</string>
+  <string name="errorShortPassword">Пароль должен состоять не менее чем из 8 символов</string>
+  <string name="errorNoUppercase">Пароль должен содержать хотя бы одну заглавную букву</string>
+  <string name="errorMatchPassword">Пароли не совпадают</string>
+  <string name="registrationFailed">Регистрация не удалась. Пожалуйста, попробуйте еще раз</string>
   <string name="retry">Повтор</string>
-  <string name="icon_email_description">Иконка email</string>
-  <string name="icon_password_description">Иконка пароля</string>
-  <string name="icon_password_visibility">Переключить видимость пароля</string>
-  <string name="measurements_header">Введите ваши мерки</string>
-  <string name="measurements_hint_height">Рост</string>
-  <string name="measurements_hint_chest">Обхват груди</string>
-  <string name="measurements_hint_waist">Обхват талии</string>
-  <string name="measurements_hint_hips">Обхват бедер</string>
-  <string name="measurements_button_text">Ввод</string>
+
+  <string name="iconEmailDescription">Иконка email</string>
+  <string name="iconPasswordDescription">Иконка пароля</string>
+  <string name="iconPasswordVisibility">Переключить видимость пароля</string>
+
+  <string name="measurementsHeader">Введите ваши мерки</string>
+  <string name="measurementsHintHeight">Рост</string>
+  <string name="measurementsHintChest">Обхват груди</string>
+  <string name="measurementsHintWaist">Обхват талии</string>
+  <string name="measurementsHintHips">Обхват бедер</string>
+  <string name="measurementsButtonText">Ввод</string>
+  <string name="measurementsHintFeet">Размер стопы</string>
+
+  <string name="bioButtonText">Подтвердить</string>
+  <string name="bioNameHint">Имя</string>
+  <string name="bioHintAge">Возраст</string>
+  <string name="bioTitle">Создать профиль</string>
+
+  <string name="starIcon">Оценить</string>
+  <string name="reviewsCount">Количество отзывов:</string>
 </resources>

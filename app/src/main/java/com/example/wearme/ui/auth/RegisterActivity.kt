@@ -79,11 +79,11 @@ class RegisterActivity: AppCompatActivity() {
         val email = binding.inputUserEmail.text.toString().trim()
         return when {
             email.isEmpty() -> showError(
-                binding.layoutSignUpEmail, getString(R.string.error_empty_email)
+                binding.layoutSignUpEmail, getString(R.string.errorEmptyEmail)
             )
 
             !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> showError(
-                binding.layoutSignUpEmail, getString(R.string.error_invalid_email)
+                binding.layoutSignUpEmail, getString(R.string.errorInvalidEmail)
             )
 
             else -> clearError(binding.layoutSignUpEmail)
@@ -96,19 +96,19 @@ class RegisterActivity: AppCompatActivity() {
         val passwordRep = binding.inputUserPasswordRep.text.toString().trim()
         return when {
             password.isEmpty() -> showError(
-                binding.layoutSignUpPassword, getString(R.string.error_empty_password)
+                binding.layoutSignUpPassword, getString(R.string.errorEmptyPassword)
             )
 
             password.length < 8 -> showError(
-                binding.layoutSignUpPassword, getString(R.string.error_short_password)
+                binding.layoutSignUpPassword, getString(R.string.errorShortPassword)
             )
 
             !password.contains(Regex("[A-Z]")) -> showError(
-                binding.layoutSignUpPassword, getString(R.string.error_no_uppercase)
+                binding.layoutSignUpPassword, getString(R.string.errorNoUppercase)
             )
 
             password != passwordRep -> showError(
-                binding.layoutSignUpPassword, getString(R.string.error_match_password)
+                binding.layoutSignUpPassword, getString(R.string.errorMatchPassword)
             )
 
             else -> clearError(binding.layoutSignUpPassword)

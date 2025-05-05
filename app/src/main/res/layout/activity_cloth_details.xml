@@ -58,8 +58,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="4dp"
-                        android:src="@drawable/ic_star"
-                        android:contentDescription="@string/star_icon" />
+                        android:contentDescription="@string/starIcon"
+                        android:src="@drawable/ic_star" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/clothRating"
