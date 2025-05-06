@@ -81,7 +81,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:layout_marginVertical="2dp"
-                    android:text="Edit Profile" />
+                    android:text="@string/profileEdit" />
 
                 <!-- Edit Measurements -->
                 <TextView
@@ -90,7 +90,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:layout_marginVertical="2dp"
-                    android:text="Edit Measurements" />
+                    android:text="@string/profileEditMeasuresents" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -100,7 +100,7 @@
             android:id="@+id/logout_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log Out"
+            android:text="@string/profileLogOut"
             android:textColor="@color/white"
             app:backgroundTint="@color/button_main_color"
             app:cornerRadius="8dp"

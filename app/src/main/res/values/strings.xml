@@ -1,61 +1,86 @@
 <resources>
-    <string name="app_name" translatable="false">WearMe</string>
-    <string name="app_slogan" translatable="false">Dress to Impress, Effortlessly</string>
 
-    <string name="headerSignUpPage">Sign Up</string>
-    <string name="buttonSignUpPage">Sign Up</string>
-
+<!--    список скорее всего не нужных строк, они не задействованы нигде-->
+<!--    <string name="app_name" translatable="false">WearMe</string>-->
+    <string name="appSlogan" translatable="false">Dress to Impress, Effortlessly</string>
     <string name="hintUserName">Full Name</string>
-<!--    а зачем?  -->
+    <string name="signUp">Sign Up</string>
+    <string name="errorEmptyName">Please enter your name</string>
+    <string name="errorShortName">Name must be at least 3 characters</string>
+    <string name="retry">Retry</string>
+    <string name="measurementsHintHeight">Height</string>
+    <string name="reviewsCount">Reviews count:</string>
+
+<!--    activity_bio  -->
+    <string name="appName" translatable="false">WearMe</string>
+    <string name="bioTitle">Create Profile</string>
+    <string name="bioNameHint">Name</string>
+    <string name="bioMale">M</string>
+    <string name="bioFemale">F</string>
+    <string name="bioHintAge">Age</string>
+    <string name="bioButtonText">Confirm</string>
+
+<!--    activity_cloth_details  -->
+    <string name="clothImage" translatable="false">Cloth Image</string>
+<!--    хз насколько нужна строка выше-->
+    <string name="starIcon">Rating icon</string>
+    <string name="measurementsTitle">Cloth Measurements (cm)</string>
+
+<!--    activity_login  -->
+    <string name="headerSignInPage">Sign In</string>
     <string name="hintUserEmail" translatable="false">Email</string>
     <string name="hintUserPassword">Password</string>
-
-    <string name="headerSignInPage">Sign In</string>
+    <string name="iconEmailDescription">Email icon</string>
+    <string name="iconPasswordDescription">Password icon</string>
+    <string name="iconPasswordVisibility">Switch password visibility</string>
+<!--    возможно имелась ввиду строка ниже, прерыдущая выглядит некорректно  -->
+<!--    <string name="linkToSignUpPageDescription">Don\'t have an account?</string>-->
+    <string name="headerSignUpPage">Sign Up</string>
     <string name="buttonSignInPage">Sign In</string>
+    <string name="buttonSignUpPage">Sign Up</string>
 
-    <string name="linkToSignUpPageDescription">Don\'t have an account?</string>
+<!--    activity_main  -->
+    <string name="mainProfile">Profile</string>
+    <string name="mainCatalog">Catalog</string>
+    <string name="mainCategory">Categories catalog</string>
+
+<!--    activity_measurments  -->
+    <string name="measurementsHeader">Enter your measurements</string>
+    <string name="measurementsUpper">Upper</string>
+    <string name="measurementsLower">Lower</string>
+    <string name="measurementsFoot">Foot</string>
+    <string name="measurementsHintChest">Chest</string>
+    <string name="measurementsHintWaist">Waist</string>
+    <string name="measurementsHintHips">Hips</string>
+    <string name="measurementsHintFeet">Foot</string>
+    <string name="measurementsButtonText">Enter</string>
+
+<!--    activity_profile  -->
+    <string name="profileEdit">Edit Profile</string>
+    <string name="profileEditMeasuresents">Edit Measurements</string>
+    <string name="profileLogOut">Log Out</string>
+
+<!--    activity_registration  -->
     <string name="linkToSignInPageDescription">You have an account?</string>
 
-    <string name="signUp">Sign Up</string>
-<!--    a zachem?  -->
-    <string name="errorEmptyName">Please enter your name</string>
-<!--    analogichno  -->
-    <string name="errorShortName">Name must be at least 3 characters</string>
-<!--    analogichno  -->
+<!--    item_category  -->
+    <string name="category" translatable="false">Category</string>
+
+<!--    item_product -->
+    <string name="productName" translatable="false">Clothes name</string>
+    <string name="itemProductRating" translatable="false">4.5</string>
+    <string name="productReviews" translatable="false">(100 reviews)</string>
+    <string name="productInfo" translatable="false">Info</string>
+    <string name="productBuy" translatable="false">Buy</string>
+
+<!--    errors  -->
+    <string name="errorMatchPassword">Passwords do not matching</string>
     <string name="errorEmptyEmail">Please enter email</string>
     <string name="errorInvalidEmail">Invalid email format</string>
     <string name="errorEmptyPassword">Please enter password</string>
     <string name="errorShortPassword">Password must be at least 8 characters</string>
     <string name="errorNoUppercase">Password must contain at least one uppercase letter</string>
     <string name="registrationFailed">Registration failed. Please try again</string>
-<!--    ??  -->
-    <string name="retry">Retry</string>
-<!--    ??  -->
-
-    <string name="iconEmailDescription">Email icon</string>
-    <string name="iconPasswordDescription">Password icon</string>
-    <string name="iconPasswordVisibility">Switch password visibility</string>
-    <string name="measurementsHeader">Enter your measurements</string>
-    <string name="measurementsHintHeight">Height</string>
-<!--    ??  -->
-    <string name="measurementsHintChest">Chest</string>
-    <string name="measurementsHintWaist">Waist</string>
-    <string name="measurementsHintHips">Hips</string>
-    <string name="measurementsButtonText">Enter</string>
-    <string name="measurementsHintFeet">Foot</string>
-    <string name="errorMatchPassword">Passwords do not matching</string>
-    <string name="bioButtonText">Confirm</string>
-    <string name="bioNameHint">Name</string>
-    <string name="bioHintAge">Age</string>
-    <string name="bioTitle">Create Profile</string>
-    <string name="starIcon">Raiting icon</string>
-    <string name="reviewsCount">Reviews count:</string>
-<!--    ??  -->
-
-    <string name="mainCategory"> </string>
-    <string name="mainCatalog"></string>
-    <string name="mailProfile"></string>
-    <string name="profile">Profile</string>
 
     <string-array name="categories">
         <item>All</item>

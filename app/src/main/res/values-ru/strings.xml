@@ -1,46 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="headerSignUpPage">Регистрация</string>
+
+<!--  лишние??-->
+  <string name="hintUserName">Полное имя</string>
+  <string name="signUp">Регистрация</string>
+  <string name="errorEmptyName">Введите свое имя</string>
+  <string name="errorShortName">Имя должно состоять не менее чем из 3 символов</string>
+  <string name="retry">Повтор</string>
+  <string name="measurementsHintHeight">Рост</string>
+  <string name="reviewsCount">Количество отзывов:</string>
+
+  <!--    activity_bio  -->
+  <string name="bioTitle">Создать</string>
+  <string name="bioNameHint">Имя</string>
+  <string name="bioMale">М</string>
+  <string name="bioFemale">Ж</string>
+  <string name="bioHintAge">Возраст</string>
+  <string name="bioButtonText">Подтвердить</string>
+
+  <!--    activity_cloth_details  -->
+  <string name="starIcon">Оценить</string>
+  <string name="measurementsTitle">Мерки одежды (см)</string>
+
+  <!--    activity_login  -->
   <string name="headerSignInPage">Вход</string>
+  <string name="hintUserPassword">Пароль</string>
+  <string name="iconEmailDescription">Иконка email</string>
+  <string name="iconPasswordDescription">Иконка пароля</string>
+  <string name="iconPasswordVisibility">Переключить видимость пароля</string>
+<!--  <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>-->
+  <string name="headerSignUpPage">Регистрация</string>
   <string name="buttonSignUpPage">Зарегистрироваться</string>
   <string name="buttonSignInPage">Войти</string>
 
-  <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
+  <!--    activity_main  -->
+  <string name="mainCategory">Предложенная одежды</string>
+  <string name="mainCatalog">Каталог</string>
+  <string name="mainProfile">Профиль</string>
+
+  <!--    activity_measurments  -->
+  <string name="measurementsHeader">Введите ваши мерки</string>
+  <string name="measurementsUpper">Торс</string>
+  <string name="measurementsLower">Талия</string>
+  <string name="measurementsFoot">Стопы</string>
+  <string name="measurementsHintChest">Обхват груди</string>
+  <string name="measurementsHintWaist">Обхват талии</string>
+  <string name="measurementsHintHips">Обхват бедер</string>
+  <string name="measurementsHintFeet">Размер стопы</string>
+  <string name="measurementsButtonText">Ввод</string>
+
+  <!--    activity_profile  -->
+  <string name="profileEdit">Редактировать профиль</string>
+  <string name="profileEditMeasuresents">Редактировать мерки</string>
+  <string name="profileLogOut">Выйти</string>
+
+  <!--    activity_registration  -->
   <string name="linkToSignInPageDescription">У вас есть аккаунт?</string>
 
-  <string name="hintUserName">Полное имя</string>
-  <string name="hintUserPassword">Пароль</string>
-  <string name="signUp">Регистрация</string>
-
-  <string name="errorEmptyName">Введите свое имя</string>
-  <string name="errorShortName">Имя должно состоять не менее чем из 3 символов</string>
+  <!--    errors  -->
+  <string name="errorMatchPassword">Пароли не совпадают</string>
   <string name="errorEmptyEmail">Ввведите email</string>
   <string name="errorInvalidEmail">Неверный формат email</string>
   <string name="errorEmptyPassword">Введите пароль</string>
   <string name="errorShortPassword">Пароль должен состоять не менее чем из 8 символов</string>
   <string name="errorNoUppercase">Пароль должен содержать хотя бы одну заглавную букву</string>
-  <string name="errorMatchPassword">Пароли не совпадают</string>
   <string name="registrationFailed">Регистрация не удалась. Пожалуйста, попробуйте еще раз</string>
-  <string name="retry">Повтор</string>
 
-  <string name="iconEmailDescription">Иконка email</string>
-  <string name="iconPasswordDescription">Иконка пароля</string>
-  <string name="iconPasswordVisibility">Переключить видимость пароля</string>
-<!--  а нужно ли оно?-->
-
-  <string name="measurementsHeader">Введите ваши мерки</string>
-  <string name="measurementsHintHeight">Рост</string>
-  <string name="measurementsHintChest">Обхват груди</string>
-  <string name="measurementsHintWaist">Обхват талии</string>
-  <string name="measurementsHintHips">Обхват бедер</string>
-  <string name="measurementsButtonText">Ввод</string>
-  <string name="measurementsHintFeet">Размер стопы</string>
-
-  <string name="bioButtonText">Подтвердить</string>
-  <string name="bioNameHint">Имя</string>
-  <string name="bioHintAge">Возраст</string>
-  <string name="bioTitle">Создать профиль</string>
-
-  <string name="starIcon">Оценить</string>
-  <string name="reviewsCount">Количество отзывов:</string>
 </resources>
