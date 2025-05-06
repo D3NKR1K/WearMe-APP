@@ -43,6 +43,21 @@ class LoginActivity: AppCompatActivity() {
     // region UI Setup
     private fun setupUI() {
         Log.d(TAG, "setupUI: Setting up navigation and sign-in button")
+
+        // TODO: Check spaces remover for email field
+        binding.inputUserEmail.filters = arrayOf<InputFilter>(
+          InputFilter { source, _, _, _, _, _, ->
+            source.toString().replace(" ", "")
+          }
+        )
+
+        // TODO: Check spaces remover for password field
+        binding.inputUserPassword.filters = arrayOf<InputFilter>(
+          InputFilter { source, _, _, _, _, _, ->
+            source.toString().replace(" ", "")
+          }
+        )
+
         setupNavigation()
         setupSignInButton()
     }
