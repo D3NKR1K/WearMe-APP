@@ -1,5 +1,6 @@
 package com.example.wearme.ui.home
 
+
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.example.wearme.databinding.ActivityClothDetailsBinding
 import com.example.wearme.domain.model.api.Cloth
+
 
 class ClothDetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityClothDetailsBinding
@@ -28,14 +30,14 @@ class ClothDetailActivity: AppCompatActivity() {
             binding.clothImage.load(it.photoUrl)
             binding.clothName.text = it.name
             binding.clothRating.text = "${it.stars}"
-            binding.clothMatchScore.text = "Match: ${it.matchScore}%"
+            binding.clothMatchScore.text = "Match: ${it.variation.matchScore}%"
             binding.clothComments.text = "Reviews count: ${it.comments}"
 
             // Получаем первую вариацию (или null)
-            val bestVariation = it.variations.maxByOrNull { variation -> variation.matchScore }
+            val bestVariation = it.variation
 
             // Установка мерок из вариации
-            bestVariation?.let { variation ->
+            bestVariation.let { variation ->
                 setMeasurement(binding.measurementsChest, variation.chest, "Chest")
                 setMeasurement(binding.measurementsWaist, variation.waist, "Waist")
                 setMeasurement(binding.measurementsHips, variation.hips, "Hips")

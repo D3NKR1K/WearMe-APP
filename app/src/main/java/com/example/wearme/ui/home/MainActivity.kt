@@ -118,11 +118,11 @@ class MainActivity: AppCompatActivity() {
                     try {
                         val response = RetrofitInstance.clothesApiService.getClothes(
                             globalCategoryId = when (category.lowercase()) {
-                                "upper" -> 3
-                                "lower" -> 1
-                                "footwear" -> 2
+                                "upper" -> 1
+                                "lower" -> 2
+                                "footwear" -> 3
                                 else -> throw IllegalArgumentException("Invalid category")
-                            }, subCategoryId = null, color = null
+                            }
                         )
 
                         if (response.isSuccessful) {

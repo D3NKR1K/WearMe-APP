@@ -52,8 +52,9 @@ class ItemsAdapter(
 
         holder.binding.btnBuy.setOnClickListener {
             try {
+                val url = "https://www.wildberries.ru/catalog/${cloth.article}/detail.aspx"
                 val intent = Intent(Intent.ACTION_VIEW).apply {
-                    data = cloth.url.toUri()
+                    data = url.toUri()
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 }
 
@@ -71,23 +72,8 @@ class ItemsAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<Cloth>) {
-        // Сортируем по максимальному match_score вариаций
-        cloths = filterUniqueMaxScore(newList).sortedByDescending { cloth ->
-            cloth.variations.maxOfOrNull { it.matchScore } ?: 0
-        }
+        cloths = newList
         notifyDataSetChanged()
-    }
-
-
-    private fun filterUniqueMaxScore(items: List<Cloth>): List<Cloth> {
-        return items.groupBy { it.name }.values.mapNotNull { group ->
-            val bestCloth = group.maxByOrNull { cloth ->
-                cloth.variations.maxOfOrNull { it.matchScore } ?: 0
-            }
-            bestCloth?.apply {
-                matchScore = variations.maxOfOrNull { it.matchScore } ?: 0
-            }
-        }
     }
 
 

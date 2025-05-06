@@ -11,15 +11,15 @@ enum class ClothingGenderEnum { M, F, U }
 data class Cloth(
     @SerializedName("global_category_id") val globalCategory: Int,
     @SerializedName("sub_category_id") val category: Int?,
+    @SerializedName("color_id") val color: String?,
+
     @SerializedName("name") val name: String,
-    @SerializedName("color") val color: String?,
-    @SerializedName("gender") val gender: ClothingGenderEnum?,
+    @SerializedName("gender") val gender: ClothingGenderEnum,
     @SerializedName("stars") val stars: Float,
     @SerializedName("comments") val comments: Int,
-    @SerializedName("url") val url: String,
+    @SerializedName("article") val article: Int,
     @SerializedName("photo_url") val photoUrl: String,
-    @SerializedName("variations") val variations: List<Variation>,
-    @SerializedName("match_score") var matchScore: Int
+    @SerializedName("variation") val variation: Variation,
 ): Parcelable
 
 @Parcelize
@@ -28,5 +28,6 @@ data class Variation(
     val waist: Int?,
     val hips: Int?,
     val foot: Float?,
-    @SerializedName("match_score") val matchScore: Int
+    @SerializedName("match_score") val matchScore: Int,
+    @SerializedName("size_id") val sizeId: Int
 ): Parcelable

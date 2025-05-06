@@ -9,7 +9,5 @@ interface ClothesApiService {
     @GET("/clothes/")
     suspend fun getClothes(
         @Query("global_category_id") globalCategoryId: Int,
-        @Query("sub_category_id") subCategoryId: Int?,
-        @Query("color") color: String?,
     ): Response<List<Cloth>>
 }
