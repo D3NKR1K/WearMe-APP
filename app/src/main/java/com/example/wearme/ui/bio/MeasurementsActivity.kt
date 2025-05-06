@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.wearme.R
+import android.util.Log
 import com.example.wearme.data.network.api.PutMeasurementsCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityMeasurementsBinding
@@ -78,9 +79,21 @@ class MeasurementsActivity: AppCompatActivity() {
 
     private fun validateMeasurements(): Boolean {
         return when {
-            binding.btnUpper.isChecked -> validateChest() && validateWaist() && validateHips()
-            binding.btnLower.isChecked -> validateWaist() && validateHips()
-            binding.btnFoot.isChecked -> validateFoot()
+            binding.btnUpper.isChecked -> {
+              val isChestValid = validateChest()
+              val isWaistValid = validateWaist()
+              val isHipsValid = validateHips()
+              Log.d(TAG, "isValidInput: Chest valid=$isChestValid, Waist valid=isWaistValid, Hips Valid=isHipsValid")
+            }
+            binding.btnLower.isChecked -> {
+              val isWaistValid = validateWaist()
+              val isHipsValid = validateHips()
+              Log.d(TAG, "isValidInput: Waist valid=$isWaistValid, Hips Valid=isHipsValid")
+            }
+            binding.btnFoot.isChecked -> {
+              val isFootValid = validateFoot()
+              Log.d(TAG, "isValidInput: Foot valid=$isFootValid")
+            }
             else -> false
         }
     }
@@ -148,9 +161,9 @@ class MeasurementsActivity: AppCompatActivity() {
         when {
             binding.btnUpper.isChecked -> {
                 val measurements = UpperMeasurements(
-                    chest = binding.inputBioChest.text.toString().toInt(),
-                    waist = binding.inputBioWaist.text.toString().toInt(),
-                    hips = binding.inputBioHips.text.toString().toInt()
+                    chest = binding.inputBioChest.getInt(),
+                    waist = binding.inputBioWaist.getInt(),
+                    hips = binding.inputBioHips.getInt()
                 )
                 RetrofitInstance.measurementsApiService.updateUpper(measurements)
                     .enqueue(PutMeasurementsCallback(this))
@@ -158,8 +171,8 @@ class MeasurementsActivity: AppCompatActivity() {
 
             binding.btnLower.isChecked -> {
                 val measurements = UnderMeasurements(
-                    waist = binding.inputBioWaist.text.toString().toInt(),
-                    hips = binding.inputBioHips.text.toString().toInt()
+                    waist = binding.inputBioWaist.getInt(),
+                    hips = binding.inputBioHips.getInt()
                 )
                 RetrofitInstance.measurementsApiService.updateUnder(measurements)
                     .enqueue(PutMeasurementsCallback(this))
@@ -167,12 +180,15 @@ class MeasurementsActivity: AppCompatActivity() {
 
             binding.btnFoot.isChecked -> {
                 val footSize =
-                    FootMeasurements(foot = binding.inputBioFoot.text.toString().toDouble())
+                    FootMeasurements(foot = binding.inputBioFoot.getDouble())
                 RetrofitInstance.measurementsApiService.updateFoot(footSize)
                     .enqueue(PutMeasurementsCallback(this))
             }
         }
     }
+
+    private fun TextInputEditText.getInt() = text.toString().trim().toInt()
+    private fun TextInputEditText.getDouble() = text.toString().trim().toDouble()
 
     private fun setupValidation() {
         listOf(

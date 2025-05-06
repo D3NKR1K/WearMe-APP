@@ -87,7 +87,7 @@ class BioActivity: AppCompatActivity() {
         val isNameValid = validateName()
         val isAgeValid = validateAge()
         val isGenderValid = validateGender()
-        Log.d(TAG, "isValidInput: Name valid=$isNameValid, Age valid=$isAgeValid, GenderValid=$isGenderValid")
+        Log.d(TAG, "isValidInput: Name valid=$isNameValid, Age valid=$isAgeValid, Gender Valid=$isGenderValid")
         return isNameValid && isAgeValid && isGenderValid
     }
 
