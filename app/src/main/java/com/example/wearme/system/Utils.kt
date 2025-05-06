@@ -6,6 +6,7 @@ import android.text.InputFilter
 import android.text.InputType
 import android.util.Log
 import android.view.inputmethod.EditorInfo
+import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -52,4 +53,16 @@ fun TextInputEditText.configurePasswordInput() {
     filters = arrayOf(InputFilter { source, _, _, _, _, _ ->
         source.toString().replace(" ", "")
     })
+}
+
+fun TextInputLayout.showError(message: String, context: Context): Boolean {
+    error = message
+    boxStrokeColor = ContextCompat.getColor(context, R.color.red)
+    return false
+}
+
+fun TextInputLayout.clearError(context: Context): Boolean {
+    error = null
+    boxStrokeColor = ContextCompat.getColor(context, R.color.black)
+    return true
 }

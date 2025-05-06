@@ -80,12 +80,12 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
 
             401 -> {
                 Log.e("[LOGIN]", response.message())
-                activity.showPasswordError()
+                activity.showError("Invalid password")
             }
 
             404 -> {
                 Log.i("[LOGIN]", response.message())
-                activity.showEmailError()
+                activity.showError("The user was not found")
             }
 
         }

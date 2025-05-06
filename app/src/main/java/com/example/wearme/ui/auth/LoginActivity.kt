@@ -13,7 +13,6 @@ import com.example.wearme.databinding.ActivityLoginBinding
 import com.example.wearme.domain.model.api.User
 import com.example.wearme.system.*
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 
 class LoginActivity: BaseActivity() {
@@ -94,12 +93,12 @@ class LoginActivity: BaseActivity() {
         return when {
             password.isEmpty() -> {
                 Log.w(TAG, "validatePassword: Password is empty")
-                showError(binding.layoutSignInPassword, getString(R.string.errorEmptyPassword))
+                binding.layoutSignInPassword.showError(getString(R.string.errorEmptyPassword), this)
             }
 
             else -> {
                 Log.d(TAG, "validatePassword: Password is valid (not empty)")
-                clearError(binding.layoutSignInPassword)
+                binding.layoutSignInPassword.clearError(this)
             }
         }
     }
@@ -110,8 +109,8 @@ class LoginActivity: BaseActivity() {
         hideKeyboard()
         setLoading(true, R.id.layout_SignIn_button)
 
-        clearError(binding.layoutSignInEmail)
-        clearError(binding.layoutSignInPassword)
+        binding.layoutSignInEmail.clearError(this)
+        binding.layoutSignInPassword.clearError(this)
         if (isValidInput()) {
             Log.i(TAG, "Attempting sign-in with email: ${binding.inputUserEmail.getTText()}")
 
@@ -140,30 +139,10 @@ class LoginActivity: BaseActivity() {
         })
     }
 
-    private fun showError(layout: TextInputLayout, message: String): Boolean {
-        Log.e(TAG, "showError: ${layout.hint} - $message")
-        layout.error = message
-        layout.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
-        return false
-    }
-
-    internal fun showEmailError() {
-        Log.e(TAG, "showEmailError: The user was not found")
-        binding.layoutSignInEmail.error = "The user was not found"
-        binding.layoutSignInEmail.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
-    }
-
-    internal fun showPasswordError() {
-        Log.e(TAG, "showPasswordError: Invalid password")
-        binding.layoutSignInPassword.error = "Invalid password"
+    internal fun showError(message: String) {
+        Log.e(TAG, "LoginError: $message")
+        binding.layoutSignInPassword.error = message
         binding.layoutSignInPassword.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
-    }
-
-    private fun clearError(layout: TextInputLayout): Boolean {
-        Log.d(TAG, "clearError: Clearing error for ${layout.hint}")
-        layout.error = null
-        layout.boxStrokeColor = ContextCompat.getColor(this, R.color.black)
-        return true
     }
     // endregion
 

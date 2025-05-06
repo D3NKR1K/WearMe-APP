@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.example.wearme.data.network.api.RegisterCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
@@ -13,7 +12,6 @@ import com.example.wearme.databinding.ActivityRegistrationBinding
 import com.example.wearme.domain.model.api.User
 import com.example.wearme.system.*
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 
 class RegisterActivity: BaseActivity() {
@@ -101,22 +99,22 @@ class RegisterActivity: BaseActivity() {
         return when {
             password.isEmpty() -> {
                 Log.w(TAG, "validatePassword: Password is empty")
-                showError(binding.layoutSignUpPassword, getString(R.string.errorEmptyPassword))
+                binding.layoutSignUpPassword.showError(getString(R.string.errorEmptyPassword), this)
             }
 
             password.length < 8 -> {
                 Log.w(TAG, "validatePassword: Password too short")
-                showError(binding.layoutSignUpPassword, getString(R.string.errorShortPassword))
+                binding.layoutSignUpPassword.showError(getString(R.string.errorShortPassword), this)
             }
 
             !password.contains(Regex("[A-ZА-Я]")) -> {
                 Log.w(TAG, "validatePassword: No uppercase letters")
-                showError(binding.layoutSignUpPassword, getString(R.string.errorNoUppercase))
+                binding.layoutSignUpPassword.showError(getString(R.string.errorNoUppercase), this)
             }
 
             else -> {
                 Log.d(TAG, "validatePassword: Password is valid")
-                clearError(binding.layoutSignUpPassword)
+                binding.layoutSignUpPassword.clearError(this)
             }
         }
     }
@@ -129,17 +127,21 @@ class RegisterActivity: BaseActivity() {
         return when {
             passwordRep.isEmpty() -> {
                 Log.w(TAG, "validatePasswordRep: Repeat password is empty")
-                showError(binding.layoutSignUpPasswordRep, getString(R.string.errorEmptyPassword))
+                binding.layoutSignUpPasswordRep.showError(
+                    getString(R.string.errorEmptyPassword), this
+                )
             }
 
             password != passwordRep -> {
                 Log.w(TAG, "validatePasswordRep: Passwords don't match")
-                showError(binding.layoutSignUpPasswordRep, getString(R.string.errorMatchPassword))
+                binding.layoutSignUpPasswordRep.showError(
+                    getString(R.string.errorMatchPassword), this
+                )
             }
 
             else -> {
                 Log.d(TAG, "validatePasswordRep: Passwords match")
-                clearError(binding.layoutSignUpPasswordRep)
+                binding.layoutSignUpPasswordRep.clearError(this)
             }
         }
     }
@@ -150,9 +152,9 @@ class RegisterActivity: BaseActivity() {
         hideKeyboard()
         setLoading(true, R.id.layout_SignUp_button)
 
-        clearError(binding.layoutSignUpEmail)
-        clearError(binding.layoutSignUpPassword)
-        clearError(binding.layoutSignUpPasswordRep)
+        binding.layoutSignUpEmail.clearError(this)
+        binding.layoutSignUpPassword.clearError(this)
+        binding.layoutSignUpPasswordRep.clearError(this)
         if (isValidInput()) {
             Log.i(
                 TAG, "Attempting registration with email: ${binding.inputUserEmail.getTText()}"
@@ -182,20 +184,6 @@ class RegisterActivity: BaseActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
-    }
-
-    private fun showError(layout: TextInputLayout, message: String): Boolean {
-        Log.e(TAG, "showError: ${layout.hint} - $message")
-        layout.error = message
-        layout.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
-        return false
-    }
-
-    private fun clearError(layout: TextInputLayout): Boolean {
-        Log.d(TAG, "clearError: Clearing error for ${layout.hint}")
-        layout.error = null
-        layout.boxStrokeColor = ContextCompat.getColor(this, R.color.black)
-        return true
     }
     // endregion
 
