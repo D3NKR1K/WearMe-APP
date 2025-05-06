@@ -5,23 +5,18 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.example.wearme.data.network.api.RegisterCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityRegistrationBinding
 import com.example.wearme.domain.model.api.User
-import com.example.wearme.system.configureEmailInput
-import com.example.wearme.system.configurePasswordInput
-import com.example.wearme.system.getTText
-import com.example.wearme.system.validateEmailField
+import com.example.wearme.system.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 
-class RegisterActivity: AppCompatActivity() {
+class RegisterActivity: BaseActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
     private var apiCall: Call<*>? = null
@@ -66,7 +61,6 @@ class RegisterActivity: AppCompatActivity() {
     private fun setupSignUpButton() {
         binding.layoutSignUpButton.setOnClickListener {
             Log.d(TAG, "Sign-up button clicked")
-            hideKeyboard()
             attemptSignUp()
         }
     }
@@ -153,11 +147,16 @@ class RegisterActivity: AppCompatActivity() {
 
     // region Helper Methods
     private fun attemptSignUp() {
+        hideKeyboard()
+        setLoading(true, R.id.layout_SignUp_button)
+
+        clearError(binding.layoutSignUpEmail)
+        clearError(binding.layoutSignUpPassword)
+        clearError(binding.layoutSignUpPasswordRep)
         if (isValidInput()) {
             Log.i(
                 TAG, "Attempting registration with email: ${binding.inputUserEmail.getTText()}"
             )
-            showLoading(true)
 
             val user = User(
                 email = binding.inputUserEmail.getTText(),
@@ -169,17 +168,6 @@ class RegisterActivity: AppCompatActivity() {
         } else {
             Log.w(TAG, "attemptSignUp: Input validation failed")
         }
-    }
-
-    internal fun showLoading(isLoading: Boolean) {
-        Log.d(TAG, "showLoading: isLoading=$isLoading")
-        binding.layoutSignUpButton.isEnabled = !isLoading
-    }
-
-    private fun hideKeyboard() {
-        Log.d(TAG, "hideKeyboard: Hiding keyboard")
-        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
     // endregion
 

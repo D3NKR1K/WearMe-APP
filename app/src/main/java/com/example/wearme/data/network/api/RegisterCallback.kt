@@ -2,6 +2,7 @@ package com.example.wearme.data.network.api
 
 import android.content.Intent
 import android.util.Log
+import com.example.wearme.R
 import com.example.wearme.data.model.MessageResponse
 import com.example.wearme.ui.auth.LoginActivity
 import com.example.wearme.ui.auth.RegisterActivity
@@ -11,7 +12,7 @@ import retrofit2.Response
 
 class RegisterCallback(private val activity: RegisterActivity): Callback<MessageResponse> {
     override fun onResponse(call: Call<MessageResponse>, response: Response<MessageResponse>) {
-        activity.showLoading(false)
+        activity.setLoading(false, R.id.layout_SignUp_button)
 
         when (response.code()) {
             201 -> {
@@ -31,7 +32,7 @@ class RegisterCallback(private val activity: RegisterActivity): Callback<Message
     }
 
     override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-        activity.showLoading(false)
+        activity.setLoading(false, R.id.layout_SignUp_button)
         Log.e("[REGISTER]", t.message.toString())
     }
 

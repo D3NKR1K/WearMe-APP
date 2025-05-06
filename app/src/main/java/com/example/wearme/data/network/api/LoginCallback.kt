@@ -4,6 +4,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.util.Log
 import androidx.core.content.edit
+import com.example.wearme.R
 import com.example.wearme.data.model.LoginResponse
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
@@ -20,7 +21,7 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
     Callback<LoginResponse> {
 
     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-        activity.showLoading(false)
+        activity.setLoading(false, R.id.layout_SignIn_button)
 
         when (response.code()) {
             200 -> {
@@ -91,7 +92,7 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
     }
 
     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-        activity.showLoading(false)
+        activity.setLoading(false, R.id.layout_SignIn_button)
         Log.e("LoginCallbackFailure", t.message.toString())
     }
 

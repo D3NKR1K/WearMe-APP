@@ -11,6 +11,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.apache.commons.validator.routines.EmailValidator
 
+
 fun validateEmailField(
     context: Context, email: String, layout: TextInputLayout, tag: String
 ): Boolean {

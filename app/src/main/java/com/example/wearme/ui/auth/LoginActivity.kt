@@ -5,23 +5,18 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.example.wearme.data.network.api.LoginCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityLoginBinding
 import com.example.wearme.domain.model.api.User
-import com.example.wearme.system.configureEmailInput
-import com.example.wearme.system.configurePasswordInput
-import com.example.wearme.system.getTText
-import com.example.wearme.system.validateEmailField
+import com.example.wearme.system.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 
-class LoginActivity: AppCompatActivity() {
+class LoginActivity: BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private var apiCall: Call<*>? = null
@@ -64,7 +59,6 @@ class LoginActivity: AppCompatActivity() {
     private fun setupSignInButton() {
         binding.layoutSignInButton.setOnClickListener {
             Log.d(TAG, "Sign-in button clicked")
-            hideKeyboard()
             attemptSignIn()
         }
     }
@@ -113,11 +107,13 @@ class LoginActivity: AppCompatActivity() {
 
     // region Helper Methods
     private fun attemptSignIn() {
+        hideKeyboard()
+        setLoading(true, R.id.layout_SignIn_button)
+
         clearError(binding.layoutSignInEmail)
         clearError(binding.layoutSignInPassword)
         if (isValidInput()) {
             Log.i(TAG, "Attempting sign-in with email: ${binding.inputUserEmail.getTText()}")
-            showLoading(true)
 
             val user = User(
                 email = binding.inputUserEmail.getTText(),
@@ -129,17 +125,6 @@ class LoginActivity: AppCompatActivity() {
         } else {
             Log.w(TAG, "attemptSignIn: Input validation failed")
         }
-    }
-
-    internal fun showLoading(isLoading: Boolean) {
-        Log.d(TAG, "showLoading: isLoading=$isLoading")
-        binding.layoutSignInButton.isEnabled = !isLoading
-    }
-
-    private fun hideKeyboard() {
-        Log.d(TAG, "hideKeyboard: Hiding keyboard")
-        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
     // endregion
 
