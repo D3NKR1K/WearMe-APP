@@ -16,7 +16,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/jua"
         android:gravity="center"
-        android:text="Categories catalog"
+        android:text="@string/mainCategory"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginHorizontal="8dp"
-            android:text="Catalog" />
+            android:text="@string/mainCatalog" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/productsProfileButton"
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginHorizontal="8dp"
-            android:text="Profile" />
+            android:text="@string/mainProfile" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

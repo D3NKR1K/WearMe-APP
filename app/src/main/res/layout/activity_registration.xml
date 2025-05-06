@@ -39,19 +39,19 @@
 
   <!-- Header Logo -->
   <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/header_SignUp_logo"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/jua"
-    android:text="@string/app_name"
-    android:textAlignment="center"
-    android:textColor="@color/logo"
-    android:textSize="56sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toTopOf="@id/header_SignUp_title"
-    app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-    app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-    app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+      android:id="@+id/header_SignUp_logo"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/jua"
+      android:text="@string/appName"
+      android:textAlignment="center"
+      android:textColor="@color/logo"
+      android:textSize="56sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@id/header_SignUp_title"
+      app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
+      app:layout_constraintStart_toEndOf="@id/button_left_guideline"
+      app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
   <!-- Header SignUp -->
   <com.google.android.material.textview.MaterialTextView
@@ -185,7 +185,7 @@
       android:focusable="true"
       android:gravity="center"
       android:minHeight="48dp"
-      android:text="@string/headerSignInPage"
+      android:text="@string/buttonSignInPage"
       android:textAlignment="center"
       android:textColor="@color/sign"
       android:textSize="16sp"

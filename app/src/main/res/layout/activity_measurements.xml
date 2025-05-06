@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Upper" />
+            android:text="@string/measurementsUpper" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLower"
@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lower" />
+            android:text="@string/measurementsLower" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnFoot"
@@ -89,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Foot" />
+            android:text="@string/measurementsFoot" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <!-- Верхние мерки -->

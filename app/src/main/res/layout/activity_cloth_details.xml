@@ -30,9 +30,9 @@
                     android:id="@+id/clothImage"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
+                    android:contentDescription="@string/clothImage"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder_image"
-                    android:contentDescription="@string/cloth_image"
                     app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -107,10 +107,10 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/measurements_title"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:text="@string/measurementsTitle"
                     android:textColor="@color/sign"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     app:fontFamily="@font/jua" />
 
                 <LinearLayout
