@@ -13,6 +13,8 @@ import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityBioBinding
 import com.example.wearme.domain.model.api.Gender
 import com.example.wearme.domain.model.api.Profile
+import com.example.wearme.system.getInt
+import com.example.wearme.system.getTText
 import com.google.android.material.textfield.TextInputLayout
 
 class BioActivity: AppCompatActivity() {
@@ -30,11 +32,11 @@ class BioActivity: AppCompatActivity() {
     private fun setupButton() {
         binding.layoutBioButton.setOnClickListener {
             if (isValidInput()) {
-                val name = binding.inputBioName.getTrimmedText()
-                val age = binding.inputBioAge.getTrimmedText().toInt()
-                val gender = getSelectedGender()
-
-                val profile = Profile(name, age, gender)
+                val profile = Profile(
+                    binding.inputBioName.getTText(),
+                    binding.inputBioAge.getInt(),
+                    getSelectedGender()
+                )
 
                 val sharedPreferences = getSharedPreferences(
                     "user_prefs", MODE_PRIVATE
@@ -49,7 +51,6 @@ class BioActivity: AppCompatActivity() {
         }
     }
 
-    // Получение выбранного пола
     private fun getSelectedGender(): Gender {
         return when (binding.genderRadioGroup.checkedRadioButtonId) {
             R.id.radio_male -> {
@@ -67,7 +68,6 @@ class BioActivity: AppCompatActivity() {
         }
     }
 
-    // Настройка валидации
     private fun setupValidation() {
         listOf(
             binding.inputBioName to ::validateName, binding.inputBioAge to ::validateAge
@@ -87,12 +87,15 @@ class BioActivity: AppCompatActivity() {
         val isNameValid = validateName()
         val isAgeValid = validateAge()
         val isGenderValid = validateGender()
-        Log.d(TAG, "isValidInput: Name valid=$isNameValid, Age valid=$isAgeValid, Gender Valid=$isGenderValid")
+        Log.d(
+            TAG,
+            "isValidInput: Name valid=$isNameValid, Age valid=$isAgeValid, Gender Valid=$isGenderValid"
+        )
         return isNameValid && isAgeValid && isGenderValid
     }
 
     private fun validateName(): Boolean {
-        val name = binding.inputBioName.getTrimmedText()
+        val name = binding.inputBioName.getTText()
         return when {
             name.isEmpty() -> showError(binding.layoutBioName, "Enter name")
             else -> clearError(binding.layoutBioName)
@@ -119,8 +122,6 @@ class BioActivity: AppCompatActivity() {
         }
     }
 
-    private fun TextInputEditText.getTrimmedText() = text.toString().trim()
-
     private fun showError(layout: TextInputLayout, message: String): Boolean {
         layout.error = message
         layout.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
@@ -135,5 +136,9 @@ class BioActivity: AppCompatActivity() {
 
     internal fun showLoading(isLoading: Boolean) {
         binding.layoutBioButton.isEnabled = !isLoading
+    }
+
+    companion object {
+        private const val TAG = "BioActivity"
     }
 }

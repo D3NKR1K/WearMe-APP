@@ -3,17 +3,19 @@ package com.example.wearme.ui.bio
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.wearme.R
-import android.util.Log
 import com.example.wearme.data.network.api.PutMeasurementsCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityMeasurementsBinding
 import com.example.wearme.domain.model.FootMeasurements
 import com.example.wearme.domain.model.UnderMeasurements
 import com.example.wearme.domain.model.UpperMeasurements
+import com.example.wearme.system.getDouble
+import com.example.wearme.system.getInt
 
 class MeasurementsActivity: AppCompatActivity() {
 
@@ -80,20 +82,29 @@ class MeasurementsActivity: AppCompatActivity() {
     private fun validateMeasurements(): Boolean {
         return when {
             binding.btnUpper.isChecked -> {
-              val isChestValid = validateChest()
-              val isWaistValid = validateWaist()
-              val isHipsValid = validateHips()
-              Log.d(TAG, "isValidInput: Chest valid=$isChestValid, Waist valid=isWaistValid, Hips Valid=isHipsValid")
+                val isChestValid = validateChest()
+                val isWaistValid = validateWaist()
+                val isHipsValid = validateHips()
+                Log.d(
+                    TAG,
+                    "isValidInput: Chest valid=$isChestValid, Waist valid=isWaistValid, Hips Valid=isHipsValid"
+                )
+                return isChestValid && isWaistValid && isHipsValid
             }
+
             binding.btnLower.isChecked -> {
-              val isWaistValid = validateWaist()
-              val isHipsValid = validateHips()
-              Log.d(TAG, "isValidInput: Waist valid=$isWaistValid, Hips Valid=isHipsValid")
+                val isWaistValid = validateWaist()
+                val isHipsValid = validateHips()
+                Log.d(TAG, "isValidInput: Waist valid=$isWaistValid, Hips Valid=isHipsValid")
+                return isWaistValid && isHipsValid
             }
+
             binding.btnFoot.isChecked -> {
-              val isFootValid = validateFoot()
-              Log.d(TAG, "isValidInput: Foot valid=$isFootValid")
+                val isFootValid = validateFoot()
+                Log.d(TAG, "isValidInput: Foot valid=$isFootValid")
+                return isFootValid
             }
+
             else -> false
         }
     }
@@ -171,24 +182,19 @@ class MeasurementsActivity: AppCompatActivity() {
 
             binding.btnLower.isChecked -> {
                 val measurements = UnderMeasurements(
-                    waist = binding.inputBioWaist.getInt(),
-                    hips = binding.inputBioHips.getInt()
+                    waist = binding.inputBioWaist.getInt(), hips = binding.inputBioHips.getInt()
                 )
                 RetrofitInstance.measurementsApiService.updateUnder(measurements)
                     .enqueue(PutMeasurementsCallback(this))
             }
 
             binding.btnFoot.isChecked -> {
-                val footSize =
-                    FootMeasurements(foot = binding.inputBioFoot.getDouble())
+                val footSize = FootMeasurements(foot = binding.inputBioFoot.getDouble())
                 RetrofitInstance.measurementsApiService.updateFoot(footSize)
                     .enqueue(PutMeasurementsCallback(this))
             }
         }
     }
-
-    private fun TextInputEditText.getInt() = text.toString().trim().toInt()
-    private fun TextInputEditText.getDouble() = text.toString().trim().toDouble()
 
     private fun setupValidation() {
         listOf(
@@ -206,5 +212,9 @@ class MeasurementsActivity: AppCompatActivity() {
                 override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             })
         }
+    }
+
+    companion object {
+        private const val TAG = "MeasurementsActivity"
     }
 }

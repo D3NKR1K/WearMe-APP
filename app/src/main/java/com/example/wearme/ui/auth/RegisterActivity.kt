@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.util.Patterns
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,6 +13,10 @@ import com.example.wearme.data.network.api.RegisterCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityRegistrationBinding
 import com.example.wearme.domain.model.api.User
+import com.example.wearme.system.configureEmailInput
+import com.example.wearme.system.configurePasswordInput
+import com.example.wearme.system.getTText
+import com.example.wearme.system.validateEmailField
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
@@ -44,19 +47,9 @@ class RegisterActivity: AppCompatActivity() {
     private fun setupUI() {
         Log.d(TAG, "setupUI: Setting up navigation and sign-up button")
 
-        // TODO: Check spaces remover for email field
-        binding.inputUserEmail.filters = arrayOf<InputFilter>(
-          InputFilter { source, _, _, _, _, _, ->
-            source.toString().replace(" ", "")
-          }
-        )
-
-        // TODO: Check spaces remover for password field
-        binding.inputUserPassword.filters = arrayOf<InputFilter>(
-          InputFilter { source, _, _, _, _, _, ->
-            source.toString().replace(" ", "")
-          }
-        )
+        binding.inputUserEmail.configureEmailInput()
+        binding.inputUserPassword.configurePasswordInput()
+        binding.inputUserPasswordRep.configurePasswordInput()
 
         setupNavigation()
         setupSignUpButton()
@@ -91,32 +84,24 @@ class RegisterActivity: AppCompatActivity() {
         val isEmailValid = validateEmail()
         val isPasswordValid = validatePassword()
         val isPasswordRepValid = validatePasswordRep()
-        Log.d(TAG, "isValidInput: Email=$isEmailValid, Password=$isPasswordValid, Repeat=$isPasswordRepValid")
+        Log.d(
+            TAG,
+            "isValidInput: Email=$isEmailValid, Password=$isPasswordValid, Repeat=$isPasswordRepValid"
+        )
         return isEmailValid && isPasswordValid && isPasswordRepValid
     }
 
     private fun validateEmail(): Boolean {
-        val email = binding.inputUserEmail.getTrimmedText()
+        val email = binding.inputUserEmail.getTText()
         Log.v(TAG, "validateEmail: Validating email input")
 
-        return when {
-            email.isEmpty() -> {
-                Log.w(TAG, "validateEmail: Email is empty")
-                showError(binding.layoutSignUpEmail, getString(R.string.errorEmptyEmail))
-            }
-            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                Log.w(TAG, "validateEmail: Invalid email format")
-                showError(binding.layoutSignUpEmail, getString(R.string.errorInvalidEmail))
-            }
-            else -> {
-                Log.d(TAG, "validateEmail: Email is valid")
-                clearError(binding.layoutSignUpEmail)
-            }
-        }
+        return validateEmailField(
+            context = this, email = email, layout = binding.layoutSignUpEmail, tag = TAG
+        )
     }
 
     private fun validatePassword(): Boolean {
-        val password = binding.inputUserPassword.getTrimmedText()
+        val password = binding.inputUserPassword.getTText()
         Log.v(TAG, "validatePassword: Validating password")
 
         return when {
@@ -124,14 +109,17 @@ class RegisterActivity: AppCompatActivity() {
                 Log.w(TAG, "validatePassword: Password is empty")
                 showError(binding.layoutSignUpPassword, getString(R.string.errorEmptyPassword))
             }
+
             password.length < 8 -> {
                 Log.w(TAG, "validatePassword: Password too short")
                 showError(binding.layoutSignUpPassword, getString(R.string.errorShortPassword))
             }
-            !password.contains(Regex("[A-Z]")) -> {
+
+            !password.contains(Regex("[A-ZА-Я]")) -> {
                 Log.w(TAG, "validatePassword: No uppercase letters")
                 showError(binding.layoutSignUpPassword, getString(R.string.errorNoUppercase))
             }
+
             else -> {
                 Log.d(TAG, "validatePassword: Password is valid")
                 clearError(binding.layoutSignUpPassword)
@@ -140,8 +128,8 @@ class RegisterActivity: AppCompatActivity() {
     }
 
     private fun validatePasswordRep(): Boolean {
-        val password = binding.inputUserPassword.getTrimmedText()
-        val passwordRep = binding.inputUserPasswordRep.getTrimmedText()
+        val password = binding.inputUserPassword.getTText()
+        val passwordRep = binding.inputUserPasswordRep.getTText()
         Log.v(TAG, "validatePasswordRep: Validating password repeat")
 
         return when {
@@ -149,10 +137,12 @@ class RegisterActivity: AppCompatActivity() {
                 Log.w(TAG, "validatePasswordRep: Repeat password is empty")
                 showError(binding.layoutSignUpPasswordRep, getString(R.string.errorEmptyPassword))
             }
+
             password != passwordRep -> {
                 Log.w(TAG, "validatePasswordRep: Passwords don't match")
                 showError(binding.layoutSignUpPasswordRep, getString(R.string.errorMatchPassword))
             }
+
             else -> {
                 Log.d(TAG, "validatePasswordRep: Passwords match")
                 clearError(binding.layoutSignUpPasswordRep)
@@ -164,15 +154,18 @@ class RegisterActivity: AppCompatActivity() {
     // region Helper Methods
     private fun attemptSignUp() {
         if (isValidInput()) {
-            Log.i(TAG, "Attempting registration with email: ${binding.inputUserEmail.getTrimmedText()}")
+            Log.i(
+                TAG, "Attempting registration with email: ${binding.inputUserEmail.getTText()}"
+            )
             showLoading(true)
 
             val user = User(
-                email = binding.inputUserEmail.getTrimmedText(),
-                password = binding.inputUserPassword.getTrimmedText()
+                email = binding.inputUserEmail.getTText(),
+                password = binding.inputUserPassword.getTText()
             )
 
-            RetrofitInstance.userApiService.register(user).enqueue(RegisterCallback(this@RegisterActivity, user))
+            RetrofitInstance.userApiService.register(user)
+                .enqueue(RegisterCallback(this@RegisterActivity))
         } else {
             Log.w(TAG, "attemptSignUp: Input validation failed")
         }
@@ -197,12 +190,11 @@ class RegisterActivity: AppCompatActivity() {
                 Log.v(TAG, "Text changed in ${this@addValidationListener.id}")
                 validator()
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
     }
-
-    private fun TextInputEditText.getTrimmedText() = text.toString().trim()
 
     private fun showError(layout: TextInputLayout, message: String): Boolean {
         Log.e(TAG, "showError: ${layout.hint} - $message")

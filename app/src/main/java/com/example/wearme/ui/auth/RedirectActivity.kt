@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
@@ -22,7 +21,6 @@ import retrofit2.Response
 class RedirectActivity: AppCompatActivity() {
 
     private var isLoading = true
-    private val tokenValidationStatus = MutableLiveData<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen().setKeepOnScreenCondition { isLoading }
