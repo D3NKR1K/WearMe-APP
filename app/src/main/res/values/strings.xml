@@ -52,6 +52,11 @@
     <string name="reviewsCount">Reviews count:</string>
 <!--    ??  -->
 
+    <string name="mainCategory"> </string>
+    <string name="mainCatalog"></string>
+    <string name="mailProfile"></string>
+    <string name="profile">Profile</string>
+
     <string-array name="categories">
         <item>All</item>
         <item>Upper</item>
