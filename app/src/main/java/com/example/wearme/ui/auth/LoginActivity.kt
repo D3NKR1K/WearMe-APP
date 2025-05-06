@@ -85,12 +85,12 @@ class LoginActivity: AppCompatActivity() {
         return when {
             email.isEmpty() -> {
                 Log.w(TAG, "validateEmail: Email is empty")
-                showError(binding.layoutSignInEmail, getString(R.string.error_empty_email))
+                showError(binding.layoutSignInEmail, getString(R.string.errorEmptyEmail))
             }
 
             !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                 Log.w(TAG, "validateEmail: Email format is invalid")
-                showError(binding.layoutSignInEmail, getString(R.string.error_invalid_email))
+                showError(binding.layoutSignInEmail, getString(R.string.errorInvalidEmail))
             }
 
             else -> {
@@ -107,7 +107,7 @@ class LoginActivity: AppCompatActivity() {
         return when {
             password.isEmpty() -> {
                 Log.w(TAG, "validatePassword: Password is empty")
-                showError(binding.layoutSignInPassword, getString(R.string.error_empty_password))
+                showError(binding.layoutSignInPassword, getString(R.string.errorEmptyPassword))
             }
 
             else -> {
