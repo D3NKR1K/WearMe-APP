@@ -30,11 +30,11 @@ class BioActivity: AppCompatActivity() {
     private fun setupButton() {
         binding.layoutBioButton.setOnClickListener {
             if (isValidInput()) {
-                val name = binding.inputBioName.text.toString().trim()
-                val age = binding.inputBioAge.text.toString().trim()
+                val name = binding.inputBioName.getTrimmedText()
+                val age = binding.inputBioAge.getTrimmedText().toInt()
                 val gender = getSelectedGender()
 
-                val profile = Profile(name, age.toInt(), gender)
+                val profile = Profile(name, age, gender)
 
                 val sharedPreferences = getSharedPreferences(
                     "user_prefs", MODE_PRIVATE
@@ -84,14 +84,17 @@ class BioActivity: AppCompatActivity() {
     }
 
     private fun isValidInput(): Boolean {
-        return validateName() && validateAge() && validateGender()
+        val isNameValid = validateName()
+        val isAgeValid = validateAge()
+        val isGenderValid = validateGender()
+        Log.d(TAG, "isValidInput: Name valid=$isNameValid, Age valid=$isAgeValid, GenderValid=$isGenderValid")
+        return isNameValid && isAgeValid && isGenderValid
     }
 
     private fun validateName(): Boolean {
-        val name = binding.inputBioName.text.toString().trim()
+        val name = binding.inputBioName.getTrimmedText()
         return when {
             name.isEmpty() -> showError(binding.layoutBioName, "Enter name")
-            name.length > 50 -> showError(binding.layoutBioName, "Name is too long")
             else -> clearError(binding.layoutBioName)
         }
     }
@@ -115,6 +118,8 @@ class BioActivity: AppCompatActivity() {
             true
         }
     }
+
+    private fun TextInputEditText.getTrimmedText() = text.toString().trim()
 
     private fun showError(layout: TextInputLayout, message: String): Boolean {
         layout.error = message
