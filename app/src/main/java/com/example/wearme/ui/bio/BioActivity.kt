@@ -108,7 +108,7 @@ class BioActivity: AppCompatActivity() {
         return when {
             age.isEmpty() -> showError(binding.layoutBioAge, "Enter age")
             !age.matches(Regex("\\d+")) -> showError(binding.layoutBioAge, "Invalid age format")
-            age.toInt() !in 1 .. 150 -> showError(binding.layoutBioAge, "Valid range: 1-150")
+            age.toInt() !in 1 .. 149 -> showError(binding.layoutBioAge, "Valid range: 1-149")
             else -> clearError(binding.layoutBioAge)
         }
     }
