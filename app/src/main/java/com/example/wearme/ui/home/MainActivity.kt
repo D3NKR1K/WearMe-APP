@@ -22,16 +22,31 @@ import com.example.wearme.domain.model.api.Cloth
 import com.example.wearme.ui.bio.MeasurementsActivity
 import com.example.wearme.ui.bio.ProfileActivity
 import kotlinx.coroutines.launch
+import retrofit2.Call
 
 class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var itemsAdapter: ItemsAdapter
     private lateinit var categoriesAdapter: CategoriesAdapter
 
+    data class MeasurementCategory<T>(
+        val apiCall: () -> Call<T>, val categoryId: Int
+    )
+
+    private val categoryMap = mapOf(
+        "Upper" to MeasurementCategory(
+            apiCall = { RetrofitInstance.measurementsApiService.getUpper() }, categoryId = 1
+        ), "Lower" to MeasurementCategory(
+            apiCall = { RetrofitInstance.measurementsApiService.getUnder() }, categoryId = 2
+        ), "Footwear" to MeasurementCategory(
+            apiCall = { RetrofitInstance.measurementsApiService.getFoot() }, categoryId = 3
+        )
+    )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         setupAdapters()
@@ -39,111 +54,80 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun setupAdapters() {
-        itemsAdapter = ItemsAdapter(emptyList()) { cloth ->
-            openClothDetails(cloth)
-        }
+        itemsAdapter = ItemsAdapter(emptyList()) { openClothDetails(it) }
         binding.itemsRecyclerView.apply {
             adapter = itemsAdapter
             layoutManager = GridLayoutManager(this@MainActivity, 1)
         }
 
-        // Categories Adapter
         categoriesAdapter = CategoriesAdapter { category ->
-            when (category.name) {
-                "Upper" -> {
-                    RetrofitInstance.measurementsApiService.getUpper().enqueue(
-                        GetMeasurementsCallback(
-                            activity = this,
-                            onSuccess = { response ->
-                                handleMeasurementsResult(category.name, true)
-                            },
-                            onError = { handleMeasurementsResult(category.name, false) },
-                            validateValues = { body ->
-                                body.chest > 0 && body.waist > 0 && body.hips > 0
-                            })
-                    )
-                }
-
-                "Lower" -> {
-                    RetrofitInstance.measurementsApiService.getUnder().enqueue(
-                        GetMeasurementsCallback(
-                            activity = this,
-                            onSuccess = { response ->
-                                handleMeasurementsResult(category.name, true)
-                            },
-                            onError = { handleMeasurementsResult(category.name, false) },
-                            validateValues = { body ->
-                                body.waist > 0 && body.hips > 0
-                            })
-                    )
-                }
-
-                "Footwear" -> {
-                    RetrofitInstance.measurementsApiService.getFoot().enqueue(
-                        GetMeasurementsCallback(
-                            activity = this,
-                            onSuccess = { response ->
-                                handleMeasurementsResult(category.name, true)
-                            },
-                            onError = { handleMeasurementsResult(category.name, false) },
-                            validateValues = { body ->
-                                body.foot > 0
-                            })
-                    )
-                }
+            categoryMap[category.name]?.let { measurementCategory ->
+                handleCategoryClick(category, measurementCategory)
             }
         }
 
         binding.categoriesRecyclerView.apply {
             adapter = categoriesAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
+            visibility = View.VISIBLE
         }
 
-        val categories = listOf(
-            Category("Upper", R.drawable.ic_upper),
-            Category("Lower", R.drawable.ic_lower),
-            Category("Footwear", R.drawable.ic_footwear)
+        categoriesAdapter.submitList(
+            listOf(
+                Category("Upper", R.drawable.ic_upper),
+                Category("Lower", R.drawable.ic_lower),
+                Category("Footwear", R.drawable.ic_footwear)
+            )
         )
 
-        categoriesAdapter.submitList(categories)
-        binding.categoriesRecyclerView.visibility = View.VISIBLE
         binding.itemsRecyclerView.visibility = View.GONE
     }
 
+    private fun <T> handleCategoryClick(
+        category: Category, measurementCategory: MeasurementCategory<T>
+    ) {
+        measurementCategory.apiCall().enqueue(
+            GetMeasurementsCallback(activity = this, onSuccess = {
+                handleMeasurementsResult(
+                    category.name, measurementCategory.categoryId, true
+                )
+            }, onError = {
+                handleMeasurementsResult(
+                    category.name, measurementCategory.categoryId, false
+                )
+            })
+        )
+    }
 
-    private fun handleMeasurementsResult(category: String, hasMeasurements: Boolean) {
-        runOnUiThread {
-            if (hasMeasurements) {
-                lifecycleScope.launch {
-                    try {
-                        val response = RetrofitInstance.clothesApiService.getClothes(
-                            globalCategoryId = when (category.lowercase()) {
-                                "upper" -> 1
-                                "lower" -> 2
-                                "footwear" -> 3
-                                else -> throw IllegalArgumentException("Invalid category")
-                            }
-                        )
 
-                        if (response.isSuccessful) {
-                            response.body()?.let { clothes ->
-                                itemsAdapter.updateList(clothes)
-                                showProducts(category)
-                            }
-                        } else {
-                            showNetworkErrorDialog()
+    private fun handleMeasurementsResult(
+        category: String, categoryId: Int, hasMeasurements: Boolean
+    ) {
+        if (hasMeasurements) {
+            lifecycleScope.launch {
+                try {
+                    val response =
+                        RetrofitInstance.clothesApiService.getClothes(globalCategoryId = categoryId)
+
+                    if (response.isSuccessful) {
+                        response.body()?.let { clothes ->
+                            itemsAdapter.updateList(clothes)
+                            showProducts(category)
                         }
-
-                    } catch (e: Exception) {
-                        Log.e("Network", "Error fetching clothes", e)
+                    } else {
                         showNetworkErrorDialog()
                     }
+
+                } catch (e: Exception) {
+                    Log.e("Network", "Error fetching clothes", e)
+                    showNetworkErrorDialog()
                 }
-            } else {
-                showMeasurementsDialog(category)
             }
+        } else {
+            showMeasurementsDialog(category)
         }
     }
+
 
     private fun openClothDetails(cloth: Cloth) {
         val intent = Intent(this, ClothDetailActivity::class.java).apply {
@@ -174,10 +158,8 @@ class MainActivity: AppCompatActivity() {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        // Initially set button state based on visibility
         updateCatalogButtonState()
 
-        // Set up click listener only when it's not disabled
         binding.productsCatalogButton.setOnClickListener {
             if (binding.productsCatalogButton.isEnabled) {
                 startActivity(Intent(this, MainActivity::class.java))
@@ -192,18 +174,14 @@ class MainActivity: AppCompatActivity() {
         binding.itemsRecyclerView.visibility = View.VISIBLE
         binding.toolbarTitle.text = "Clothes from $categoryName category"
 
-        // After hiding categoriesRecyclerView, update button state
         updateCatalogButtonState()
     }
 
-    // Update the state of the catalog button based on the visibility of categoriesRecyclerView
     private fun updateCatalogButtonState() {
-        if (binding.categoriesRecyclerView.isVisible) {
-            binding.productsCatalogButton.isEnabled = false
-            binding.productsCatalogButton.alpha = 0.5f
-        } else {
-            binding.productsCatalogButton.isEnabled = true
-            binding.productsCatalogButton.alpha = 1.0f
+        val isListVisible = binding.categoriesRecyclerView.isVisible
+        binding.productsCatalogButton.apply {
+            isEnabled = !isListVisible
+            alpha = if (isEnabled) 1.0f else 0.5f
         }
     }
 }

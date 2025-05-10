@@ -26,12 +26,9 @@ class RedirectActivity: AppCompatActivity() {
         installSplashScreen().setKeepOnScreenCondition { isLoading }
         super.onCreate(savedInstanceState)
 
-        RetrofitInstance.initWithoutToken()
-
         lifecycleScope.launch {
-            val token = withContext(Dispatchers.IO) {
-                TokenManager(this@RedirectActivity).getToken()
-            }
+            val tokenManager = TokenManager(this@RedirectActivity)
+            val token = withContext(Dispatchers.IO) { tokenManager.getToken() }
 
             Log.i(TAG, "Token retrieved: ${token?.take(10)}...")
 
@@ -42,7 +39,7 @@ class RedirectActivity: AppCompatActivity() {
                 return@launch
             }
 
-            RetrofitInstance.initWithToken(token)
+            RetrofitInstance.initWithToken { tokenManager.getToken() }
 
             RetrofitInstance.systemApiService.checkToken().enqueue(object: Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
