@@ -82,7 +82,7 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
                 })
             }
 
-            401 -> {
+            401, 422 -> {
                 Log.e("[LOGIN]", response.message())
                 activity.showError("Invalid password")
             }
