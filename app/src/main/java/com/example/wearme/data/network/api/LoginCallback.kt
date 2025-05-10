@@ -28,18 +28,20 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
                 val loginResponse = response.body()
                 val token = loginResponse?.token ?: run {
                     Log.e("[LOGIN]", "Response body is null")
-                    return  // Прерываем выполнение, если тело ответа null
+                    return
                 }
 
                 TokenManager(activity).saveToken(token)
                 Log.i("[TOKEN SAVE]", "Token was saved")
 
-                RetrofitInstance.initWithToken(token)
+                RetrofitInstance.initWithToken { TokenManager(activity).getToken() }
 
-                val sharedPreferences = activity.getSharedPreferences(
+                activity.getSharedPreferences(
                     "user_prefs", MODE_PRIVATE
-                )
-                sharedPreferences.edit { putString("email", user.email) }
+                ).edit {
+                    putString("email", user.email)
+                    apply()
+                }
                 Log.i("[EMAIL SAVE]", "Email was saved: ${user.email}")
 
                 RetrofitInstance.bioApiService.dehumanization().enqueue(object: Callback<Profile> {
@@ -50,10 +52,12 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
 
                                 val name = response.body()?.name ?: "Unknown"
 
-                                val sharedPreferences = activity.getSharedPreferences(
+                                activity.getSharedPreferences(
                                     "user_prefs", MODE_PRIVATE
-                                )
-                                sharedPreferences.edit { putString("name", name) }
+                                ).edit {
+                                    putString("name", name)
+                                    apply()
+                                }
 
                                 activity.startActivity(Intent(activity, MainActivity::class.java))
                                 activity.finish()

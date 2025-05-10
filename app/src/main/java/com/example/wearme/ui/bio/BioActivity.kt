@@ -38,10 +38,11 @@ class BioActivity: AppCompatActivity() {
                     getSelectedGender()
                 )
 
-                val sharedPreferences = getSharedPreferences(
-                    "user_prefs", MODE_PRIVATE
-                )
-                sharedPreferences.edit { putString("name", profile.name) }
+                getSharedPreferences("user_prefs", MODE_PRIVATE).edit {
+                    putString(
+                        "name", profile.name
+                    )
+                }
                 Log.i("[NAME SAVE]", "NAME was saved: ${profile.name}")
 
                 showLoading(true)

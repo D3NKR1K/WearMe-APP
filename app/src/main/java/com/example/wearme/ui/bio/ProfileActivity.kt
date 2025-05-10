@@ -1,22 +1,26 @@
 package com.example.wearme.ui.bio
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityProfileBinding
 import com.example.wearme.domain.model.TokenManager
-import com.example.wearme.ui.auth.LoginActivity
+import com.example.wearme.ui.auth.RedirectActivity
+
 
 class ProfileActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
 
+    val sharedPreferences: SharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
         binding.name.text = sharedPreferences.getString("name", "No name found")
         binding.email.text = sharedPreferences.getString("email", "No email found")
@@ -27,6 +31,11 @@ class ProfileActivity: AppCompatActivity() {
     private fun setupClickListeners() {
         // Logout button click listener
         binding.logoutButton.setOnClickListener {
+            sharedPreferences.edit {
+                remove("name")
+                remove("email")
+            }
+            RetrofitInstance.clearAuthClient()
             TokenManager(this).clearToken() // Clear the user's token
             navigateToSignIn() // Navigate to the sign-in screen
         }
@@ -39,8 +48,8 @@ class ProfileActivity: AppCompatActivity() {
 
     // Navigates to the sign-in activity
     private fun navigateToSignIn() {
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish() // Close the profile activity
+        startActivity(Intent(this, RedirectActivity::class.java))
+        finishAffinity()
     }
 
     // Navigates to the measurements activity
