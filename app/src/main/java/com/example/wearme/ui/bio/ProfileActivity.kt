@@ -33,6 +33,7 @@ class ProfileActivity: AppCompatActivity() {
             getSharedPreferences("user_prefs", MODE_PRIVATE).edit {
                 remove("name")
                 remove("email")
+                remove("age")
             }
             RetrofitInstance.clearAuthClient()
             TokenManager(this).clearToken() // Clear the user's token
@@ -41,7 +42,11 @@ class ProfileActivity: AppCompatActivity() {
 
         // Edit profile button click listener
         binding.editMeasurements.setOnClickListener {
-            navigateToMeasurements() // Navigate to the measurements screen
+            navigateToEditMeasurements() // Navigate to the edit measurements screen
+        }
+
+        binding.editProfile.setOnClickListener {
+            navigateToEditProfile() // Navigate to the edit profile screen
         }
     }
 
@@ -51,8 +56,13 @@ class ProfileActivity: AppCompatActivity() {
         finishAffinity()
     }
 
-    // Navigates to the measurements activity
-    private fun navigateToMeasurements() {
-        startActivity(Intent(this, MeasurementsActivity::class.java))
+    // Navigates to the edit measurements activity
+    private fun navigateToEditMeasurements() {
+        startActivity(Intent(this, MeasurementsEditActivity::class.java))
+    }
+
+    // Navigates to the edit profile activity
+    private fun navigateToEditProfile() {
+        startActivity(Intent(this, ProfileEditActivity::class.java))
     }
 }

@@ -19,7 +19,7 @@ import com.example.wearme.domain.model.CategoriesAdapter
 import com.example.wearme.domain.model.ItemsAdapter
 import com.example.wearme.domain.model.api.Category
 import com.example.wearme.domain.model.api.Cloth
-import com.example.wearme.ui.bio.MeasurementsActivity
+import com.example.wearme.ui.bio.MeasurementsEditActivity
 import com.example.wearme.ui.bio.ProfileActivity
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -140,7 +140,7 @@ class MainActivity: AppCompatActivity() {
         AlertDialog.Builder(this, R.style.CustomAlertDialog).setTitle("No Measurements")
             .setMessage("To view $category items, you need to provide your measurements.")
             .setPositiveButton("Enter Measurements") { dialog, _ ->
-                startActivity(Intent(this, MeasurementsActivity::class.java))
+                startActivity(Intent(this, MeasurementsEditActivity::class.java))
                 dialog.dismiss()
             }.setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()

@@ -10,20 +10,20 @@ import androidx.core.content.ContextCompat
 import com.example.wearme.R
 import com.example.wearme.data.network.api.PutMeasurementsCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
-import com.example.wearme.databinding.ActivityMeasurementsBinding
+import com.example.wearme.databinding.ActivityMeasurementsEditBinding
 import com.example.wearme.domain.model.FootMeasurements
 import com.example.wearme.domain.model.UnderMeasurements
 import com.example.wearme.domain.model.UpperMeasurements
 import com.example.wearme.system.getDouble
 import com.example.wearme.system.getInt
 
-class MeasurementsActivity: AppCompatActivity() {
+class MeasurementsEditActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityMeasurementsBinding
+    private lateinit var binding: ActivityMeasurementsEditBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMeasurementsBinding.inflate(layoutInflater)
+        binding = ActivityMeasurementsEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupUI()
@@ -215,6 +215,6 @@ class MeasurementsActivity: AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "MeasurementsActivity"
+        private const val TAG = "MeasurementsEditActivity"
     }
 }

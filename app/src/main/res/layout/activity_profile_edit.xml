@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_background"
     android:padding="24dp"
-    tools:context=".ui.bio.MeasurementsActivity">
+    tools:context=".ui.bio.ProfileEditActivity">
 
     <!-- Guidelines -->
     <androidx.constraintlayout.widget.Guideline
@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/jua"
-        android:text="@string/measurements_header"
+        android:text="Enter your profile data"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="26sp"
@@ -53,13 +53,13 @@
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
-    <!-- Переключатель категорий -->
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/categoryToggle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:checkedButton="@+id/btnUpper"
-        app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
+        android:orientation="horizontal"
+        app:checkedButton="@+id/btnName"
+        app:layout_constraintBottom_toTopOf="@id/layout_profile_name"
         app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
         app:layout_constraintStart_toStartOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/header_measure"
@@ -67,78 +67,25 @@
         app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnUpper"
+            android:id="@+id/btnName"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Upper" />
+            android:text="Name" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLower"
+            android:id="@+id/btnAge"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lower" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFoot"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Foot" />
+            android:text="Age" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
-    <!-- Верхние мерки -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_bio_chest"
-        style="@style/InputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/layout_bio_waist"
-        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_bio_chest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/measurements_hint_chest"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            tools:text="75" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_bio_waist"
-        style="@style/InputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
-        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_chest">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_bio_waist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/measurements_hint_waist"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            tools:text="75" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_bio_hips"
+        android:id="@+id/layout_profile_name"
         style="@style/InputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -146,22 +93,21 @@
         app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist">
+        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_bio_hips"
+            android:id="@+id/input_profile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/measurements_hint_hips"
-            android:inputType="number"
+            android:hint="Name"
+            android:inputType="text"
             android:textColor="@color/black"
             android:textSize="15sp"
-            tools:text="183" />
+            tools:text="Daniel" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Мерки стопы -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_bio_foot"
+        android:id="@+id/layout_profile_age"
         style="@style/InputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -172,14 +118,14 @@
         app:layout_constraintTop_toBottomOf="@id/categoryToggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_bio_foot"
+            android:id="@+id/input_profile_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/measurements_hint_feet"
+            android:hint="Age"
             android:inputType="numberDecimal"
             android:textColor="@color/black"
             android:textSize="15sp"
-            tools:text="26.5" />
+            tools:text="19" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Кнопка сохранения -->
@@ -189,11 +135,11 @@
         android:layout_height="56dp"
         android:backgroundTint="@color/button_main_color"
         android:fontFamily="@font/jua"
-        android:text="@string/measurements_button_text"
+        android:text="@string/measurementsButtonText"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
         app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
         app:layout_constraintStart_toStartOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist" />
+        app:layout_constraintTop_toBottomOf="@id/layout_profile_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

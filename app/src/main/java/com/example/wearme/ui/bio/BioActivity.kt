@@ -39,9 +39,8 @@ class BioActivity: AppCompatActivity() {
                 )
 
                 getSharedPreferences("user_prefs", MODE_PRIVATE).edit {
-                    putString(
-                        "name", profile.name
-                    )
+                    putString("name", profile.name)
+                    putInt("age", profile.age)
                 }
                 Log.i("[NAME SAVE]", "NAME was saved: ${profile.name}")
 

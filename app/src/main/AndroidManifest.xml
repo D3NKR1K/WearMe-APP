@@ -21,6 +21,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.bio.ProfileEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WearMe" />
+
+        <activity
             android:name=".ui.home.ClothDetailActivity"
             android:theme="@style/Theme.WearMe"
             android:exported="false" />
@@ -46,7 +51,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.bio.MeasurementsActivity"
+            android:name=".ui.bio.MeasurementsEditActivity"
             android:theme="@style/Theme.WearMe"
             android:exported="false" />
 

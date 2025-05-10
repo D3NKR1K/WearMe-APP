@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_background"
     android:padding="24dp"
-    tools:context=".ui.bio.MeasurementsActivity">
+    tools:context=".ui.bio.MeasurementsEditActivity">
 
     <!-- Guidelines -->
     <androidx.constraintlayout.widget.Guideline
@@ -194,6 +194,6 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
         app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
         app:layout_constraintStart_toStartOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist" />
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_hips" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

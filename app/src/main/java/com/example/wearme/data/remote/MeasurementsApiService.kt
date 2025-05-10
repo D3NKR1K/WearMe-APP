@@ -1,6 +1,5 @@
 package com.example.wearme.data.remote
 
-import com.example.wearme.data.model.MessageResponse
 import com.example.wearme.domain.model.FootMeasurements
 import com.example.wearme.domain.model.UnderMeasurements
 import com.example.wearme.domain.model.UpperMeasurements
@@ -11,15 +10,15 @@ import retrofit2.http.PUT
 
 interface MeasurementsApiService {
     @PUT("/body_measurements/upper/")
-    fun updateUpper(@Body upperMeasurements: UpperMeasurements): Call<MessageResponse>
+    fun updateUpper(@Body upperMeasurements: UpperMeasurements): Call<Void>
 
     @PUT("/body_measurements/under/")
-    fun updateUnder(@Body underMeasurements: UnderMeasurements): Call<MessageResponse>
+    fun updateUnder(@Body underMeasurements: UnderMeasurements): Call<Void>
 
     @PUT("/body_measurements/foot/")
     fun updateFoot(
         @Body footMeasurements: FootMeasurements
-    ): Call<MessageResponse>
+    ): Call<Void>
 
     @GET("/body_measurements/upper/")
     fun getUpper(): Call<UpperMeasurements>
