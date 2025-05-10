@@ -1,7 +1,7 @@
 <resources>
 
-<!--    список скорее всего не нужных строк, они не задействованы нигде-->
-<!--    <string name="app_name" translatable="false">WearMe</string>-->
+    <!--    список скорее всего не нужных строк, они не задействованы нигде-->
+    <!--    <string name="app_name" translatable="false">WearMe</string>-->
     <string name="appSlogan" translatable="false">Dress to Impress, Effortlessly</string>
     <string name="hintUserName">Full Name</string>
     <string name="signUp">Sign Up</string>
@@ -11,7 +11,7 @@
     <string name="measurementsHintHeight">Height</string>
     <string name="reviewsCount">Reviews count:</string>
 
-<!--    activity_bio  -->
+    <!--    activity_bio  -->
     <string name="appName" translatable="false">WearMe</string>
     <string name="bioTitle">Create Profile</string>
     <string name="bioNameHint">Name</string>
@@ -20,31 +20,31 @@
     <string name="bioHintAge">Age</string>
     <string name="bioButtonText">Confirm</string>
 
-<!--    activity_cloth_details  -->
+    <!--    activity_cloth_details  -->
     <string name="clothImage" translatable="false">Cloth Image</string>
-<!--    хз насколько нужна строка выше-->
+    <!--    хз насколько нужна строка выше-->
     <string name="starIcon">Rating icon</string>
     <string name="measurementsTitle">Cloth Measurements (cm)</string>
 
-<!--    activity_login  -->
+    <!--    activity_login  -->
     <string name="headerSignInPage">Sign In</string>
     <string name="hintUserEmail" translatable="false">Email</string>
     <string name="hintUserPassword">Password</string>
+    <string name="hintUserPasswordRepeat">Password Repeat</string>
     <string name="iconEmailDescription">Email icon</string>
     <string name="iconPasswordDescription">Password icon</string>
     <string name="iconPasswordVisibility">Switch password visibility</string>
-<!--    возможно имелась ввиду строка ниже, прерыдущая выглядит некорректно  -->
-<!--    <string name="linkToSignUpPageDescription">Don\'t have an account?</string>-->
+    <!--    возможно имелась ввиду строка ниже, прерыдущая выглядит некорректно  -->
     <string name="headerSignUpPage">Sign Up</string>
     <string name="buttonSignInPage">Sign In</string>
     <string name="buttonSignUpPage">Sign Up</string>
 
-<!--    activity_main  -->
+    <!--    activity_main  -->
     <string name="mainProfile">Profile</string>
     <string name="mainCatalog">Catalog</string>
     <string name="mainCategory">Categories catalog</string>
 
-<!--    activity_measurments  -->
+    <!--    activity_measurments  -->
     <string name="measurementsHeader">Enter your measurements</string>
     <string name="measurementsUpper">Upper</string>
     <string name="measurementsLower">Lower</string>
@@ -55,25 +55,26 @@
     <string name="measurementsHintFeet">Foot</string>
     <string name="measurementsButtonText">Enter</string>
 
-<!--    activity_profile  -->
+    <!--    activity_profile  -->
     <string name="profileEdit">Edit Profile</string>
     <string name="profileEditMeasuresents">Edit Measurements</string>
     <string name="profileLogOut">Log Out</string>
 
-<!--    activity_registration  -->
+    <!--    activity_registration  -->
     <string name="linkToSignInPageDescription">You have an account?</string>
+    <string name="linkToSignUpPageDescription">You do not have an account?</string>
 
-<!--    item_category  -->
+    <!--    item_category  -->
     <string name="category" translatable="false">Category</string>
 
-<!--    item_product -->
+    <!--    item_product -->
     <string name="productName" translatable="false">Clothes name</string>
     <string name="itemProductRating" translatable="false">4.5</string>
     <string name="productReviews" translatable="false">(100 reviews)</string>
     <string name="productInfo" translatable="false">Info</string>
     <string name="productBuy" translatable="false">Buy</string>
 
-<!--    errors  -->
+    <!--    errors  -->
     <string name="errorMatchPassword">Passwords do not matching</string>
     <string name="errorEmptyEmail">Please enter email</string>
     <string name="errorInvalidEmail">Invalid email format</string>
