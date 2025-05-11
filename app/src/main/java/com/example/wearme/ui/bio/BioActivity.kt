@@ -103,7 +103,7 @@ class BioActivity: AppCompatActivity() {
     }
 
     private fun validateAge(): Boolean {
-        val age = binding.inputBioAge.text.toString().trim()
+        val age = binding.inputBioAge.getTText()
         return when {
             age.isEmpty() -> showError(binding.layoutBioAge, "Enter age")
             !age.matches(Regex("\\d+")) -> showError(binding.layoutBioAge, "Invalid age format")
@@ -113,12 +113,13 @@ class BioActivity: AppCompatActivity() {
     }
 
     private fun validateGender(): Boolean {
-        return if (getSelectedGender() == Gender.U) {
-            showError(binding.layoutBioGender, "Select gender")
-            false
-        } else {
+        val isGenderSelected = getSelectedGender() != Gender.U
+        return if (isGenderSelected) {
             clearError(binding.layoutBioGender)
             true
+        } else {
+            showError(binding.layoutBioGender, "Select gender")
+            false
         }
     }
 

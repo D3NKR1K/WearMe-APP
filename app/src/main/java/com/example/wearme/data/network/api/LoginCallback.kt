@@ -10,9 +10,11 @@ import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
 import com.example.wearme.domain.model.api.Profile
 import com.example.wearme.domain.model.api.User
+import com.example.wearme.system.showError
 import com.example.wearme.ui.auth.LoginActivity
 import com.example.wearme.ui.bio.BioActivity
 import com.example.wearme.ui.home.MainActivity
+import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -84,12 +86,14 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
 
             401, 422 -> {
                 Log.e("[LOGIN]", response.message())
-                activity.showError("Invalid password")
+                activity.findViewById<TextInputLayout>(R.id.layout_SignIn_password)
+                    .showError("Invalid password", activity)
             }
 
             404 -> {
                 Log.i("[LOGIN]", response.message())
-                activity.showError("The user was not found")
+                activity.findViewById<TextInputLayout>(R.id.layout_SignIn_email)
+                    .showError("The user was not found", activity)
             }
 
         }

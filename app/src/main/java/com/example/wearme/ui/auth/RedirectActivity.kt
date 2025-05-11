@@ -8,101 +8,97 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.domain.model.TokenManager
-import com.example.wearme.domain.model.api.Profile
 import com.example.wearme.ui.bio.BioActivity
 import com.example.wearme.ui.home.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class RedirectActivity: AppCompatActivity() {
 
     private var isLoading = true
+    private var apiCall: Call<*>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen().setKeepOnScreenCondition { isLoading }
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launch {
-            val tokenManager = TokenManager(this@RedirectActivity)
-            val token = withContext(Dispatchers.IO) { tokenManager.getToken() }
+            handleRedirection()
+        }
+    }
 
-            Log.i(TAG, "Token retrieved: ${token?.take(10)}...")
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: Cancelling any ongoing API call")
+        apiCall?.let {
+            if (!it.isCanceled) it.cancel()
+        }
+    }
 
-            if (token.isNullOrEmpty()) {
-                Log.i(TAG, "No token found")
-                isLoading = false
-                navigateTo(LoginActivity::class.java)
-                return@launch
+    private suspend fun handleRedirection() {
+        val tokenManager = TokenManager(this@RedirectActivity)
+        val token = withContext(Dispatchers.IO) { tokenManager.getToken() }
+
+        Log.i(TAG, "Token retrieved: ${token?.take(10)}...")
+
+        if (token.isNullOrEmpty()) {
+            Log.i(TAG, "No token found")
+            isLoading = false
+            navigateTo(LoginActivity::class.java)
+            return
+        }
+
+        RetrofitInstance.initWithToken { tokenManager.getToken() }
+
+        try {
+            val tokenResponse = withContext(Dispatchers.IO) {
+                RetrofitInstance.systemApiService.checkToken().execute()
             }
 
-            RetrofitInstance.initWithToken { tokenManager.getToken() }
+            if (tokenResponse.code() == 204) {
+                Log.i(TAG, "Token is valid")
+                handleBioCheck()
+            } else {
+                Log.i(TAG, "Invalid token (code: ${tokenResponse.code()})")
+                isLoading = false
+                navigateTo(LoginActivity::class.java)
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Token validation failed", e)
+            isLoading = false
+            navigateTo(LoginActivity::class.java)
+        }
+    }
 
-            RetrofitInstance.systemApiService.checkToken().enqueue(object: Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.code() == 204) {
-                        Log.i(TAG, "Token is valid")
+    private suspend fun handleBioCheck() {
+        try {
+            val bioResponse = withContext(Dispatchers.IO) {
+                RetrofitInstance.bioApiService.dehumanization().execute()
+            }
 
-                        // Проверка наличия биометрии
-                        RetrofitInstance.bioApiService.dehumanization()
-                            .enqueue(object: Callback<Profile> {
-                                override fun onResponse(
-                                    call: Call<Profile>, response: Response<Profile>
-                                ) {
-                                    isLoading = false
-                                    when (response.code()) {
-                                        200 -> {
-                                            Log.i(TAG, "BIO found")
-                                            startActivity(
-                                                Intent(
-                                                    this@RedirectActivity, MainActivity::class.java
-                                                )
-                                            )
-                                            finish()
-                                        }
-
-                                        401, 404 -> {
-                                            Log.i(TAG, "BIO not found")
-                                            startActivity(
-                                                Intent(
-                                                    this@RedirectActivity, BioActivity::class.java
-                                                )
-                                            )
-                                            finish()
-                                        }
-
-                                        else -> {
-                                            Log.e(TAG, "Unexpected BIO code: ${response.code()}")
-                                            navigateTo(LoginActivity::class.java)
-                                        }
-                                    }
-                                }
-
-                                override fun onFailure(
-                                    call: Call<Profile>, t: Throwable
-                                ) {
-                                    Log.e(TAG, "BIO request failed", t)
-                                    isLoading = false
-                                    navigateTo(LoginActivity::class.java)
-                                }
-                            })
-
-                    } else {
-                        Log.i(TAG, "Invalid token (code: ${response.code()})")
-                        isLoading = false
-                        navigateTo(LoginActivity::class.java)
-                    }
+            isLoading = false
+            when (bioResponse.code()) {
+                200 -> {
+                    Log.i(TAG, "BIO found")
+                    navigateTo(MainActivity::class.java)
                 }
 
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    Log.e(TAG, "Token validation failed", t)
-                    isLoading = false
+                401, 404 -> {
+                    Log.i(TAG, "BIO not found")
+                    navigateTo(BioActivity::class.java)
+                }
+
+                else -> {
+                    Log.e(TAG, "Unexpected BIO code: ${bioResponse.code()}")
                     navigateTo(LoginActivity::class.java)
                 }
-            })
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "BIO request failed", e)
+            isLoading = false
+            navigateTo(LoginActivity::class.java)
         }
     }
 

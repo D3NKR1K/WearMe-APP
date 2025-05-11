@@ -32,7 +32,9 @@ class RegisterActivity: BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: Cancelling any ongoing API call")
-        apiCall?.cancel()
+        apiCall?.let {
+            if (!it.isCanceled) it.cancel()
+        }
     }
     // endregion
 

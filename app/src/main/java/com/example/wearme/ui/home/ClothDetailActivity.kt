@@ -26,37 +26,35 @@ class ClothDetailActivity: AppCompatActivity() {
         val cloth = intent.getParcelableExtra("CLOTH_DATA", Cloth::class.java)
 
         cloth?.let {
-            // Загрузка основной информации
-            binding.clothImage.load(it.photoUrl)
-            binding.clothName.text = it.name
-            binding.clothRating.text = "${it.stars}"
-            binding.clothMatchScore.text = "Match: ${it.variation.matchScore}%"
-            binding.clothComments.text = "Reviews count: ${it.comments}"
+            binding.apply {
+                clothImage.load(it.photoUrl)
+                clothName.text = it.name
+                clothRating.text = "${it.stars}"
+                clothMatchScore.text = "Match: ${it.variation.matchScore}%"
+                clothComments.text = "Reviews count: ${it.comments}"
 
-            // Получаем первую вариацию (или null)
-            val bestVariation = it.variation
-
-            // Установка мерок из вариации
-            bestVariation.let { variation ->
-                setMeasurement(binding.measurementsChest, variation.chest, "Chest")
-                setMeasurement(binding.measurementsWaist, variation.waist, "Waist")
-                setMeasurement(binding.measurementsHips, variation.hips, "Hips")
-                setMeasurement(binding.measurementsFoot, variation.foot, "Foot")
+                it.variation.let { variation ->
+                    setMeasurement(measurementsChest, variation.chest, "Chest")
+                    setMeasurement(measurementsWaist, variation.waist, "Waist")
+                    setMeasurement(measurementsHips, variation.hips, "Hips")
+                    setMeasurement(measurementsFoot, variation.foot, "Foot")
+                }
             }
         }
     }
 
     @SuppressLint("SetTextI18n", "DefaultLocale")
     private fun setMeasurement(view: TextView, value: Number?, label: String) {
-        if (value != null) {
-            val formatted = when (value) {
-                is Float -> String.format("%.1f", value)
-                else -> value.toString()
-            }
-            view.text = "$label: $formatted cm"
+        value?.let {
+            view.text = "$label: ${formatValue(it)} cm"
             view.visibility = View.VISIBLE
-        } else {
+        } ?: run {
             view.visibility = View.GONE
         }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private fun formatValue(value: Number): String {
+        return if (value is Float) String.format("%.1f", value) else value.toString()
     }
 }
