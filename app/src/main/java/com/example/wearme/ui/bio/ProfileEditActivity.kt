@@ -95,7 +95,11 @@ class ProfileEditActivity: AppCompatActivity() {
         val name = binding.inputProfileName.text.toString().trim()
         return when {
             name.isEmpty() -> showError(
-                binding.layoutProfileName, "Поле имени не может быть пустым"
+                binding.layoutProfileName, "Enter a new name"
+            )
+
+            !name.matches(Regex("^[a-zA-Zа-яА-ЯёЁ]+$")) -> showError(
+                binding.layoutProfileName, "Invalid name format"
             )
 
             else -> clearError(binding.layoutProfileName)
@@ -106,15 +110,15 @@ class ProfileEditActivity: AppCompatActivity() {
         val age = binding.inputProfileAge.text.toString().trim()
         return when {
             age.isEmpty() -> showError(
-                binding.layoutProfileAge, "Поле возраста не может быть пустым"
+                binding.layoutProfileAge, "Enter an age"
             )
 
             !age.matches(Regex("\\d+")) -> showError(
-                binding.layoutProfileAge, "Возраст должен быть числом"
+                binding.layoutProfileAge, "Age must be a number"
             )
 
             age.toInt() !in 1 .. 149 -> showError(
-                binding.layoutProfileAge, "Допустимый возраст: 1-149"
+                binding.layoutProfileAge, "Permissible age: 1-149"
             )
 
             else -> clearError(binding.layoutProfileAge)
@@ -139,11 +143,14 @@ class ProfileEditActivity: AppCompatActivity() {
 
         when {
             binding.btnName.isChecked -> {
+                Log.i(TAG, "nameEdit")
                 val profile = Profile(
                     name = binding.inputProfileName.text.toString().trim(),
                     age = getSharedPreferences("user_prefs", MODE_PRIVATE).getInt("age", 0).toInt(),
                     gender = Gender.M
                 )
+
+                Log.i(TAG, profile.toString())
 
                 getSharedPreferences("user_prefs", MODE_PRIVATE).edit {
                     putString(
@@ -155,6 +162,7 @@ class ProfileEditActivity: AppCompatActivity() {
             }
 
             binding.btnAge.isChecked -> {
+                Log.i(TAG, "ageEdit")
                 val profile = Profile(
                     name = getSharedPreferences("user_prefs", MODE_PRIVATE).getString(
                         "name", "default"

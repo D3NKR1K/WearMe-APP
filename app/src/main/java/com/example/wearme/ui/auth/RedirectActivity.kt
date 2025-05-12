@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.example.wearme.data.network.retrofit.RetrofitInstance
@@ -82,6 +83,17 @@ class RedirectActivity: AppCompatActivity() {
             when (bioResponse.code()) {
                 200 -> {
                     Log.i(TAG, "BIO found")
+                    val profile = bioResponse.body()
+                    val name = profile?.name ?: "Unknown"
+                    val age = profile?.age ?: 0
+                    getSharedPreferences("user_prefs", MODE_PRIVATE).edit {
+                        putString(
+                            "name", name
+                        )
+                        putInt(
+                            "age", age
+                        )
+                    }
                     navigateTo(MainActivity::class.java)
                 }
 

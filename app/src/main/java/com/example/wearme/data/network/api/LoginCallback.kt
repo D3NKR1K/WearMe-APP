@@ -53,12 +53,13 @@ class LoginCallback(private val activity: LoginActivity, private val user: User)
                                 Log.i("[BIO]", "BIO WAS FOUND")
 
                                 val name = response.body()?.name ?: "Unknown"
+                                val age = response.body()?.age ?: 0
 
                                 activity.getSharedPreferences(
                                     "user_prefs", MODE_PRIVATE
                                 ).edit {
                                     putString("name", name)
-                                    apply()
+                                    putInt("age", age)
                                 }
 
                                 activity.startActivity(Intent(activity, MainActivity::class.java))

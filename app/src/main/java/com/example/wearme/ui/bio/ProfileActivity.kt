@@ -37,7 +37,7 @@ class ProfileActivity: AppCompatActivity() {
         }
         RetrofitInstance.clearAuthClient()
         TokenManager(this).clearToken()
-        navigateToSignIn()
+        navigateToRedirect()
     }
 
     private fun setupClickListeners() {
@@ -54,7 +54,7 @@ class ProfileActivity: AppCompatActivity() {
         }
     }
 
-    private fun navigateToSignIn() {
+    private fun navigateToRedirect() {
         startActivity(Intent(this, RedirectActivity::class.java))
         finishAffinity()
     }

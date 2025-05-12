@@ -98,6 +98,10 @@ class BioActivity: AppCompatActivity() {
         val name = binding.inputBioName.getTText()
         return when {
             name.isEmpty() -> showError(binding.layoutBioName, "Enter name")
+            !name.matches(Regex("^[a-zA-Zа-яА-ЯёЁ]+$")) -> showError(
+                binding.layoutBioName, "Invalid name format"
+            )
+
             else -> clearError(binding.layoutBioName)
         }
     }
