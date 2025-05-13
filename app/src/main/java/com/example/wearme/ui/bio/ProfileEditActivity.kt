@@ -14,7 +14,6 @@ import com.example.wearme.data.network.retrofit.RetrofitInstance
 import com.example.wearme.databinding.ActivityProfileEditBinding
 import com.example.wearme.domain.model.api.Gender
 import com.example.wearme.domain.model.api.Profile
-import com.example.wearme.system.getTText
 
 class ProfileEditActivity: AppCompatActivity() {
 
