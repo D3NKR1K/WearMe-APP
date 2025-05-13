@@ -5,11 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -76,40 +75,94 @@ class MainActivity: AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.filter_bottom_sheet, null)
         bottomSheetDialog.setContentView(view)
 
-        val categorySpinner: Spinner = view.findViewById(R.id.categorySpinner)
-        val colorSpinner: Spinner = view.findViewById(R.id.colorSpinner)
+        val btnCategory: Button = view.findViewById(R.id.btnCategory)
+        val btnColor: Button = view.findViewById(R.id.btnColor)
         val applyFiltersButton: Button = view.findViewById(R.id.applyFiltersButton)
 
-        // Заполняем спиннеры данными
-        categorySpinner.adapter = ArrayAdapter(
-            this, android.R.layout.simple_spinner_dropdown_item, categoryNames.toList()
-        )
+        // Списки для хранения выбранных ID
+        val selectedCategories = mutableSetOf<Int>()
+        val selectedColors = mutableSetOf<Int>()
 
-        colorSpinner.adapter = ArrayAdapter(
-            this, android.R.layout.simple_spinner_dropdown_item, colorNames.toList()
-        )
+        // Обработка выбора категорий
+        btnCategory.setOnClickListener {
+            showMultiChoiceDialog(
+                title = "Select Categories",
+                items = categoryNames.toList(),
+                selectedItems = selectedCategories,
+                onConfirm = { selectedIds ->
+                    selectedCategories.clear()
+                    selectedCategories.addAll(selectedIds)
+                    Log.i("DEBUG", "Selected Categories: $selectedCategories")
+                })
+        }
 
-        // Обработка нажатия на кнопку "Применить фильтры"
+        // Обработка выбора цветов
+        btnColor.setOnClickListener {
+            showMultiChoiceDialog(
+                title = "Select Colors",
+                items = colorNames.toList(),
+                selectedItems = selectedColors,
+                onConfirm = { selectedIds ->
+                    selectedColors.clear()
+                    selectedColors.addAll(selectedIds)
+                    Log.i("DEBUG", "Selected Colors: $selectedColors")
+                })
+        }
+
+        // Применение фильтров
         applyFiltersButton.setOnClickListener {
-            val selectedCategoryId =
-                getIdFromName(categorySpinner.selectedItem.toString(), categoryDict)
-            val selectedColorId = getIdFromName(colorSpinner.selectedItem.toString(), colorDict)
-
-            applyFilters(selectedCategoryId, selectedColorId)
+            applyFilters(selectedCategories.toList(), selectedColors.toList())
+            Log.i(
+                "DEBUG",
+                "Filters Applied: Categories = $selectedCategories, Colors = $selectedColors"
+            )
             bottomSheetDialog.dismiss()
         }
 
         bottomSheetDialog.show()
     }
 
+    private fun showMultiChoiceDialog(
+        title: String, items: List<String>, selectedItems: Set<Int>, onConfirm: (Set<Int>) -> Unit
+    ) {
+        val selectedIndices = BooleanArray(items.size) { index ->
+            selectedItems.any { categoryDict[it] == items[index] || colorDict[it] == items[index] }
+        }
+
+        val dialog = AlertDialog.Builder(this).setTitle(title)
+            .setMultiChoiceItems(items.toTypedArray(), selectedIndices) { _, which, isChecked ->
+                selectedIndices[which] = isChecked
+            }.setPositiveButton("OK") { dialog, _ ->
+                val selectedIds = items.mapIndexedNotNull { index, name ->
+                    if (selectedIndices[index]) {
+                        categoryDict.entries.find { it.value == name }?.key
+                            ?: colorDict.entries.find { it.value == name }?.key
+                    } else null
+                }.toSet()
+
+                Log.i("DEBUG", "Selected IDs: $selectedIds")
+                onConfirm(selectedIds)
+                dialog.dismiss()
+            }.setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }.create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(this, R.color.black))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(this, R.color.black))
+        }
+
+        dialog.show()
+    }
+
     private fun getIdFromName(name: String, dict: Map<Int, String>): Int {
         return dict.entries.find { it.value == name }?.key ?: -1
     }
 
-    private fun applyFilters(categoryId: Int, colorId: Int) {
+    private fun applyFilters(categoryIds: List<Int>, colorIds: List<Int>) {
         lifecycleScope.launch {
             try {
-                itemsAdapter.applyFilters(categoryId, colorId)
+                itemsAdapter.applyFilters(categoryIds, colorIds)
             } catch (e: Exception) {
                 Log.e("Filters", "Error applying filters", e)
             }
@@ -176,15 +229,22 @@ class MainActivity: AppCompatActivity() {
 
         categoryNames.clear()
         colorNames.clear()
-        dataResponse.body()?.categories?.let { categoryNames.addAll(it) }
-        dataResponse.body()?.colors?.let { colorNames.addAll(it) }
 
-        colorNames = colorNames.filterNotNull().toMutableSet()
+        dataResponse.body()?.categories?.let { categoryNames.addAll(it) }
+        dataResponse.body()?.colors?.let {
+            colorNames.addAll(it.map { color -> color ?: "прозрачный" })
+        }
+
+        Log.i("DEBUG", "Updated categoryNames: $categoryNames")
+        Log.i("DEBUG", "Updated colorNames: $colorNames")
 
         categoryDict.clear()
         colorDict.clear()
         categoryDict.putAll(categoryIds.zip(categoryNames).toMap())
         colorDict.putAll(colorIds.zip(colorNames).toMap())
+
+        Log.i("DEBUG", "Category Dict: $categoryDict")
+        Log.i("DEBUG", "Color Dict: $colorDict")
     }
 
     private fun handleMeasurementsResult(

@@ -33,8 +33,10 @@ class ItemsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cloth = cloths[position] // Исправлено: получаем объект Cloth
 
+        val photoUrl = cloth.photoUrl.replace(Regex("\\d+\\.webp$"), "1.webp")
+
         // Загрузка изображения
-        holder.binding.productImage.load(cloth.photoUrl) { // Используем поле photo_url
+        holder.binding.productImage.load(photoUrl) { // Используем поле photo_url
             crossfade(300)
             placeholder(R.drawable.placeholder_image)
             error(R.drawable.placeholder_image)
@@ -80,10 +82,17 @@ class ItemsAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun applyFilters(categoryId: Int, colorId: Int) {
+    fun applyFilters(categoryIds: List<Int>, colorIds: List<Int>) {
+        Log.i("DEBUG", colorIds.toString())
+        Log.i("DEBUG", categoryIds.toString())
         cloths = originalCloths.filter { cloth ->
-            (categoryId == -1 || cloth.category == categoryId) && (colorId == -1 || cloth.color == colorId)
+            val matchesCategory =
+                categoryIds.isEmpty() || (cloth.category != null && cloth.category in categoryIds)
+            val matchesColor =
+                colorIds.isEmpty() || (cloth.color != null && cloth.color in colorIds)
+            matchesCategory && matchesColor
         }
+        Log.i("DEBUG", cloths.toString())
         notifyDataSetChanged()
     }
 }
