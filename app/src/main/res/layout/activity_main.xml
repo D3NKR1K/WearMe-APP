@@ -83,6 +83,14 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="8dp"
             android:text="@string/mainProfile" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openFiltersButton"
+            style="@style/NavButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="@string/open_filters" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

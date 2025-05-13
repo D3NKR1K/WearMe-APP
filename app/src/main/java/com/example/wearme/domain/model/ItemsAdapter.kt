@@ -18,6 +18,8 @@ class ItemsAdapter(
     private val onInfoClickListener: (Cloth) -> Unit,
 ): RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
+    private var originalCloths: List<Cloth> = cloths
+
     class ViewHolder(val binding: ItemProductBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -73,8 +75,15 @@ class ItemsAdapter(
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<Cloth>) {
         cloths = newList
+        originalCloths = cloths
         notifyDataSetChanged()
     }
 
-
+    @SuppressLint("NotifyDataSetChanged")
+    fun applyFilters(categoryId: Int, colorId: Int) {
+        cloths = originalCloths.filter { cloth ->
+            (categoryId == -1 || cloth.category == categoryId) && (colorId == -1 || cloth.color == colorId)
+        }
+        notifyDataSetChanged()
+    }
 }

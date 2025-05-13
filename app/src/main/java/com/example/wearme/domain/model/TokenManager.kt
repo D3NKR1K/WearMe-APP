@@ -7,6 +7,7 @@ import androidx.security.crypto.MasterKeys
 
 class TokenManager(context: Context) {
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
     private val sharedPreferences = EncryptedSharedPreferences.create(
         "secure_prefs",
         masterKeyAlias,
@@ -24,6 +25,8 @@ class TokenManager(context: Context) {
     }
 
     fun clearToken() {
-        sharedPreferences.edit { remove("jwt_token") }
+        sharedPreferences.edit {
+            remove("jwt_token")
+        }
     }
 }

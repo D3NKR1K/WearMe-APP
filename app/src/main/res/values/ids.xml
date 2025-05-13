@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <item name="itemsBottomPanel" type="id" />
+    <item name="itemsBottomPanel" type="id" />
+    <item name="filterTitle" type="id" />
+    <item name="categorySpinner" type="id" />
+    <item name="colorSpinner" type="id" />
+    <item name="applyFiltersButton" type="id" />
 </resources>

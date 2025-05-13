@@ -11,7 +11,7 @@ enum class ClothingGenderEnum { M, F, U }
 data class Cloth(
     @SerializedName("global_category_id") val globalCategory: Int,
     @SerializedName("sub_category_id") val category: Int?,
-    @SerializedName("color_id") val color: String?,
+    @SerializedName("color_id") val color: Int?,
 
     @SerializedName("name") val name: String,
     @SerializedName("gender") val gender: ClothingGenderEnum,

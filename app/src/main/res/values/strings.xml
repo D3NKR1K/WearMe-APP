@@ -82,6 +82,15 @@
     <string name="errorShortPassword">Password must be at least 8 characters</string>
     <string name="errorNoUppercase">Password must contain at least one uppercase letter</string>
     <string name="registrationFailed">Registration failed. Please try again</string>
+    <string name="filter_category">Category</string>
+    <string name="filter_color">Color</string>
+    <string name="apply_filters">Apply</string>
+    <string name="filter_title">Filters</string>
+    <string name="open_filters">Filters</string>
+
+    <string name="upper">Outerwear</string>
+    <string name="lower">Filters</string>
+    <string name="footwear">Footwear</string>
 
     <string-array name="categories">
         <item>All</item>

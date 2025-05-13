@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wearme.R
 import com.example.wearme.data.network.api.GetMeasurementsCallback
 import com.example.wearme.data.network.retrofit.RetrofitInstance
+import com.example.wearme.data.remote.IdsRequest
 import com.example.wearme.databinding.ActivityMainBinding
 import com.example.wearme.domain.model.CategoriesAdapter
 import com.example.wearme.domain.model.ItemsAdapter
@@ -21,6 +25,7 @@ import com.example.wearme.domain.model.api.Category
 import com.example.wearme.domain.model.api.Cloth
 import com.example.wearme.ui.bio.MeasurementsEditActivity
 import com.example.wearme.ui.bio.ProfileActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
 import retrofit2.Call
 
@@ -28,6 +33,15 @@ class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var itemsAdapter: ItemsAdapter
     private lateinit var categoriesAdapter: CategoriesAdapter
+
+    private val categoryIds = mutableSetOf<Int>()
+    private val colorIds = mutableSetOf<Int>()
+
+    private val categoryNames = mutableSetOf<String>()
+    private var colorNames = mutableSetOf<String>()
+
+    private val categoryDict = mutableMapOf<Int, String>()
+    private val colorDict = mutableMapOf<Int, String>()
 
     data class MeasurementCategory<T>(
         val apiCall: () -> Call<T>, val categoryId: Int
@@ -51,6 +65,55 @@ class MainActivity: AppCompatActivity() {
 
         setupAdapters()
         setupClickListeners()
+
+        binding.openFiltersButton.setOnClickListener {
+            showFilterBottomSheet()
+        }
+    }
+
+    private fun showFilterBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.filter_bottom_sheet, null)
+        bottomSheetDialog.setContentView(view)
+
+        val categorySpinner: Spinner = view.findViewById(R.id.categorySpinner)
+        val colorSpinner: Spinner = view.findViewById(R.id.colorSpinner)
+        val applyFiltersButton: Button = view.findViewById(R.id.applyFiltersButton)
+
+        // Заполняем спиннеры данными
+        categorySpinner.adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, categoryNames.toList()
+        )
+
+        colorSpinner.adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, colorNames.toList()
+        )
+
+        // Обработка нажатия на кнопку "Применить фильтры"
+        applyFiltersButton.setOnClickListener {
+            val selectedCategoryId =
+                getIdFromName(categorySpinner.selectedItem.toString(), categoryDict)
+            val selectedColorId = getIdFromName(colorSpinner.selectedItem.toString(), colorDict)
+
+            applyFilters(selectedCategoryId, selectedColorId)
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.show()
+    }
+
+    private fun getIdFromName(name: String, dict: Map<Int, String>): Int {
+        return dict.entries.find { it.value == name }?.key ?: -1
+    }
+
+    private fun applyFilters(categoryId: Int, colorId: Int) {
+        lifecycleScope.launch {
+            try {
+                itemsAdapter.applyFilters(categoryId, colorId)
+            } catch (e: Exception) {
+                Log.e("Filters", "Error applying filters", e)
+            }
+        }
     }
 
     private fun setupAdapters() {
@@ -72,13 +135,12 @@ class MainActivity: AppCompatActivity() {
             visibility = View.VISIBLE
         }
 
-        categoriesAdapter.submitList(
-            listOf(
-                Category("Upper", R.drawable.ic_upper),
-                Category("Lower", R.drawable.ic_lower),
-                Category("Footwear", R.drawable.ic_footwear)
-            )
+        val defaultCategories = listOf(
+            Category("Upper", R.drawable.ic_upper, getString(R.string.upper)),
+            Category("Lower", R.drawable.ic_lower, getString(R.string.lower)),
+            Category("Footwear", R.drawable.ic_footwear, getString(R.string.footwear))
         )
+        categoriesAdapter.submitList(defaultCategories)
 
         binding.itemsRecyclerView.visibility = View.GONE
     }
@@ -99,6 +161,31 @@ class MainActivity: AppCompatActivity() {
         )
     }
 
+    private suspend fun updateDictionaries(clothes: List<Cloth>) {
+        categoryIds.clear()
+        colorIds.clear()
+
+        clothes.forEach { cloth ->
+            cloth.category?.let { categoryIds.add(it) }
+            cloth.color?.let { colorIds.add(it) }
+        }
+
+        val dataResponse = RetrofitInstance.clothesApiService.getClothesData(
+            IdsRequest(categoryIds.toList(), colorIds.toList())
+        )
+
+        categoryNames.clear()
+        colorNames.clear()
+        dataResponse.body()?.categories?.let { categoryNames.addAll(it) }
+        dataResponse.body()?.colors?.let { colorNames.addAll(it) }
+
+        colorNames = colorNames.filterNotNull().toMutableSet()
+
+        categoryDict.clear()
+        colorDict.clear()
+        categoryDict.putAll(categoryIds.zip(categoryNames).toMap())
+        colorDict.putAll(colorIds.zip(colorNames).toMap())
+    }
 
     private fun handleMeasurementsResult(
         category: String, categoryId: Int, hasMeasurements: Boolean
@@ -111,13 +198,13 @@ class MainActivity: AppCompatActivity() {
 
                     if (response.isSuccessful) {
                         response.body()?.let { clothes ->
+                            updateDictionaries(clothes)
                             itemsAdapter.updateList(clothes)
                             showProducts(category)
                         }
                     } else {
                         showNetworkErrorDialog()
                     }
-
                 } catch (e: Exception) {
                     Log.e("Network", "Error fetching clothes", e)
                     showNetworkErrorDialog()
@@ -127,7 +214,6 @@ class MainActivity: AppCompatActivity() {
             showMeasurementsDialog(category)
         }
     }
-
 
     private fun openClothDetails(cloth: Cloth) {
         val intent = Intent(this, ClothDetailActivity::class.java).apply {
@@ -180,6 +266,10 @@ class MainActivity: AppCompatActivity() {
     private fun updateCatalogButtonState() {
         val isListVisible = binding.categoriesRecyclerView.isVisible
         binding.productsCatalogButton.apply {
+            isEnabled = !isListVisible
+            alpha = if (isEnabled) 1.0f else 0.5f
+        }
+        binding.openFiltersButton.apply {
             isEnabled = !isListVisible
             alpha = if (isEnabled) 1.0f else 0.5f
         }

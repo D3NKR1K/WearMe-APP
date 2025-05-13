@@ -15,7 +15,6 @@ object RetrofitInstance {
     private var tokenProvider: (() -> String?)? = null
 
     private val noAuthClient by lazy {
-//        Timber.d("Initializing no-auth client")
         createRetrofitClient(OkHttpClient.Builder().build())
     }
 
@@ -37,7 +36,6 @@ object RetrofitInstance {
     }
 
     fun clearAuthClient() {
-//        Timber.d("Clearing auth client")
         authClient = null
     }
 

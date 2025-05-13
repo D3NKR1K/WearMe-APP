@@ -14,7 +14,7 @@ class CategoriesAdapter(
 
     class ViewHolder(val binding: ItemCategoryBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
-            binding.categoryName.text = category.name
+            binding.categoryName.text = category.nameRes
             binding.categoryIcon.setImageResource(category.iconResId)
         }
     }

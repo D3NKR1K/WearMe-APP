@@ -35,7 +35,7 @@
     <string name="buttonSignInPage">Войти</string>
 
     <!--    activity_main  -->
-    <string name="mainCategory">Предложенная одежды</string>
+    <string name="mainCategory">Выберете категорию</string>
     <string name="mainCatalog">Каталог</string>
     <string name="mainProfile">Профиль</string>
 
@@ -67,5 +67,13 @@
     <string name="errorNoUppercase">Пароль должен содержать хотя бы одну заглавную букву</string>
     <string name="registrationFailed">Регистрация не удалась. Пожалуйста, попробуйте еще раз</string>
     <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
+    <string name="open_filters">Фильтры</string>
+    <string name="upper">Верхняя одежда</string>
+    <string name="lower">Нижняя одежда</string>
+    <string name="footwear">Обувь</string>
+    <string name="filter_category">Подкатегория</string>
+    <string name="filter_color">Цвет</string>
+    <string name="apply_filters">Применить</string>
+    <string name="filter_title">Фильтры</string>
 
 </resources>
