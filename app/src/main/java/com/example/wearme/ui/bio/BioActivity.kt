@@ -51,18 +51,13 @@ class BioActivity: AppCompatActivity() {
         }
     }
 
+    // добавлен перевод ошибки валидации
     private fun getSelectedGender(): Gender {
         return when (binding.genderRadioGroup.checkedRadioButtonId) {
-            R.id.radio_male -> {
-                Gender.M
-            }
-
-            R.id.radio_female -> {
-                Gender.F
-            }
-
+            R.id.radio_male -> Gender.M
+            R.id.radio_female -> Gender.F
             else -> {
-                showError(binding.layoutBioGender, "Select gender")
+                showError(binding.layoutBioGender, getString(R.string.error_select_gender))
                 Gender.U
             }
         }
@@ -94,14 +89,18 @@ class BioActivity: AppCompatActivity() {
         return isNameValid && isAgeValid && isGenderValid
     }
 
-    private fun validateName(): Boolean {
+    // добавлен перевод ошибки валидации
+        private fun validateName(): Boolean {
         val name = binding.inputBioName.getTText()
         return when {
-            name.isEmpty() -> showError(binding.layoutBioName, "Enter name")
-            !name.matches(Regex("^[a-zA-Zа-яА-ЯёЁ]+$")) -> showError(
-                binding.layoutBioName, "Invalid name format"
+            name.isEmpty() -> showError(
+                binding.layoutBioName,
+                getString(R.string.error_enter_name)
             )
-
+            !name.matches(Regex("^[a-zA-Zа-яА-ЯёЁ]+$")) -> showError(
+                binding.layoutBioName,
+                getString(R.string.error_invalid_name)
+            )
             else -> clearError(binding.layoutBioName)
         }
     }
@@ -109,9 +108,18 @@ class BioActivity: AppCompatActivity() {
     private fun validateAge(): Boolean {
         val age = binding.inputBioAge.getTText()
         return when {
-            age.isEmpty() -> showError(binding.layoutBioAge, "Enter age")
-            !age.matches(Regex("\\d+")) -> showError(binding.layoutBioAge, "Invalid age format")
-            age.toInt() !in 1 .. 149 -> showError(binding.layoutBioAge, "Valid range: 1-149")
+            age.isEmpty() -> showError(
+                binding.layoutBioAge,
+                getString(R.string.error_enter_age)
+            )
+            !age.matches(Regex("\\d+")) -> showError(
+                binding.layoutBioAge,
+                getString(R.string.error_invalid_age)
+            )
+            age.toInt() !in 1..149 -> showError(
+                binding.layoutBioAge,
+                getString(R.string.error_age_range)
+            )
             else -> clearError(binding.layoutBioAge)
         }
     }
@@ -122,10 +130,14 @@ class BioActivity: AppCompatActivity() {
             clearError(binding.layoutBioGender)
             true
         } else {
-            showError(binding.layoutBioGender, "Select gender")
+            showError(
+                binding.layoutBioGender,
+                getString(R.string.error_select_gender)
+            )
             false
         }
     }
+
 
     private fun showError(layout: TextInputLayout, message: String): Boolean {
         layout.error = message

@@ -91,7 +91,7 @@ class ProfileEditActivity: AppCompatActivity() {
         }
     }
 
-    private fun validateName(): Boolean {
+    /*private fun validateName(): Boolean {
         val name = binding.inputProfileName.text.toString().trim()
         return when {
             name.isEmpty() -> showError(
@@ -120,6 +120,40 @@ class ProfileEditActivity: AppCompatActivity() {
             age.toInt() !in 1 .. 149 -> showError(
                 binding.layoutProfileAge, "Permissible age: 1-149"
             )
+
+            else -> clearError(binding.layoutProfileAge)
+        }
+    }*/
+
+    private fun validateName(): Boolean {
+        val name = binding.inputProfileName.text.toString().trim()
+        return when {
+            name.isEmpty() -> {
+                showError(binding.layoutProfileName, getString(R.string.error_enter_new_name))
+            }
+            !name.matches(Regex("^[a-zA-Zа-яА-ЯёЁ]+$")) -> {
+                showError(binding.layoutProfileName, getString(R.string.error_invalid_name))
+            }
+            else -> {
+                clearError(binding.layoutProfileName)
+            }
+        }
+    }
+
+    private fun validateAge(): Boolean {
+        val age = binding.inputProfileAge.text.toString().trim()
+        return when {
+            age.isEmpty() -> showError(
+                binding.layoutProfileAge,
+                getString(R.string.error_enter_age))
+
+            !age.matches(Regex("\\d+")) -> showError(
+                binding.layoutProfileAge,
+                getString(R.string.error_age_must_be_number))
+
+            age.toInt() !in 1..149 -> showError(
+                binding.layoutProfileAge,
+                getString(R.string.error_permissible_age))
 
             else -> clearError(binding.layoutProfileAge)
         }

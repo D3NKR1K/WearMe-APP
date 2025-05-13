@@ -34,7 +34,7 @@
     <string name="iconEmailDescription">Email icon</string>
     <string name="iconPasswordDescription">Password icon</string>
     <string name="iconPasswordVisibility">Switch password visibility</string>
-    <!--    возможно имелась ввиду строка ниже, прерыдущая выглядит некорректно  -->
+    <string name="linkToSignUpPageDescription">You do not have an account?</string>
     <string name="headerSignUpPage">Sign Up</string>
     <string name="buttonSignInPage">Sign In</string>
     <string name="buttonSignUpPage">Sign Up</string>
@@ -54,15 +54,26 @@
     <string name="measurementsHintHips">Hips</string>
     <string name="measurementsHintFeet">Foot</string>
     <string name="measurementsButtonText">Enter</string>
+    <string name="instructionChest">Measure your chest circumference around the widest part</string>
+    <string name="instructionWaist">Measure your waist at the navel level without tightening the ribbon</string>
+    <string name="instructionHips">Measure the hips by the most prominent points of the buttocks</string>
+    <string name="instructionFoot">Measure the length of the foot from the heel to the tip of the toe</string>
+    <string name="measurementsOk" translatable="false">OK</string>
 
     <!--    activity_profile  -->
     <string name="profileEdit">Edit Profile</string>
     <string name="profileEditMeasuresents">Edit Measurements</string>
     <string name="profileLogOut">Log Out</string>
 
+    <!--    activity_profile_edit  -->
+    <string name="profileEditName">Name</string>
+    <string name="profileEditAge">Age</string>
+    <string name="profileEditNameHint">Name</string>
+    <string name="profileEditAgeHint">Age</string>
+    <string name="profileEditMessage">Enter your profile data</string>
+
     <!--    activity_registration  -->
     <string name="linkToSignInPageDescription">You have an account?</string>
-    <string name="linkToSignUpPageDescription">You do not have an account?</string>
 
     <!--    item_category  -->
     <string name="category" translatable="false">Category</string>
@@ -91,6 +102,30 @@
     <string name="upper">Outerwear</string>
     <string name="lower">Filters</string>
     <string name="footwear">Footwear</string>
+
+    <!--    measurementsEditActivity errors-->
+    <string name="error_field_empty">Field %s cannot be empty</string>
+    <string name="error_integer_required">Value must be an integer</string>
+    <string name="error_range">Allowed range: %1$d-%2$d</string>
+    <string name="error_number_required">Value must be a number</string>
+    <string name="error_range_double">Allowed range: %1$.1f-%2$.1f</string>
+    <string name="chest">chest</string>
+    <string name="waist">waist</string>
+    <string name="hips">hips</string>
+    <string name="foot">foot</string>
+
+    <!--    bioActivity errors-->
+    <string name="error_enter_name">Enter name</string>
+    <string name="error_invalid_name">Only letters allowed</string>
+    <string name="error_enter_age">Enter age</string>
+    <string name="error_invalid_age">Numbers only</string>
+    <string name="error_age_range">Must be 1–149</string>
+    <string name="error_select_gender">Select gender</string>
+
+    <!--    profileEditActivity-->
+    <string name="error_enter_new_name">Enter a new name</string>
+    <string name="error_age_must_be_number">Age must be a number</string>
+    <string name="error_permissible_age">Permissible age: 1-149</string>
 
     <string-array name="categories">
         <item>All</item>

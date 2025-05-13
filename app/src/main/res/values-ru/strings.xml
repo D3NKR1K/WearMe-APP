@@ -11,7 +11,7 @@
     <string name="reviewsCount">Количество отзывов:</string>
 
     <!--    activity_bio  -->
-    <string name="bioTitle">Создать</string>
+    <string name="bioTitle">Создать профиль</string>
     <string name="bioNameHint">Имя</string>
     <string name="bioMale">М</string>
     <string name="bioFemale">Ж</string>
@@ -29,7 +29,7 @@
     <string name="iconEmailDescription">Иконка email</string>
     <string name="iconPasswordDescription">Иконка пароля</string>
     <string name="iconPasswordVisibility">Переключить видимость пароля</string>
-    <!--  <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>-->
+    <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
     <string name="headerSignUpPage">Регистрация</string>
     <string name="buttonSignUpPage">Зарегистрироваться</string>
     <string name="buttonSignInPage">Войти</string>
@@ -49,11 +49,22 @@
     <string name="measurementsHintHips">Обхват бедер</string>
     <string name="measurementsHintFeet">Размер стопы</string>
     <string name="measurementsButtonText">Ввод</string>
+    <string name="instructionChest">Измерьте обхват груди вокруг самой широкой части</string>
+    <string name="instructionWaist">Измерьте талию на уровне пупка, не затягивая лент</string>
+    <string name="instructionHips">Измерьте бёдра по самым выступающим точкам ягодиц</string>
+    <string name="instructionFoot">Измерьте длину стопы от пятки до кончика пальца</string>
 
     <!--    activity_profile  -->
     <string name="profileEdit">Редактировать профиль</string>
     <string name="profileEditMeasuresents">Редактировать мерки</string>
     <string name="profileLogOut">Выйти</string>
+
+    <!--    activity_profile_edit  -->
+    <string name="profileEditName">Имя</string>
+    <string name="profileEditAge">Возраст</string>
+    <string name="profileEditNameHint">Имя</string>
+    <string name="profileEditAgeHint">Возраст</string>
+    <string name="profileEditMessage">Введите ваши данные</string>
 
     <!--    activity_registration  -->
     <string name="linkToSignInPageDescription">У вас есть аккаунт?</string>
@@ -66,6 +77,31 @@
     <string name="errorShortPassword">Пароль должен состоять не менее чем из 8 символов</string>
     <string name="errorNoUppercase">Пароль должен содержать хотя бы одну заглавную букву</string>
     <string name="registrationFailed">Регистрация не удалась. Пожалуйста, попробуйте еще раз</string>
+
+    <!--    measurementsEditActivity errors-->
+    <string name="error_field_empty">Поле %s не может быть пустым</string>
+    <string name="error_integer_required">Значение должно быть целым числом</string>
+    <string name="error_range">Допустимый диапазон: %1$d-%2$d</string>
+    <string name="error_number_required">Значение должно быть числом</string>
+    <string name="error_range_double">Допустимый диапазон: %1$.1f-%2$.1f</string>
+    <string name="chest">груди</string>
+    <string name="waist">талии</string>
+    <string name="hips">бедер</string>
+    <string name="foot">стопы</string>
+
+    <!--    bioActivity errors -->
+    <string name="error_enter_name">Введите имя</string>
+    <string name="error_invalid_name">Только буквы</string>
+    <string name="error_enter_age">Введите возраст</string>
+    <string name="error_invalid_age">Только цифры</string>
+    <string name="error_age_range">Должно быть 1–149</string>
+    <string name="error_select_gender">Выберите пол</string>
+
+    <!--    profileEditActivity-->
+    <string name="error_enter_new_name">Введите новое имя</string>
+    <string name="error_age_must_be_number">Возраст должен быть числом</string>
+    <string name="error_permissible_age">Допустимый возраст: 1–149</string>
+
     <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
     <string name="open_filters">Фильтры</string>
     <string name="upper">Верхняя одежда</string>
@@ -75,5 +111,4 @@
     <string name="filter_color">Цвет</string>
     <string name="apply_filters">Применить</string>
     <string name="filter_title">Фильтры</string>
-
 </resources>
