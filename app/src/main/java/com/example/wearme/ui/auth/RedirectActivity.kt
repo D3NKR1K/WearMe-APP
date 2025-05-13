@@ -25,6 +25,9 @@ class RedirectActivity: AppCompatActivity() {
         installSplashScreen().setKeepOnScreenCondition { isLoading }
         super.onCreate(savedInstanceState)
 
+//        getSharedPreferences("secure_prefs", MODE_PRIVATE).edit { clear() }
+//        getSharedPreferences("secure_prefs_keyset", MODE_PRIVATE).edit { clear() }
+
         lifecycleScope.launch {
             handleRedirection()
         }

@@ -35,7 +35,7 @@
     <string name="buttonSignInPage">Войти</string>
 
     <!--    activity_main  -->
-    <string name="mainCategory">Предложенная одежды</string>
+    <string name="mainCategory">Выберете категорию</string>
     <string name="mainCatalog">Каталог</string>
     <string name="mainProfile">Профиль</string>
 
@@ -102,4 +102,13 @@
     <string name="error_age_must_be_number">Возраст должен быть числом</string>
     <string name="error_permissible_age">Допустимый возраст: 1–149</string>
 
+    <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
+    <string name="open_filters">Фильтры</string>
+    <string name="upper">Верхняя одежда</string>
+    <string name="lower">Нижняя одежда</string>
+    <string name="footwear">Обувь</string>
+    <string name="filter_category">Подкатегория</string>
+    <string name="filter_color">Цвет</string>
+    <string name="apply_filters">Применить</string>
+    <string name="filter_title">Фильтры</string>
 </resources>
