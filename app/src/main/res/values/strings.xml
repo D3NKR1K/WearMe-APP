@@ -94,6 +94,30 @@
     <string name="errorNoUppercase">Password must contain at least one uppercase letter</string>
     <string name="registrationFailed">Registration failed. Please try again</string>
 
+    <!--    measurementsEditActivity errors-->
+    <string name="error_field_empty">Field %s cannot be empty</string>
+    <string name="error_integer_required">Value must be an integer</string>
+    <string name="error_range">Allowed range: %1$d-%2$d</string>
+    <string name="error_number_required">Value must be a number</string>
+    <string name="error_range_double">Allowed range: %1$.1f-%2$.1f</string>
+    <string name="chest">chest</string>
+    <string name="waist">waist</string>
+    <string name="hips">hips</string>
+    <string name="foot">foot</string>
+
+    <!--    bioActivity errors-->
+    <string name="error_enter_name">Enter name</string>
+    <string name="error_invalid_name">Only letters allowed</string>
+    <string name="error_enter_age">Enter age</string>
+    <string name="error_invalid_age">Numbers only</string>
+    <string name="error_age_range">Must be 1–149</string>
+    <string name="error_select_gender">Select gender</string>
+
+    <!--    profileEditActivity-->
+    <string name="error_enter_new_name">Enter a new name</string>
+    <string name="error_age_must_be_number">Age must be a number</string>
+    <string name="error_permissible_age">Permissible age: 1-149</string>
+
     <string-array name="categories">
         <item>All</item>
         <item>Upper</item>

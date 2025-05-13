@@ -78,4 +78,28 @@
     <string name="errorNoUppercase">Пароль должен содержать хотя бы одну заглавную букву</string>
     <string name="registrationFailed">Регистрация не удалась. Пожалуйста, попробуйте еще раз</string>
 
+    <!--    measurementsEditActivity errors-->
+    <string name="error_field_empty">Поле %s не может быть пустым</string>
+    <string name="error_integer_required">Значение должно быть целым числом</string>
+    <string name="error_range">Допустимый диапазон: %1$d-%2$d</string>
+    <string name="error_number_required">Значение должно быть числом</string>
+    <string name="error_range_double">Допустимый диапазон: %1$.1f-%2$.1f</string>
+    <string name="chest">груди</string>
+    <string name="waist">талии</string>
+    <string name="hips">бедер</string>
+    <string name="foot">стопы</string>
+
+    <!--    bioActivity errors -->
+    <string name="error_enter_name">Введите имя</string>
+    <string name="error_invalid_name">Только буквы</string>
+    <string name="error_enter_age">Введите возраст</string>
+    <string name="error_invalid_age">Только цифры</string>
+    <string name="error_age_range">Должно быть 1–149</string>
+    <string name="error_select_gender">Выберите пол</string>
+
+    <!--    profileEditActivity-->
+    <string name="error_enter_new_name">Введите новое имя</string>
+    <string name="error_age_must_be_number">Возраст должен быть числом</string>
+    <string name="error_permissible_age">Допустимый возраст: 1–149</string>
+
 </resources>

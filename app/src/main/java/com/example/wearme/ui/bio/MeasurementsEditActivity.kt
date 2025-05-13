@@ -17,6 +17,7 @@ import com.example.wearme.domain.model.UpperMeasurements
 import com.example.wearme.system.getDouble
 import com.example.wearme.system.getInt
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputLayout
 
 class MeasurementsEditActivity: AppCompatActivity() {
 
@@ -134,53 +135,99 @@ class MeasurementsEditActivity: AppCompatActivity() {
         }
     }
 
-    private fun validateFoot(): Boolean {
-        return validateMeasurementFoot(binding.layoutBioFoot, "стопы", 20.0, 35.0)
-    }
-
+    // добавлен перевод ошибки валидации
     private fun validateChest(): Boolean {
-        return validateMeasurement(binding.layoutBioChest, "груди", 50, 150)
+        return validateMeasurement(
+            binding.layoutBioChest,
+            R.string.chest,
+            50,
+            150
+        )
     }
 
     private fun validateWaist(): Boolean {
-        return validateMeasurement(binding.layoutBioWaist, "талии", 50, 150)
+        return validateMeasurement(
+            binding.layoutBioWaist,
+            R.string.waist,
+            50,
+            150
+        )
     }
 
     private fun validateHips(): Boolean {
-        return validateMeasurement(binding.layoutBioHips, "бедер", 70, 200)
+        return validateMeasurement(
+            binding.layoutBioHips,
+            R.string.hips,
+            70,
+            200
+        )
     }
 
+    private fun validateFoot(): Boolean {
+        return validateMeasurementFoot(
+            binding.layoutBioFoot,
+            R.string.foot,
+            20.0,
+            35.0
+        )
+    }
+
+    // добавлен перевод ошибки валидации
     private fun validateMeasurementFoot(
-        layout: com.google.android.material.textfield.TextInputLayout,
-        fieldName: String,
+        layout: TextInputLayout,
+        fieldNameResId: Int,
         min: Double,
         max: Double
     ): Boolean {
         val value = layout.editText?.text.toString().trim()
+        val fieldName = getString(fieldNameResId)
         return when {
-            value.isEmpty() -> showError(layout, "Поле $fieldName не может быть пустым")
-            value.toDouble() !in min .. max -> showError(layout, "Допустимый диапазон: $min-$max")
+            value.isEmpty() -> showError(
+                layout,
+                getString(R.string.error_field_empty, fieldName)
+            )
+            value.toDoubleOrNull() == null -> showError(
+                layout,
+                getString(R.string.error_number_required)
+            )
+            value.toDouble() !in min..max -> showError(
+                layout,
+                getString(R.string.error_range_double, min, max)
+            )
             else -> clearError(layout)
         }
     }
 
+    // добавлен перевод ошибки валидации
     private fun validateMeasurement(
-        layout: com.google.android.material.textfield.TextInputLayout,
-        fieldName: String,
+        layout: TextInputLayout,
+        fieldNameResId: Int,
         min: Int,
         max: Int
     ): Boolean {
         val value = layout.editText?.text.toString().trim()
+        val fieldName = getString(fieldNameResId)
         return when {
-            value.isEmpty() -> showError(layout, "Поле $fieldName не может быть пустым")
-            !value.matches(Regex("\\d+")) -> showError(layout, "Значение должно быть целым числом")
-            value.toInt() !in min .. max -> showError(layout, "Допустимый диапазон: $min-$max")
+            value.isEmpty() -> showError(
+                layout,
+                getString(R.string.error_field_empty, fieldName)
+            )
+            !value.matches(Regex("\\d+")) -> showError(
+                layout,
+                getString(R.string.error_integer_required)
+            )
+            value.toInt() !in min..max -> showError(
+                layout,
+                getString(R.string.error_range, min, max)
+            )
             else -> clearError(layout)
         }
     }
 
+    // добавлен перевод ошибки валидации
     private fun showError(
-        layout: com.google.android.material.textfield.TextInputLayout, message: String
+        layout: com.google.android.material.textfield.TextInputLayout,
+        message: String
     ): Boolean {
         layout.error = message
         layout.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
