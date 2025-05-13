@@ -102,7 +102,10 @@
         app:layout_constraintBottom_toTopOf="@id/layout_bio_waist"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
+        app:layout_constraintTop_toBottomOf="@id/categoryToggle"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_help"
+        app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_chest"
@@ -124,7 +127,10 @@
         app:layout_constraintBottom_toTopOf="@id/layout_bio_hips"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_chest">
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_chest"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_help"
+        app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_waist"
@@ -146,7 +152,10 @@
         app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist">
+        app:layout_constraintTop_toBottomOf="@id/layout_bio_waist"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_help"
+        app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_hips"
@@ -169,7 +178,10 @@
         app:layout_constraintBottom_toTopOf="@id/layout_enter_button"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/categoryToggle">
+        app:layout_constraintTop_toBottomOf="@id/categoryToggle"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_help"
+        app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_bio_foot"

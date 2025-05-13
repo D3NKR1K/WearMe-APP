@@ -16,6 +16,7 @@ import com.example.wearme.domain.model.UnderMeasurements
 import com.example.wearme.domain.model.UpperMeasurements
 import com.example.wearme.system.getDouble
 import com.example.wearme.system.getInt
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MeasurementsEditActivity: AppCompatActivity() {
 
@@ -45,6 +46,30 @@ class MeasurementsEditActivity: AppCompatActivity() {
                 saveMeasurements()
             }
         }
+
+        setupInstructionIcons()
+    }
+
+    private fun setupInstructionIcons() {
+        binding.layoutBioChest.setEndIconOnClickListener {
+            showInstructionDialog(R.string.instructionChest)
+        }
+        binding.layoutBioWaist.setEndIconOnClickListener {
+            showInstructionDialog(R.string.instructionWaist)
+        }
+        binding.layoutBioHips.setEndIconOnClickListener {
+            showInstructionDialog(R.string.instructionHips)
+        }
+        binding.layoutBioFoot.setEndIconOnClickListener {
+            showInstructionDialog(R.string.instructionFoot)
+        }
+    }
+
+    private fun showInstructionDialog(textResId: Int) {
+        MaterialAlertDialogBuilder(this)
+            .setMessage(textResId)
+            .setPositiveButton(getString(R.string.measurementsOk)) { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 
     private fun hideAllMeasurements() {
