@@ -3,7 +3,7 @@
 
     <!-- Общий стиль для TextInputLayout -->
     <style name="InputLayout" parent="Theme.WearMe">
-        <item name="boxStrokeColor">@android:color/darker_gray</item>
+        <item name="boxStrokeColor">@color/button_main_color</item>
         <item name="boxCornerRadiusBottomEnd">4dp</item>
         <item name="boxCornerRadiusTopEnd">4dp</item>
         <item name="boxCornerRadiusBottomStart">4dp</item>

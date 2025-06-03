@@ -27,7 +27,7 @@
     <string name="measurementsTitle">Cloth Measurements (cm)</string>
 
     <!--    activity_login  -->
-    <string name="headerSignInPage">Sign In</string>
+    <string name="headerSignInPage">Login</string>
     <string name="hintUserEmail" translatable="false">Email</string>
     <string name="hintUserPassword">Password</string>
     <string name="hintUserPasswordRepeat">Password Repeat</string>
@@ -99,8 +99,8 @@
     <string name="filter_title">Filters</string>
     <string name="open_filters">Filters</string>
 
-    <string name="upper">Outerwear</string>
-    <string name="lower">Filters</string>
+    <string name="upper">Outwear</string>
+    <string name="lower">Underwear</string>
     <string name="footwear">Footwear</string>
 
     <!--    measurementsEditActivity errors-->

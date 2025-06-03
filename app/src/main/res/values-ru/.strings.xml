@@ -29,7 +29,6 @@
     <string name="iconEmailDescription">Иконка email</string>
     <string name="iconPasswordDescription">Иконка пароля</string>
     <string name="iconPasswordVisibility">Переключить видимость пароля</string>
-    <string name="linkToSignUpPageDescription">У вас нет аккаунта?</string>
     <string name="headerSignUpPage">Регистрация</string>
     <string name="buttonSignUpPage">Зарегистрироваться</string>
     <string name="buttonSignInPage">Войти</string>

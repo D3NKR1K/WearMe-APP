@@ -234,17 +234,10 @@ class MainActivity: AppCompatActivity() {
         dataResponse.body()?.colors?.let {
             colorNames.addAll(it.map { color -> color ?: "прозрачный" })
         }
-
-        Log.i("DEBUG", "Updated categoryNames: $categoryNames")
-        Log.i("DEBUG", "Updated colorNames: $colorNames")
-
         categoryDict.clear()
         colorDict.clear()
         categoryDict.putAll(categoryIds.zip(categoryNames).toMap())
         colorDict.putAll(colorIds.zip(colorNames).toMap())
-
-        Log.i("DEBUG", "Category Dict: $categoryDict")
-        Log.i("DEBUG", "Color Dict: $colorDict")
     }
 
     private fun handleMeasurementsResult(

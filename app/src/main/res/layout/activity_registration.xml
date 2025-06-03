@@ -4,9 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background"
+    android:background="@drawable/gradient"
     android:padding="24dp"
     tools:context=".ui.auth.RegisterActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/frame_guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/frame_guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/frame_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/frame_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
     <!-- Guidelines -->
     <androidx.constraintlayout.widget.Guideline
@@ -21,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.8" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/button_left_guideline"
@@ -36,6 +64,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+
+        android:src="@drawable/frame"
+
+        app:layout_constraintBottom_toTopOf="@id/frame_guideline_bottom"
+        app:layout_constraintEnd_toStartOf="@id/frame_right_guideline"
+        app:layout_constraintStart_toStartOf="@id/frame_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/frame_guideline_top" />
 
     <!-- Header Logo -->
     <com.google.android.material.textview.MaterialTextView
@@ -159,26 +199,11 @@
         android:text="@string/buttonSignUpPage"
         android:textColor="@color/white"
         app:cornerRadius="8dp"
-        app:layout_constraintBottom_toTopOf="@id/linkTo_SignIn_description"
+        app:layout_constraintBottom_toTopOf="@id/linkTo_SignIn"
         app:layout_constraintEnd_toEndOf="@id/button_right_guideline"
         app:layout_constraintStart_toStartOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/layout_SignUp_password_rep"
         app:layout_constraintWidth_percent="0.7" />
-
-    <!-- Sign In Link Description -->
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/linkTo_SignIn_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jua"
-        android:gravity="center"
-        android:text="@string/linkToSignInPageDescription"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/linkTo_SignIn"
-        app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
-        app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/layout_SignUp_button" />
 
     <!-- Sign In Link -->
     <com.google.android.material.textview.MaterialTextView
@@ -188,6 +213,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
+        android:fontFamily="@font/jua"
         android:minHeight="48dp"
         android:text="@string/buttonSignInPage"
         android:textAlignment="center"
@@ -196,7 +222,7 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
         app:layout_constraintEnd_toStartOf="@id/button_right_guideline"
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/linkTo_SignIn_description"
+        app:layout_constraintTop_toBottomOf="@id/layout_SignUp_button"
         app:layout_constraintWidth_percent="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

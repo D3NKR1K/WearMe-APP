@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/gradient"
     tools:context=".ui.home.MainActivity">
 
     <!-- Заголовок -->
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
     <!-- Основная лента товаров -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemsRecyclerView"
@@ -60,7 +60,6 @@
         android:id="@+id/itemsBottomPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingVertical="12dp"

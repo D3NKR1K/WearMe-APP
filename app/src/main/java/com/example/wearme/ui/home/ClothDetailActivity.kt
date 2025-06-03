@@ -27,7 +27,8 @@ class ClothDetailActivity: AppCompatActivity() {
 
         cloth?.let {
             binding.apply {
-                clothImage.load(it.photoUrl)
+                val photoUrl = it.photoUrl.replace(Regex("\\d+\\.webp$"), "1.webp")
+                clothImage.load(photoUrl)
                 clothName.text = it.name
                 clothRating.text = "${it.stars}"
                 clothMatchScore.text = "Match: ${it.variation.matchScore}%"

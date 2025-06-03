@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background"
+    android:background="@drawable/gradient"
     android:padding="24dp"
     tools:context=".ui.bio.MeasurementsEditActivity">
 
@@ -104,7 +104,7 @@
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/categoryToggle"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_help"
+        app:endIconDrawable="@drawable/ic_help_resized"
         app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -129,7 +129,7 @@
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/layout_bio_chest"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_help"
+        app:endIconDrawable="@drawable/ic_help_resized"
         app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -154,7 +154,7 @@
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/layout_bio_waist"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_help"
+        app:endIconDrawable="@drawable/ic_help_resized"
         app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -180,7 +180,7 @@
         app:layout_constraintStart_toEndOf="@id/button_left_guideline"
         app:layout_constraintTop_toBottomOf="@id/categoryToggle"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_help"
+        app:endIconDrawable="@drawable/ic_help_resized"
         app:endIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
